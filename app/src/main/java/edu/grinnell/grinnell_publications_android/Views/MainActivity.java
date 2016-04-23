@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.drawer_layout)DrawerLayout drawerLayout;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +29,17 @@ public class MainActivity extends AppCompatActivity {
         initializeUI();
     }
 
-
+    /*
+        Set up User interface
+     */
     private void initializeUI(){
         setSupportActionBar(toolbar);
         buildNavDrawer();
     }
 
+    /*
+        Build the navigation drawer
+     */
     private void buildNavDrawer(){
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -90,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         //Sync state of the toggle indicator with the drawer
         drawerToggle.syncState();
     }
+
 
     /*
         Helper method to replace FrameLayout in the activity_main.xml with given Fragment
