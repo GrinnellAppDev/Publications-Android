@@ -112,8 +112,10 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         //Initialize drawerToggle
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drawer_open, R.string.drawer_close);
+
         //Add the listener to the DrawerLayout
         drawerLayout.addDrawerListener(drawerToggle);
+
         //Sync state of the toggle indicator with the drawer
         drawerToggle.syncState();
     }

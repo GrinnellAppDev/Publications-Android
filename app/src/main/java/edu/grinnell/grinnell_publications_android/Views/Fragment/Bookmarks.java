@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import edu.grinnell.grinnell_publications_android.Models.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
  * A Fragment to show all Bookmarks
  */
-public class Bookmarks extends Fragment {
+public class Bookmarks extends Fragment implements UserInterface {
 
 
     public Bookmarks() {
@@ -23,8 +24,15 @@ public class Bookmarks extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //Build user interface
+        initializeUI();
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bookmark, container, false);
     }
 
+    @Override
+    public void initializeUI() {
+
+    }
 }
