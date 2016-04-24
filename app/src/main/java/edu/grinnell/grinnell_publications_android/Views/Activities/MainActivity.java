@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Views.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,9 +15,10 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.R;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.AllPublications;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.Newsfeed;
 import edu.grinnell.grinnell_publications_android.Views.Fragment.Bookmarks;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.MyPublications;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.Profile;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.Publications;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.main_toolbar)Toolbar toolbar;
@@ -59,9 +61,19 @@ public class MainActivity extends AppCompatActivity {
 
                 //Toggle to fragment associated with clicked menu item
                 switch (menuItem.getItemId()){
-                    case R.id.all_publications:
-                        AllPublications allPublications = new AllPublications();
-                        replaceFrameWithFragment(allPublications);
+                    case R.id.newsfeed:
+                        Newsfeed newsfeed = new Newsfeed();
+                        replaceFrameWithFragment(newsfeed);
+                        return true;
+
+                    case R.id.publications:
+                        Publications publications = new Publications();
+                        replaceFrameWithFragment(publications);
+                        return true;
+
+                    case R.id.profile:
+                        Profile profile = new Profile();
+                        replaceFrameWithFragment(profile);
                         return true;
 
                     case R.id.bookmarks:
@@ -69,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
                         replaceFrameWithFragment(bookmarks);
                         return true;
 
-                    case R.id.my_publications:
-                        MyPublications publications = new MyPublications();
-                        replaceFrameWithFragment(publications);
+                    case R.id.settings:
+                        Intent toSettingsActivity = new Intent(getApplicationContext(), Settings.class);
+                        startActivity(toSettingsActivity);
                         return true;
 
                     default:

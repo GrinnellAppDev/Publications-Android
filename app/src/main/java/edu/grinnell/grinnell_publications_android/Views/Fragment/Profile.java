@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to display users' subscribed publications.
+ * A Fragment to show a user's Profile
  */
-public class MyPublications extends Fragment {
+public class Profile extends Fragment {
 
 
-    public MyPublications() {
+    public Profile() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class MyPublications extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_publications, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
 }

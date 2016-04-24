@@ -2,13 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Fragment.Publications">
+    tools:context="edu.grinnell.grinnell_publications_android.Views.Fragment.Profile">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="My Publications Fragment" />
+        android:text="Profile Fragment" />
 
 </FrameLayout>
