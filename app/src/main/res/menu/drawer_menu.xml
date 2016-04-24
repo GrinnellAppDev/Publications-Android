@@ -5,7 +5,7 @@
 
         <item
             android:id="@+id/newsfeed"
-            android:checked="false"
+            android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/newsfeed"/>
 

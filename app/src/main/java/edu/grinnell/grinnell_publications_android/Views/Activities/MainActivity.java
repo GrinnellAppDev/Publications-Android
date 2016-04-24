@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     @Override
     public void initializeUI() {
         setSupportActionBar(toolbar);
+
+        //Set default fragment to Newsfeed
+        Newsfeed newsfeed = new Newsfeed();
+        replaceFrameWithFragment(newsfeed);
+
+        //Build navigation drawer
         buildNavDrawer();
     }
 
