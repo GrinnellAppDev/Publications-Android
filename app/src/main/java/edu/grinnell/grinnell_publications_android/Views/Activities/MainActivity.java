@@ -14,13 +14,14 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import edu.grinnell.grinnell_publications_android.Models.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 import edu.grinnell.grinnell_publications_android.Views.Fragment.Newsfeed;
 import edu.grinnell.grinnell_publications_android.Views.Fragment.Bookmarks;
 import edu.grinnell.grinnell_publications_android.Views.Fragment.Profile;
 import edu.grinnell.grinnell_publications_android.Views.Fragment.Publications;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UserInterface {
     @Bind(R.id.main_toolbar)Toolbar toolbar;
     @Bind(R.id.navigation_view)NavigationView navigationView;
     @Bind(R.id.drawer_layout)DrawerLayout drawerLayout;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     /*
         Set up User interface
      */
-    private void initializeUI(){
+    @Override
+    public void initializeUI() {
         setSupportActionBar(toolbar);
         buildNavDrawer();
     }
@@ -120,5 +122,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame, fragment);
         transaction.commit();
     }
+
 
 }
