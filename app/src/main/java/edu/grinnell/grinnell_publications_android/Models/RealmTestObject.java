@@ -4,8 +4,8 @@ import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 public class RealmTestObject extends RealmObject {
-    public String name;
-    public String url;
+    private String name;
+    private String url;
 
     // You can instruct Realm to ignore a field and not persist it.
     @Ignore
