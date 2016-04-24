@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.grinnell.grinnell_publications_android.Views.MyPublications">
+    tools:context=".Views.Fragment.MyPublications">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

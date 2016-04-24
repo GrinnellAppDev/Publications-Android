@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views;
+package edu.grinnell.grinnell_publications_android.Views.Fragment;
 
 
 import android.os.Bundle;

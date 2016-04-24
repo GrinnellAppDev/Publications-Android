@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views;
+package edu.grinnell.grinnell_publications_android.Views.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,6 +14,9 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.R;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.AllPublications;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.Bookmarks;
+import edu.grinnell.grinnell_publications_android.Views.Fragment.MyPublications;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.main_toolbar)Toolbar toolbar;

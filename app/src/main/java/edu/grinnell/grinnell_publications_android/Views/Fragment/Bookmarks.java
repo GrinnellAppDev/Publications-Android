@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views;
+package edu.grinnell.grinnell_publications_android.Views.Fragment;
 
 
 import android.os.Bundle;
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to display all Publications.
+ * A Fragment to show all Bookmarks
  */
-public class AllPublications extends Fragment {
+public class Bookmarks extends Fragment {
 
 
-    public AllPublications() {
+    public Bookmarks() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class AllPublications extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_publications, container, false);
+        return inflater.inflate(R.layout.fragment_bookmark, container, false);
     }
 
 }
