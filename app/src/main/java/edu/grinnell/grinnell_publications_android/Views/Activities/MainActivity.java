@@ -72,34 +72,40 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                     case R.id.newsfeed:
                         Newsfeed newsfeed = new Newsfeed();
                         replaceFrameWithFragment(newsfeed);
-                        return true;
+                        break;
 
                     case R.id.publications:
                         Publications publications = new Publications();
                         replaceFrameWithFragment(publications);
-                        return true;
+                        break;
 
                     case R.id.profile:
                         Profile profile = new Profile();
                         replaceFrameWithFragment(profile);
-                        return true;
+                        break;
 
                     case R.id.bookmarks:
                         Bookmarks bookmarks = new Bookmarks();
                         replaceFrameWithFragment(bookmarks);
-                        return true;
+                        break;
 
                     case R.id.settings:
                         Intent toSettingsActivity = new Intent(getApplicationContext(), Settings.class);
                         startActivity(toSettingsActivity);
-                        return true;
+                        break;
 
                     default:
                         Toast.makeText(getApplicationContext(), R.string.transaction_error, Toast.LENGTH_LONG).show();
-                        return true;
+                        break;
                 }
+
+                //Set toolbar title
+                setTitle(menuItem.getTitle());
+
+                return true;
             }
         });
+
 
         //Initialize drawer toggling
         setUpToolbarToggle();
