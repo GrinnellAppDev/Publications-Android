@@ -2,18 +2,25 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="172dp"
-    android:background="@color/grey">
+    android:layout_height="172dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/grinnell_gates"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/username_field"
         android:text="@string/username_text"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="120dp"
         android:paddingBottom="3dp"
         android:paddingLeft="10dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="18sp" />
     <TextView
         android:layout_width="wrap_content"
@@ -22,5 +29,6 @@
         android:textSize="14sp"
         android:layout_below="@id/username_field"
         android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:layout_alignLeft="@id/username_field"/>
 </RelativeLayout>

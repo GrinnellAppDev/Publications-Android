@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
 
                 //Toggle to fragment associated with clicked menu item
                 switch (menuItem.getItemId()){
+
                     case R.id.newsfeed:
                         Newsfeed newsfeed = new Newsfeed();
                         replaceFrameWithFragment(newsfeed);
