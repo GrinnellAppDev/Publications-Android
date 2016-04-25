@@ -28,7 +28,7 @@ public class Publications extends Fragment implements UserInterface{
         initializeUI();
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_publications, container, false);
+        return inflater.inflate(R.layout.fragment_publications, container, false);
     }
 
     @Override
