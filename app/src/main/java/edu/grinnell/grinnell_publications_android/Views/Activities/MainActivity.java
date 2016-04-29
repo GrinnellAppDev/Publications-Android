@@ -71,23 +71,19 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                 switch (menuItem.getItemId()){
 
                     case R.id.newsfeed:
-                        Newsfeed newsfeed = new Newsfeed();
-                        replaceFrameWithFragment(newsfeed);
+                        replaceFrameWithFragment(new Newsfeed());
                         break;
 
                     case R.id.publications:
-                        Publications publications = new Publications();
-                        replaceFrameWithFragment(publications);
+                        replaceFrameWithFragment(new Publications());
                         break;
 
                     case R.id.profile:
-                        Profile profile = new Profile();
-                        replaceFrameWithFragment(profile);
+                        replaceFrameWithFragment(new Profile());
                         break;
 
                     case R.id.bookmarks:
-                        Bookmarks bookmarks = new Bookmarks();
-                        replaceFrameWithFragment(bookmarks);
+                        replaceFrameWithFragment(new Bookmarks());
                         break;
 
                     case R.id.settings:
@@ -102,11 +98,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
 
                 //Set toolbar title
                 setTitle(menuItem.getTitle());
-
                 return true;
             }
         });
-
 
         //Initialize drawer toggling
         setUpToolbarToggle();
