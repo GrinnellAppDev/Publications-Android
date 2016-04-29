@@ -11,7 +11,7 @@ import edu.grinnell.grinnell_publications_android.R;
 
 /**
  */
-public class LargeArticleHolder extends RecyclerViewHolder<ArticleCard> {
+public class LargeArticleHolder extends RecyclerViewHolder<LargeArticleCard> {
 
     @Bind(R.id.tv_article_title)
     TextView title;
@@ -20,14 +20,11 @@ public class LargeArticleHolder extends RecyclerViewHolder<ArticleCard> {
         super(itemView);
     }
 
-    public static LargeArticleHolder(){
-
-    }
 
     @Override
-    public void bindView(ArticleCard articleCard, Activity activity) {
+    public void bindView(LargeArticleCard largeArticleCard, Activity activity) {
         ButterKnife.bind(activity);
 
-        title.setText(articleCard.title);
+        title.setText(largeArticleCard.title);
     }
 }

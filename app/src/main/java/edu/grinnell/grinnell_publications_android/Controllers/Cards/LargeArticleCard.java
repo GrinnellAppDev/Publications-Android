@@ -4,14 +4,16 @@ import edu.grinnell.grinnell_publications_android.Controllers.RecyclerItem;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * Created by prabir on 4/29/16, AppDev Grinnell.
+ *
  */
-public class ArticleCard extends RecyclerItem {
+public class LargeArticleCard extends RecyclerItem {
+
+    public static final int LARGE_ARTICLE = R.layout.card_article_large;
 
     String title;
 
-    public ArticleCard() {
-        super(R.layout.card_article_large);
+    public LargeArticleCard() {
+        super(LARGE_ARTICLE);
         title = "This is a Large Article";
     }
 

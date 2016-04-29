@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.grinnell.grinnell_publications_android.Controllers.Cards.LargeArticleCard;
+import edu.grinnell.grinnell_publications_android.Controllers.Cards.LargeArticleHolder;
+import edu.grinnell.grinnell_publications_android.Controllers.Cards.SmallArticleCard;
+import edu.grinnell.grinnell_publications_android.Controllers.Cards.SmallArticleHolder;
+
 /**
  *
  */
@@ -35,7 +40,18 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHo
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater li = activity.getLayoutInflater();
-        return null;
+        RecyclerViewHolder holder;
+        switch (viewType) {
+            case SmallArticleCard.SMALL_ARTICLE:
+                holder = new SmallArticleHolder(li.inflate(SmallArticleCard.SMALL_ARTICLE, parent));
+                break;
+            case LargeArticleCard.LARGE_ARTICLE:
+                holder = new LargeArticleHolder(li.inflate(LargeArticleCard.LARGE_ARTICLE, parent));
+                break;
+            default:
+                holder = null;
+        }
+        return holder;
     }
 
     @Override

@@ -8,7 +8,7 @@ import android.view.View;
 /**
  *
  */
-public abstract class RecyclerViewHolder<RecyclerItem> extends RecyclerView.ViewHolder{
+public abstract class RecyclerViewHolder<T extends RecyclerItem> extends RecyclerView.ViewHolder{
 
 
     public RecyclerViewHolder(View itemView) {
@@ -28,8 +28,6 @@ public abstract class RecyclerViewHolder<RecyclerItem> extends RecyclerView.View
      * @param recyclerItem
      * @param activity
      */
-    public abstract void bindView(RecyclerItem recyclerItem, Activity activity);
-
-
+    public abstract void bindView(T recyclerItem, Activity activity);
 
 }
