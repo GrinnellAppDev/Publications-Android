@@ -18,6 +18,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     public MainRecyclerViewAdapter(Activity activity) {
         this.data = new ArrayList<>();
+        this.activity = activity;
     }
 
     /**
@@ -39,7 +40,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.bindView(data.get(position));
+        holder.bindView(data.get(position), activity);
     }
 
     @Override

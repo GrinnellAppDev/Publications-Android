@@ -12,5 +12,12 @@
     </style>
 
 
+    <!-- Style for the article title in cards -->
+    <style name="card_article_title">
+        <item name="android:textSize">@dimen/card_article_title_font_size</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 
 </resources>

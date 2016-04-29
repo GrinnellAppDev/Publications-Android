@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Controllers;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -25,8 +26,9 @@ public abstract class RecyclerViewHolder<RecyclerItem> extends RecyclerView.View
     /**
      *
      * @param recyclerItem
+     * @param activity
      */
-    public abstract void bindView(RecyclerItem recyclerItem);
+    public abstract void bindView(RecyclerItem recyclerItem, Activity activity);
 
 
 

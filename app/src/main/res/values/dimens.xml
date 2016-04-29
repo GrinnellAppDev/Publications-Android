@@ -5,4 +5,7 @@
     <dimen name="circular_img_view_height">76dp</dimen>
     <dimen name="circular_img_view_width">76dp</dimen>
 
+    <dimen name="card_inner_padding">12dp</dimen>
+    <dimen name="card_article_title_font_size">16sp</dimen>
+
 </resources>
