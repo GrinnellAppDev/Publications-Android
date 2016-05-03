@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views.Activities;
+package edu.grinnell.grinnell_publications_android.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import edu.grinnell.grinnell_publications_android.R;
 /*
     An activity to display relevant settings and configuration options
  */
-public class Settings extends AppCompatActivity implements UserInterface {
+public class MainSettingsActivity extends AppCompatActivity implements UserInterface {
 
     @Bind(R.id.settings_toolbar)Toolbar toolbar;
     @Override

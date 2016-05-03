@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views.Fragment;
+package edu.grinnell.grinnell_publications_android.Fragments;
 
 
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import edu.grinnell.grinnell_publications_android.R;
 /**
  * A Fragment to show a user's Profile
  */
-public class Profile extends Fragment implements UserInterface{
+public class ProfileFragment extends Fragment implements UserInterface{
 
 
-    public Profile() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 

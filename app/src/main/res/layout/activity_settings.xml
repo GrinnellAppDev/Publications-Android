@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.grinnell.grinnell_publications_android.Views.Activities.Settings">
+    tools:context=".Activities.MainSettingsActivity">
 
     <include
         android:id="@+id/settings_toolbar"

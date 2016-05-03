@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views.Fragment;
+package edu.grinnell.grinnell_publications_android.Fragments;
 
 
 import android.os.Bundle;
@@ -11,15 +11,13 @@ import edu.grinnell.grinnell_publications_android.Models.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to show all Bookmarks
+ * A Fragment to display all news in user's Newsfeed.
  */
-public class Bookmarks extends Fragment implements UserInterface {
+public class NewsfeedFragment extends Fragment implements UserInterface {
 
-
-    public Bookmarks() {
+    public NewsfeedFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,7 +26,7 @@ public class Bookmarks extends Fragment implements UserInterface {
         initializeUI();
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmark, container, false);
+        return inflater.inflate(R.layout.fragment_newfeed, container, false);
     }
 
     @Override

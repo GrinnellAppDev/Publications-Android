@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views.Activities;
+package edu.grinnell.grinnell_publications_android.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.Newsfeed;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.Bookmarks;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.Profile;
-import edu.grinnell.grinnell_publications_android.Views.Fragment.Publications;
+import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements UserInterface {
     @Bind(R.id.main_toolbar)Toolbar toolbar;
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     public void initializeUI() {
         setSupportActionBar(toolbar);
 
-        //Set default fragment to Newsfeed
-        Newsfeed newsfeed = new Newsfeed();
+        //Set default fragment to NewsfeedFragment
+        NewsfeedFragment newsfeed = new NewsfeedFragment();
         replaceFrameWithFragment(newsfeed);
 
         //Build navigation drawer
@@ -71,23 +71,23 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                 switch (menuItem.getItemId()){
 
                     case R.id.newsfeed:
-                        replaceFrameWithFragment(new Newsfeed());
+                        replaceFrameWithFragment(new NewsfeedFragment());
                         break;
 
                     case R.id.publications:
-                        replaceFrameWithFragment(new Publications());
+                        replaceFrameWithFragment(new PublicationsFragment());
                         break;
 
                     case R.id.profile:
-                        replaceFrameWithFragment(new Profile());
+                        replaceFrameWithFragment(new ProfileFragment());
                         break;
 
                     case R.id.bookmarks:
-                        replaceFrameWithFragment(new Bookmarks());
+                        replaceFrameWithFragment(new BookmarksFragment());
                         break;
 
                     case R.id.settings:
-                        Intent toSettingsActivity = new Intent(getApplicationContext(), Settings.class);
+                        Intent toSettingsActivity = new Intent(getApplicationContext(), MainSettingsActivity.class);
                         startActivity(toSettingsActivity);
                         break;
 

@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Views.Fragment;
+package edu.grinnell.grinnell_publications_android.Fragments;
 
 
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import edu.grinnell.grinnell_publications_android.R;
 /**
  * A Fragment to display users' subscribed publications.
  */
-public class Publications extends Fragment implements UserInterface{
+public class PublicationsFragment extends Fragment implements UserInterface{
 
 
-    public Publications() {
+    public PublicationsFragment() {
         // Required empty public constructor
     }
 
