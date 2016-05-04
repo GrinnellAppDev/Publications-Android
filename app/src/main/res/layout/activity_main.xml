@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Views.MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <LinearLayout
         android:layout_height="match_parent"
@@ -30,5 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
+        app:theme="@style/NavigationDrawerTheme"
+        app:itemBackground="@drawable/drawer_list_selector"
         app:menu="@menu/drawer_menu" />
 </android.support.v4.widget.DrawerLayout>
