@@ -3,12 +3,14 @@ package edu.grinnell.grinnell_publications_android;
 /**
  * Contains utility methods and constants that are used throughout the application.
  * @author Albert Owusu-Asare
- * @version 0.1 Thu May  5 16:14:59 CDT 2016
+ * @since 1.1 Thu May  5 16:14:59 CDT 2016
  */
 public final class Utils {
 
-    /* Networking constants */
-    static final String BASE_API_URL = "Replace with Base Api Url";
+    private Utils(){
+        // Never instantiated.
+    }
+
     /** Logging */
     static final String VERB_CREATED = "created";
     static final String VERB_CHANGED = "changed";
@@ -29,7 +31,26 @@ public final class Utils {
     static final String VERB_PAUSED = "paused";
     static final String VERB_RESUMED = "resumed";
 
-    private Utils(){
+    /** Author Contact Urls */
+    public enum AuthorContactUrl {
+        FACEBOOK("Facebook"),
+        LINKED_IN("LinkedIn"),
+        PERSONAL_WEBSITE("Website");
+        private final String name;
+        AuthorContactUrl(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return (otherName == null) ? false : name.equals(otherName);
+        }
+
+        public String toString() {
+            return this.name;
+        }
 
     }
+
+
+
 }

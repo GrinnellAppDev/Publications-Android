@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Models;
+package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
 /**
  * An interface to abstract general UI functions
