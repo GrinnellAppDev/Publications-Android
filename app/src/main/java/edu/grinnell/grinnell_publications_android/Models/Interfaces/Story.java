@@ -48,11 +48,28 @@ public interface Story {
     /**
      * @return the text body of the story
      */
-    String getText();
+    String getFullText();
+
+    /**
+     * @return the summary text  of the story
+     */
+    String getSummaryText();
+
+    /**
+     * @return the title of the story
+     */
+
+    String getStoryTitle();
 
     /**
      * @return all the urls for the images associated with the text of the story.
      */
     List<String> getTextBodyImageUrls();
+
+    /**
+     * @return the thumbnail image url for the story
+     */
+
+    String getThumbnailUrl();
 
 }
