@@ -20,7 +20,7 @@ public interface Story {
      *
      * @return the publication the story belongs to.
      */
-    List<Publication> getPublication();
+    List<Publication> getPublications();
 
     /**
      * Returns the date that the story was published.
