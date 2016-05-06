@@ -6,16 +6,42 @@ import java.util.List;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
-import edu.grinnell.grinnell_publications_android.Services.Interfaces.NetworkClientAPI;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 
 /**
- * @author Albert Owusu-Asare
- * @version 1.1 Fri May  6 12:37:14 CDT 2016
- * @see NetworkClientAPI
- * @see RealmLocalClient
- * @see PublicationsRemoteClient
+ * Implements a local client for on device persistence using Realm.
+ *
+ * @author Albert Owusu-Asare.
+ * @version 1.1 Fri May  6 12:34:47 CDT 2016
+ * @see LocalClientAPI
+ * @see io.realm.Realm
  */
-public class NetworkClient implements NetworkClientAPI {
+public class RealmLocalClient implements LocalClientAPI {
+    @Override
+    public boolean isCacheEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean isCacheFull() {
+        return false;
+    }
+
+    @Override
+    public void addToSubscribedPublications(int publicationId) {
+
+    }
+
+    @Override
+    public void savePublications(List<Publication> publications) {
+
+    }
+
+    @Override
+    public void savePublication(Publication publication) {
+
+    }
+
     @Override
     public List<Publication> getSubscribedPublications() {
         return null;
