@@ -21,7 +21,7 @@ public class RealmSeries extends RealmObject implements Series {
     private int seriesId;
     private boolean isSubscribable;
     private boolean hasSubSeries;
-    private RealmList<RealmStory> featuredStories;
+    private RealmList<RealmStory> stories;
 
 
     /* Default constructor required by Realm */
@@ -31,8 +31,8 @@ public class RealmSeries extends RealmObject implements Series {
     public void setSeriesId(int seriesId){this.seriesId = seriesId;}
     public void setIsSubscribable(boolean isSubscribable){this.isSubscribable = isSubscribable;}
     public void setHasSubSeries(boolean hasSubSeries){this.hasSubSeries = hasSubSeries;}
-    public void setFeaturedStories(RealmList<RealmStory> featuredStories){
-        this.featuredStories = featuredStories;
+    public void setStories(RealmList<RealmStory> stories){
+        this.stories = stories;
     }
     @Override
     public String getSeriesName() {
@@ -45,17 +45,17 @@ public class RealmSeries extends RealmObject implements Series {
     }
 
     @Override
-    public boolean isSubscribable() {
+    public boolean getIsSubscribable() {
         return this.isSubscribable;
     }
 
     @Override
-    public boolean hasSubSeries() {
+    public boolean getHasSubSeries() {
         return this.hasSubSeries;
     }
 
     @Override
-    public List<Story> getFeaturedStories() {
-        return (List) this.featuredStories;
+    public RealmList<RealmStory> getStories() {
+        return  this.stories;
     }
 }

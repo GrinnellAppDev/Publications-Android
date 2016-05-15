@@ -1,6 +1,7 @@
 package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
 
+import java.util.AbstractList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public interface Story {
      *
      * @return the publication the story belongs to.
      */
-    List<Publication> getPublications();
+    AbstractList<? extends Publication> getPublications();
 
     /**
      * Returns the date that the story was published.
@@ -32,13 +33,22 @@ public interface Story {
     String getPublicationDate();
 
     /**
+     * Returns the date on which the story was last updated.
+     *
+     *  <p>Note that by default the date is ISO8601 formatted @code{yyyy-MM-dd'T'HH:mm:ssZ}. </p>
+     *
+     * @return the data that the story was lastUpdated
+     */
+    String getLastUpdated();
+
+    /**
      * Returns all the @code{author}s of the story.
      *
      * <p>A list of size 1 indicates that there exists a single author for the story</p>
      *
      * @return  all the @code{author}s of the story.
      */
-    List<Author> getAuthor();
+    AbstractList<? extends Author> getAuthor();
 
     /**
      * @return the reactions that have been made towards this article
@@ -53,18 +63,14 @@ public interface Story {
     /**
      * @return the summary text  of the story
      */
-    String getSummaryText();
+    String getBlurb();
 
     /**
      * @return the title of the story
      */
 
-    String getStoryTitle();
+    String getTitle();
 
-    /**
-     * @return all the urls for the images associated with the text of the story.
-     */
-    List<String> getTextBodyImageUrls();
 
     /**
      * @return the thumbnail image url for the story

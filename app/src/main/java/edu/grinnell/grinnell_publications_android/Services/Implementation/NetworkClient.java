@@ -17,7 +17,7 @@ import edu.grinnell.grinnell_publications_android.Services.Interfaces.NetworkCli
  */
 public class NetworkClient implements NetworkClientAPI {
     @Override
-    public List<Publication> getSubscribedPublications() {
+    public List<Publication> getSubscribedPublications(int userId) {
         return null;
     }
 

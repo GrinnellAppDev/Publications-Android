@@ -25,7 +25,7 @@ public interface NetworkClientAPI {
     /**
      * @return  all the publications the current user is subscribed to
      */
-    List<Publication> getSubscribedPublications();
+    List<Publication> getSubscribedPublications(int userId);
 
     /**
      * @return all the existing publications.

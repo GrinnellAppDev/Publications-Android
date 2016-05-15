@@ -29,5 +29,5 @@ public interface AuthorContact {
      *
      * @return a mapping of all the urls for accounts the author can be contacted on.
      */
-    Map<Utils.AuthorContactUrl,String> getContactUrls();
+    Map<Utils.AuthorContactUrl,String> getContactUrlMap();
 }

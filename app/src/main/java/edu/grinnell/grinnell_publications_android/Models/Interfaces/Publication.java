@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
+import java.util.AbstractList;
 import java.util.List;
 
 
@@ -27,12 +28,12 @@ public interface Publication {
     /**
      * @return a list of all the series featured on this publication
      */
-    List<Series> getFeaturedSeries();
+    AbstractList<? extends Series> getSeries();
 
     /**
      * @return a list of all the stories featured in the series.
      */
-    List<Story> getFeaturedStories();
+    AbstractList<? extends Story> getStories();
 
     /**
      * @return the image url for the publication.

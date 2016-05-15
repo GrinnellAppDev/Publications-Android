@@ -2,6 +2,8 @@ package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
 import java.util.List;
 
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmSeries;
+
 /**
  * A model for the author of a @code{story}.
  *
@@ -28,11 +30,11 @@ public interface Author {
     /**
      * @return all the publications the author has published to.
      */
-    List<Publication> getPublicationsFeatured();
+    List<? extends Publication> getPublications();
 
     /**
      * @return all the series the author has published to.
      */
 
-    List<Series> getSeriesFeatured();
+    List<? extends Series> getSeries();
 }

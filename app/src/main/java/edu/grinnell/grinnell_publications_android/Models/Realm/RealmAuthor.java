@@ -3,9 +3,6 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.AuthorContact;
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Series;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -19,20 +16,22 @@ import io.realm.RealmObject;
  */
 public class RealmAuthor extends RealmObject implements Author {
     private String fullName;
-    private AuthorContact authorContact;
-    private List<Publication> publicationsFeatured;
-    private RealmList<RealmSeries> seriesFeatured;
+    private RealmAuthorContact authorContactInfo;
+    private RealmList<RealmPublication> publications;
+    private RealmList<RealmSeries> series;
+
     /* Default constructor needed for Realm*/
     public RealmAuthor(){
+
 
     }
     /** Setters */
     public void setFullName(String fullName){ this.fullName = fullName;}
-    public void setAuthorContact(AuthorContact authorContact){this.authorContact = authorContact;}
-    public void setPublicationsFeatured(List<Publication> publicationsFeatured){
-        this.publicationsFeatured = publicationsFeatured;}
-    public void setSeriesFeatured(RealmList<RealmSeries> seriesFeatured){
-        this.seriesFeatured = seriesFeatured;}
+    public void setAuthorContactInfo(RealmAuthorContact authorContact){this.authorContactInfo = authorContact;}
+    public void setPublications(RealmList<RealmPublication> publications){
+        this.publications = publications;}
+    public void setSeries(RealmList<RealmSeries> series){
+        this.series = series;}
     /** Getters */
     @Override
     public String getFullName() {
@@ -40,17 +39,17 @@ public class RealmAuthor extends RealmObject implements Author {
     }
 
     @Override
-    public AuthorContact getAuthorContactInfo() {
-        return this.authorContact;
+    public RealmAuthorContact getAuthorContactInfo() {
+        return  this.authorContactInfo;
     }
 
     @Override
-    public List<Publication> getPublicationsFeatured() {
-        return this.publicationsFeatured;
+    public RealmList<RealmPublication> getPublications() {
+        return  this.publications;
     }
 
     @Override
-    public List<Series> getSeriesFeatured() {
-        return (List) this.seriesFeatured;
+    public RealmList<RealmSeries> getSeries() {
+        return  this.series;
     }
 }

@@ -43,7 +43,7 @@ public class RealmAuthorContact extends RealmObject implements AuthorContact {
     }
 
     @Override
-    public Map<Utils.AuthorContactUrl, String> getContactUrls() {
+    public Map<Utils.AuthorContactUrl, String> getContactUrlMap() {
         return this.contactUrlMap;
     }
 }

@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
+import java.util.AbstractList;
 import java.util.List;
 
 /**
@@ -28,20 +29,20 @@ public interface Series {
      *
      * @return @code{true} if the series is subscribable
      */
-    boolean isSubscribable();
+    boolean getIsSubscribable();
 
     /**
      * Indicates if the series has a sub-series.
      *
      * @return @code{true} if the series has a sub-series.
      */
-    boolean hasSubSeries();
+    boolean getHasSubSeries();
 
     /**
      * Returns all the stories featured on the series.
      * @return the stories featured on the series.
      */
-    List<Story> getFeaturedStories();
+    AbstractList<? extends Story> getStories();
 
 
 }

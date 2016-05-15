@@ -43,7 +43,7 @@ public class RealmLocalClient implements LocalClientAPI {
     }
 
     @Override
-    public List<Publication> getSubscribedPublications() {
+    public List<Publication> getSubscribedPublications(int id) {
         return null;
     }
 

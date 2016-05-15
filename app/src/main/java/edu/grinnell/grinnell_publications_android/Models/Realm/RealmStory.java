@@ -1,6 +1,9 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
@@ -20,13 +23,13 @@ import io.realm.RealmObject;
 public class RealmStory extends RealmObject implements Story{
     private RealmList<RealmPublication> publications;
     private String publicationDate;
-    private RealmAuthor author;
+    private String lastUpdated;
+    private RealmList<RealmAuthor> author;
     private RealmReactions reactions;
     private String fullText;
-    private String summaryText;
-    private String storyTitle;
+    private String blurb;
+    private String title;
     private String thumbnailUrl;
-    private RealmList<RealmString> textBodyImageUrls;
 
 
     /* Default constructor for Realm */
@@ -38,20 +41,22 @@ public class RealmStory extends RealmObject implements Story{
     public void setPublicationDate(String publicationDate){
         this.publicationDate = publicationDate;
     }
+
+    public void setLastUpdated(String lastUpdated){
+        this.lastUpdated = lastUpdated;
+    }
     public void setReactions(RealmReactions realmReactions){
         this.reactions = realmReactions;
     }
     public void setFullText(String fullText){this.fullText = fullText;}
-    public void setSummaryText(String summaryText){this.summaryText = summaryText;}
-    public void setStoryTitle(String storyTitle){this.storyTitle = storyTitle;}
+    public void setBlurb(String blurb){this.blurb = blurb;}
+    public void setStoryTitle(String title){this.title = title;}
     public void setThumbnailUrl(String thumbnailUrl){this.thumbnailUrl = thumbnailUrl;}
-    public void setTextBodyImageUrls(RealmList<RealmString> textBodyImageUrls){this.textBodyImageUrls =
-            textBodyImageUrls;}
-    public void setAuthor(RealmAuthor author){this.author = author;}
+    public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
     /** Getters */
     @Override
-    public List<Publication> getPublications() {
-        return (List) this.publications;
+    public RealmList<RealmPublication> getPublications() {
+        return  this.publications;
     }
 
     @Override
@@ -60,12 +65,15 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     @Override
-    public List<Author> getAuthor() {
-        return (List) this.author;
+    public String getLastUpdated(){ return this.lastUpdated;}
+
+    @Override
+    public RealmList<RealmAuthor> getAuthor() {
+        return  this.author;
     }
 
     @Override
-    public Reactions getReactions() {
+    public RealmReactions getReactions() {
         return this.reactions;
     }
 
@@ -75,19 +83,15 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     @Override
-    public String getSummaryText() {
-        return this.summaryText;
+    public String getBlurb() {
+        return this.blurb;
     }
 
     @Override
-    public String getStoryTitle() {
-        return this.storyTitle;
+    public String getTitle() {
+        return this.title;
     }
 
-    @Override
-    public List<String> getTextBodyImageUrls() {
-        return (List) this.textBodyImageUrls;
-    }
 
     @Override
     public String getThumbnailUrl() {
