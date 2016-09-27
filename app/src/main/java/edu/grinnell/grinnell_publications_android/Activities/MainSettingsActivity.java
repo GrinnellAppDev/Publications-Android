@@ -29,4 +29,10 @@ public class MainSettingsActivity extends AppCompatActivity implements UserInter
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    protected void onDestroy() {
+        toolbar = null;
+        super.onDestroy();
+    }
 }
