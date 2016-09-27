@@ -39,39 +39,28 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         initializeUI();
     }
 
-    /*
-        Set up User interface
-     */
     @Override
     public void initializeUI() {
         setSupportActionBar(toolbar);
 
-        //Set default fragment to NewsfeedFragment
         NewsfeedFragment newsfeed = new NewsfeedFragment();
         replaceFrameWithFragment(newsfeed);
 
-        //Build navigation drawer
         buildNavDrawer();
     }
 
-    /*
-        Build the navigation drawer
-     */
     private void buildNavDrawer(){
         navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                //Check if menu item is checked/activated
                 if (menuItem.isChecked()){
                     menuItem.setChecked(true);
                 }else{
                     menuItem.setChecked(false);
                 }
 
-                //Close drawer on menu item click
                 drawerLayout.closeDrawers();
 
-                //Toggle to fragment associated with clicked menu item
                 switch (menuItem.getItemId()){
 
                     case R.id.newsfeed:
@@ -100,19 +89,14 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                         break;
                 }
 
-                //Set toolbar title
                 setTitle(menuItem.getTitle());
                 return true;
             }
         });
 
-        //Initialize drawer toggling
         setUpToolbarToggle();
     }
 
-    /*
-        Implement drawer toggling
-     */
     private void setUpToolbarToggle() {
         //Initialize drawerToggle
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -125,10 +109,6 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         drawerToggle.syncState();
     }
 
-
-    /*
-        Helper method to replace FrameLayout in the activity_main.xml with given Fragment
-     */
     private void replaceFrameWithFragment(Fragment fragment){
         //Initialize fragment transaction and replace fragments
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
