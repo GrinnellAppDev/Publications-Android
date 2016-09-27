@@ -13,16 +13,15 @@ import edu.grinnell.grinnell_publications_android.R;
 /**
  * A Fragment to show a user's Profile
  */
-public class ProfileFragment extends Fragment implements UserInterface{
-
+public class ProfileFragment extends Fragment implements UserInterface {
 
     public ProfileFragment() {
 
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         initializeUI();
         return inflater.inflate(R.layout.fragment_profile, container, false);
