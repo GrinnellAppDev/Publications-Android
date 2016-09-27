@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import edu.grinnell.grinnell_publications_android.Models.UserInterface;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
 /*

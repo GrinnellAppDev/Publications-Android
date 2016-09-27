@@ -19,14 +19,14 @@ public interface LocalClientAPI  extends NetworkClientAPI{
      *
      * @return @code{true} if the cache is empty.
      */
-    public boolean isCacheEmpty();
+    boolean isCacheEmpty();
 
     /**
      * Indicates whether the local cache is full.
      *
      * @return @code{true} if the cache is full.
      */
-    public boolean isCacheFull();
+    boolean isCacheFull();
 
 
     /* PUBLICATIONS */
@@ -36,7 +36,7 @@ public interface LocalClientAPI  extends NetworkClientAPI{
      *
      * @param publicationId the publication to add.
      */
-    public void addToSubscribedPublications(int publicationId);
+    void addToSubscribedPublications(int publicationId);
 
 
     /**
@@ -45,12 +45,12 @@ public interface LocalClientAPI  extends NetworkClientAPI{
      * @param publications  the collection of all the publications
      */
 
-    public void savePublications(List<Publication> publications);
+    void savePublications(List<Publication> publications);
 
     /**
      * Saves a particular publication to the local cache.
      */
 
-    public void savePublication(Publication  publication);
+    void savePublication(Publication publication);
 
 }

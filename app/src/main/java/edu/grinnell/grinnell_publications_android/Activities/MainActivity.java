@@ -15,7 +15,7 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
-import edu.grinnell.grinnell_publications_android.Models.UserInterface;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
