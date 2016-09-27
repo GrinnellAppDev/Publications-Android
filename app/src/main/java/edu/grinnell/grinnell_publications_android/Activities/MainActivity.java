@@ -61,6 +61,13 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
 
                 drawerLayout.closeDrawers();
 
+                switchFragments(menuItem);
+
+                setTitle(menuItem.getTitle());
+                return true;
+            }
+
+            private void switchFragments(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
 
                     case R.id.newsfeed:
@@ -88,9 +95,6 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                         makeText(getApplicationContext(), R.string.transaction_error, LENGTH_LONG).show();
                         break;
                 }
-
-                setTitle(menuItem.getTitle());
-                return true;
             }
         });
 
