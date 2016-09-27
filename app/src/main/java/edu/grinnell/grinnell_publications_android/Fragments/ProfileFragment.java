@@ -11,7 +11,8 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterfac
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to show a user's Profile
+ * {@link Fragment} to show a user's Profile
+ * @author Larry Boateng Asante
  */
 public class ProfileFragment extends Fragment implements UserInterface {
 
