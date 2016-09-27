@@ -26,10 +26,9 @@ import static android.widget.Toast.LENGTH_LONG;
 
 
 public class MainActivity extends AppCompatActivity implements UserInterface {
-    @Bind(R.id.main_toolbar)Toolbar toolbar;
-    @Bind(R.id.navigation_view)NavigationView navigationView;
-    @Bind(R.id.drawer_layout)DrawerLayout drawerLayout;
-
+    @Bind(R.id.main_toolbar) Toolbar toolbar;
+    @Bind(R.id.navigation_view) NavigationView navigationView;
+    @Bind(R.id.drawer_layout) DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +48,13 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         buildNavDrawer();
     }
 
-    private void buildNavDrawer(){
+    private void buildNavDrawer() {
         navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.isChecked()){
+                if (menuItem.isChecked()) {
                     menuItem.setChecked(true);
-                }else{
+                } else {
                     menuItem.setChecked(false);
                 }
 
@@ -68,31 +67,27 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
             }
 
             private void switchFragments(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-
+                switch (menuItem.getItemId()) {
                     case R.id.newsfeed:
                         replaceFrameWithFragment(new NewsfeedFragment());
                         break;
-
                     case R.id.publications:
                         replaceFrameWithFragment(new PublicationsFragment());
                         break;
-
                     case R.id.profile:
                         replaceFrameWithFragment(new ProfileFragment());
                         break;
-
                     case R.id.bookmarks:
                         replaceFrameWithFragment(new BookmarksFragment());
                         break;
-
                     case R.id.settings:
-                        Intent toSettingsActivity = new Intent(getApplicationContext(), MainSettingsActivity.class);
+                        Intent toSettingsActivity =
+                                new Intent(getApplicationContext(), MainSettingsActivity.class);
                         startActivity(toSettingsActivity);
                         break;
-
                     default:
-                        makeText(getApplicationContext(), R.string.transaction_error, LENGTH_LONG).show();
+                        makeText(getApplicationContext(), R.string.transaction_error, LENGTH_LONG)
+                                .show();
                         break;
                 }
             }
@@ -102,8 +97,11 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     private void setUpToolbarToggle() {
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this,
+                drawerLayout,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
