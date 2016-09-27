@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     private void replaceFrameWithFragment(Fragment fragment){
-        //Initialize fragment transaction and replace fragments
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, fragment);
         transaction.commit();
