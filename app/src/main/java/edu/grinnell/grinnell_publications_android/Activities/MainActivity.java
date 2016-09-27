@@ -24,7 +24,11 @@ import static android.support.design.widget.NavigationView.OnNavigationItemSelec
 import static android.widget.Toast.makeText;
 import static android.widget.Toast.LENGTH_LONG;
 
-
+/**
+ * Represents the {@link AppCompatActivity} that hosts all the various Fragments and the Navigation
+ * drawer implemented via the {@link NavigationView}
+ * @author Larry Boateng Asante
+ */
 public class MainActivity extends AppCompatActivity implements UserInterface {
     @Bind(R.id.main_toolbar) Toolbar toolbar;
     @Bind(R.id.navigation_view) NavigationView navigationView;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     public void initializeUI() {
         setSupportActionBar(toolbar);
 
+        // We are doing this so we always start the app in the News Feed
         NewsfeedFragment newsfeed = new NewsfeedFragment();
         replaceFrameWithFragment(newsfeed);
 
