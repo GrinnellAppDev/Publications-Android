@@ -11,23 +11,21 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterfac
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to display users' subscribed publications.
+ * {@link Fragment} to display users' subscribed publications.
+ * @author Larry Boateng Asante
  */
 public class PublicationsFragment extends Fragment implements UserInterface{
 
-
     public PublicationsFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        //Build user interface
         initializeUI();
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_publications, container, false);
     }
 
