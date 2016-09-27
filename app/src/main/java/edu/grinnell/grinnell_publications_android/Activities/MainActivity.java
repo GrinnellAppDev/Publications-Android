@@ -117,5 +117,11 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         transaction.commit();
     }
 
-
+    @Override
+    protected void onDestroy() {
+        toolbar = null;
+        drawerLayout = null;
+        navigationView = null;
+        super.onDestroy();
+    }
 }
