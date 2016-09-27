@@ -9,8 +9,9 @@ import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
-/*
-    An activity to display relevant settings and configuration options
+/**
+ * {@link AppCompatActivity} to display relevant settings and configuration options
+ * @author Larry Boateng Asante
  */
 public class MainSettingsActivity extends AppCompatActivity implements UserInterface {
 
@@ -23,10 +24,6 @@ public class MainSettingsActivity extends AppCompatActivity implements UserInter
         initializeUI();
     }
 
-
-    /*
-        Set up User interface
-     */
     @Override
     public void initializeUI() {
         setSupportActionBar(toolbar);
