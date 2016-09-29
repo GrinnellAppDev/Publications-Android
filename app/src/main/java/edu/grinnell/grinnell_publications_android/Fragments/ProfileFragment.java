@@ -11,23 +11,20 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterfac
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to show a user's Profile
+ * {@link Fragment} to show a user's Profile
+ * @author Larry Boateng Asante
  */
-public class ProfileFragment extends Fragment implements UserInterface{
-
+public class ProfileFragment extends Fragment implements UserInterface {
 
     public ProfileFragment() {
-        // Required empty public constructor
+
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        //Build user interface
         initializeUI();
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 

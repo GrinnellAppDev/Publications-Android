@@ -11,21 +11,20 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterfac
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * A Fragment to display all news in user's Newsfeed.
+ * {@link Fragment} to display all news in user's Newsfeed.
+ * @author Larry Boateng Asante
  */
 public class NewsfeedFragment extends Fragment implements UserInterface {
 
     public NewsfeedFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        //Build user interface
         initializeUI();
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_newfeed, container, false);
     }
 
