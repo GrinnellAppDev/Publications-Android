@@ -109,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                 R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        buildSearch();
+    }
+
+    public void buildSearch() {
+
     }
 
     private void replaceFrameWithFragment(Fragment fragment){
