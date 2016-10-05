@@ -31,10 +31,6 @@ public class PublicationsFragment extends Fragment implements UserInterface{
 
     @Override
     public void initializeUI() {
-        buildSearchBar();
-    }
 
-    public void buildSearchBar() {
-        
     }
 }
