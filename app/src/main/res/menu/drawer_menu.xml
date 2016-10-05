@@ -35,6 +35,7 @@
     </group>
 
     <item android:id="@+id/menu_search"
-        android:title="@string/menu_search"/>
+        android:title="@string/menu_search"
+        android:icon="@drawable/ic_action_search"/>
 
 </menu>
