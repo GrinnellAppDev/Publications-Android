@@ -33,4 +33,8 @@
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/settings"/>
     </group>
+
+    <item android:id="@+id/menu_search"
+        android:title="@string/menu_search"/>
+
 </menu>
