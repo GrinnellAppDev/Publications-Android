@@ -33,4 +33,5 @@
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/settings"/>
     </group>
+
 </menu>
