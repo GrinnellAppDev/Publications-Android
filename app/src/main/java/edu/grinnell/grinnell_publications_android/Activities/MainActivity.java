@@ -45,12 +45,6 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public void initializeUI() {
         setSupportActionBar(toolbar);
 
