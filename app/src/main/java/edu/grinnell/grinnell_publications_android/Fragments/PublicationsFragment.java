@@ -16,12 +16,11 @@ import edu.grinnell.grinnell_publications_android.R;
  * {@link Fragment} to display users' subscribed publications.
  * @author Larry Boateng Asante
  */
-public class PublicationsFragment extends Fragment implements UserInterface{
+public class PublicationsFragment extends Fragment implements UserInterface {
 
     public PublicationsFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater,
