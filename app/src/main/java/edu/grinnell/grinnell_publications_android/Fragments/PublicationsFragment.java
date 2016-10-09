@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,5 +42,8 @@ public class PublicationsFragment extends Fragment implements UserInterface{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search);
+
     }
 }
