@@ -23,4 +23,9 @@
         <item name="android:activatedBackgroundIndicator">@drawable/drawer_list_selector</item>
     </style>
 
+    <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+
 </resources>

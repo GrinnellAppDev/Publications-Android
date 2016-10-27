@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import edu.grinnell.grinnell_publications_android.Fragments.ArticleFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                         break;
                     case R.id.bookmarks:
                         replaceFrameWithFragment(new BookmarksFragment());
+                        break;
+                    case R.id.article:
+                        replaceFrameWithFragment(new ArticleFragment());
                         break;
                     case R.id.settings:
                         Intent toSettingsActivity =
