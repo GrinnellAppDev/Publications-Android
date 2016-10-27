@@ -19,7 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:background="@color/ColorPrimary"
+    android:background="@color/grey"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
@@ -47,6 +47,7 @@
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
                 style="@style/MaterialAnimations"
+                android:src="@drawable/grinnell_gates"
                 app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar
@@ -67,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:elevation="1dp"
-        android:background="@color/ColorPrimary"
+        android:background="@color/grey"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
