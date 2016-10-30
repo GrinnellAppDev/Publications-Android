@@ -1,6 +1,7 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -20,48 +20,27 @@ import edu.grinnell.grinnell_publications_android.R;
 
 import java.util.Date;
 
-/**
- * TODO: Fix getDrawable deprication
- *
- */
-
 public class ArticleFragment extends Fragment {
 
-    CollapsingToolbarLayout collapsingToolbar;
-    Toolbar toolbar;
-
+    private CollapsingToolbarLayout collapsingToolbar;
+    private Toolbar toolbar;
     private ImageView imageView;
     private FloatingActionButton inviteButton;
+    private AppBarLayout appBarLayout;
 
 
 
     ArticleFragment context = this;
 
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public ArticleFragment() {
     }
 
-    /**
-     * Constructor created by the newInstance and takes in the Item ID
-     */
     public static ArticleFragment newInstance(){
         ArticleFragment fragment = new ArticleFragment();
         return fragment;
     }
-    /*
-        public static DisplayFragment newInstance(Article article){
-        DisplayFragment fragment = new DisplayFragment();
-        return fragment;
-    }
-     */
 
-    /**
-     * OnCreate for the fragment
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,47 +53,32 @@ public class ArticleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View DisplayFragmentView = inflater.inflate(R.layout.fragment_article,
-                container, false);
+        final View view = inflater.inflate(R.layout.fragment_article, container, false);
 
         /* Setup view */
-        setViewItems(DisplayFragmentView);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
+        imageView = (ImageView) view.findViewById(R.id.backdrop);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        collapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        inviteButton = (FloatingActionButton) view.findViewById(R.id.invite);
         loadData();
+        appBarLayout = (AppBarLayout) view.findViewById(R.id.appbar);
 
+        appBarLayout.setExpanded(false);
         /* logic setters */
         setOnClickListeners();
 
-        return DisplayFragmentView;
+        return view;
 
     }
 
 
-
     /**
-     * SETUP METHOD:
-     * Takes the fragment view, sets each view item
-     */
-    private void setViewItems(View mView)
-    {
-
-        imageView = (ImageView) mView.findViewById(R.id.backdrop);
-        toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
-        collapsingToolbar =
-                (CollapsingToolbarLayout) mView.findViewById(R.id.collapsing_toolbar);
-        inviteButton = (FloatingActionButton) mView.findViewById(R.id.invite);
-
-    }
-
-
-
-    /**
-     * SETUP METHOD:
      * Sets the onclick listeners for each view item
      */
     public void setOnClickListeners() {
 
         //onClick for back button
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
