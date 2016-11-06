@@ -1,9 +1,12 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
@@ -14,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+
+import edu.grinnell.grinnell_publications_android.Activities.MainActivity;
 import edu.grinnell.grinnell_publications_android.R;
 
 
@@ -32,6 +37,7 @@ public class ArticleFragment extends Fragment {
 
     private ImageView imageView;
     private FloatingActionButton inviteButton;
+    private AppBarLayout appbar;
 
 
 
@@ -80,6 +86,7 @@ public class ArticleFragment extends Fragment {
         /* Setup view */
         setViewItems(DisplayFragmentView);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
+        appbar.setExpanded(false);
         loadData();
 
         /* logic setters */
@@ -103,6 +110,7 @@ public class ArticleFragment extends Fragment {
         collapsingToolbar =
                 (CollapsingToolbarLayout) mView.findViewById(R.id.collapsing_toolbar);
         inviteButton = (FloatingActionButton) mView.findViewById(R.id.invite);
+        appbar = (AppBarLayout) mView.findViewById(R.id.appbar);
 
     }
 
@@ -118,7 +126,7 @@ public class ArticleFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStack();
+                ((MainActivity)getActivity()).openDrawer();
             }
         });
 
@@ -137,6 +145,7 @@ public class ArticleFragment extends Fragment {
     private void loadData(){
         //method for pulling data
     }
+
 
 
     /**
