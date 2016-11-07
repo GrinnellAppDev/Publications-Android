@@ -16,6 +16,8 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -29,13 +31,11 @@ import java.util.Date;
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
-
-    private CollapsingToolbarLayout collapsingToolbar;
-    private Toolbar toolbar;
-    private ImageView imageView;
-    private FloatingActionButton inviteButton;
-    private AppBarLayout appbar;
-
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.backdrop) ImageView imageView;
+    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
+    @Bind(R.id.invite) FloatingActionButton inviteButton;
+    @Bind(R.id.appbar) AppBarLayout appbar;
 
 
     ExpandedArticleFragment context = this;
@@ -58,8 +58,9 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
+        ButterKnife.bind(this, expandedArticleFragment);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
         initializeUI();
-        setViewItems(expandedArticleFragment); //TODO: put in initializeUI
         return expandedArticleFragment;
     }
 
@@ -71,24 +72,10 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     }
 
     private void setupToolbar(){
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
-        appbar.setExpanded(false);
+        //appbar.setExpanded(false);
     }
 
-    /**
-     * SETUP METHOD:
-     * Takes the fragment view, sets each view item
-     */
-    private void setViewItems(View mView)
-    {
-        imageView = (ImageView) mView.findViewById(R.id.backdrop);
-        toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
-        collapsingToolbar =
-                (CollapsingToolbarLayout) mView.findViewById(R.id.collapsing_toolbar);
-        inviteButton = (FloatingActionButton) mView.findViewById(R.id.invite);
-        appbar = (AppBarLayout) mView.findViewById(R.id.appbar);
 
-    }
 
 
     public void setOnClickListeners() {
