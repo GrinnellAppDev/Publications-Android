@@ -4,9 +4,7 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
@@ -15,10 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
-import edu.grinnell.grinnell_publications_android.Activities.MainActivity;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
 
@@ -30,73 +28,52 @@ import java.util.Date;
  *
  */
 
-public class ArticleFragment extends Fragment {
+public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
-    CollapsingToolbarLayout collapsingToolbar;
-    Toolbar toolbar;
-
+    private CollapsingToolbarLayout collapsingToolbar;
+    private Toolbar toolbar;
     private ImageView imageView;
     private FloatingActionButton inviteButton;
     private AppBarLayout appbar;
 
 
 
-    ArticleFragment context = this;
+    ExpandedArticleFragment context = this;
 
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public ArticleFragment() {
-    }
+    public ExpandedArticleFragment() {}
 
-    /**
-     * Constructor created by the newInstance and takes in the Item ID
-     */
-    public static ArticleFragment newInstance(){
-        ArticleFragment fragment = new ArticleFragment();
+    public static ExpandedArticleFragment newInstance(){
+        ExpandedArticleFragment fragment = new ExpandedArticleFragment();
         return fragment;
     }
-    /*
-        public static DisplayFragment newInstance(Article article){
-        DisplayFragment fragment = new DisplayFragment();
-        return fragment;
-    }
-     */
 
-    /**
-     * OnCreate for the fragment
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
 
-    /**
-     * OnCreateView that inflates and sets up the view
-     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View DisplayFragmentView = inflater.inflate(R.layout.fragment_article,
-                container, false);
-
-        /* Setup view */
-        setViewItems(DisplayFragmentView);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
-        appbar.setExpanded(false);
-        loadData();
-
-        /* logic setters */
-        setOnClickListeners();
-
-        return DisplayFragmentView;
-
+        final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
+        initializeUI();
+        setViewItems(expandedArticleFragment); //TODO: put in initializeUI
+        return expandedArticleFragment;
     }
 
+    @Override
+    public void initializeUI(){
+        setupToolbar();
+        loadData();
+        setOnClickListeners();
+    }
 
+    private void setupToolbar(){
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
+        appbar.setExpanded(false);
+    }
 
     /**
      * SETUP METHOD:
@@ -104,7 +81,6 @@ public class ArticleFragment extends Fragment {
      */
     private void setViewItems(View mView)
     {
-
         imageView = (ImageView) mView.findViewById(R.id.backdrop);
         toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
         collapsingToolbar =
@@ -115,18 +91,13 @@ public class ArticleFragment extends Fragment {
     }
 
 
-
-    /**
-     * SETUP METHOD:
-     * Sets the onclick listeners for each view item
-     */
     public void setOnClickListeners() {
 
         //onClick for back button
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).openDrawer();
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -145,7 +116,6 @@ public class ArticleFragment extends Fragment {
     private void loadData(){
         //method for pulling data
     }
-
 
 
     /**
