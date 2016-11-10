@@ -1,6 +1,8 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.SearchView;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
+
+import static android.content.Context.SEARCH_SERVICE;
 
 /**
  * {@link Fragment} to display users' subscribed publications.
@@ -44,6 +48,21 @@ public class PublicationsFragment extends Fragment implements UserInterface{
         super.onCreateOptionsMenu(menu, inflater);
 
         SearchView searchView = (SearchView) menu.findItem(R.id.menu_search);
+        Context context = this.getContext();
+        SearchManager searchManager = (SearchManager) context.getSystemService(SEARCH_SERVICE);
 
+        // create text listener for searchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
     }
 }
