@@ -11,6 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
@@ -51,6 +55,11 @@ public class PublicationsFragment extends Fragment implements UserInterface{
         Context context = this.getContext();
         SearchManager searchManager = (SearchManager) context.getSystemService(SEARCH_SERVICE);
 
+        // dummy search terms for testing
+        String[] dummy = {"Larry", "Matt", "Mattori", "Yazan"};
+        final ArrayAdapter<String> adapter;
+        //adapter = new ArrayAdapter<String>(R.layout.fragment_publications);
+
         // create text listener for searchView
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -60,7 +69,7 @@ public class PublicationsFragment extends Fragment implements UserInterface{
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
+                //adapter.getFilter().filter(newText);
                 return false;
             }
         });

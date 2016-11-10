@@ -11,4 +11,16 @@
         android:layout_gravity="center"
         android:text="Publications Fragment" />
 
+    <ListView
+        android:id="@+id/dummy_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/dummy_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ListView>
+
 </FrameLayout>
