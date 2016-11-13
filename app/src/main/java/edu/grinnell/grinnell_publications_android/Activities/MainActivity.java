@@ -2,6 +2,9 @@ package edu.grinnell.grinnell_publications_android.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     @Bind(R.id.main_toolbar) Toolbar toolbar;
     @Bind(R.id.navigation_view) NavigationView navigationView;
     @Bind(R.id.drawer_layout) DrawerLayout drawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
