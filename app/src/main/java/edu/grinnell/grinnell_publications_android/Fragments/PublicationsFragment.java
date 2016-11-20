@@ -4,6 +4,7 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +25,9 @@ import edu.grinnell.grinnell_publications_android.R;
  * @author Larry Boateng Asante
  */
 public class PublicationsFragment extends Fragment implements UserInterface, SearchView.OnQueryTextListener {
+
+    RecyclerView recyclerView;
+    List<RealmPublication> publications = new ArrayList<>();
 
     public PublicationsFragment() {
 
@@ -77,7 +81,7 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
+    public boolean onQueryTextChange(String query) {
         return false;
     }
 }
