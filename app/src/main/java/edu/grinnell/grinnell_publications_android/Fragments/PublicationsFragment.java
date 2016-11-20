@@ -17,6 +17,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.R;
 
 import static android.content.Context.SEARCH_SERVICE;
@@ -53,11 +54,8 @@ public class PublicationsFragment extends Fragment implements UserInterface {
         SearchView searchView = (SearchView) menu.findItem(R.id.menu_search);
         Context context = this.getContext();
         SearchManager searchManager = (SearchManager) context.getSystemService(SEARCH_SERVICE);
-
-        // dummy search terms for testing
-        String[] dummy = {"Larry", "Matt", "Mattori", "Yazan"};
-        final ArrayAdapter<String> adapter;
-        //adapter = new ArrayAdapter<String>(R.layout.fragment_publications);
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getActivity().getComponentName()));
 
         // create text listener for searchView
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -68,9 +66,12 @@ public class PublicationsFragment extends Fragment implements UserInterface {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //adapter.getFilter().filter(newText);
                 return false;
             }
         });
+    }
+
+    private List<RealmPublication> filter(List<RealmPublication> publications, String query) {
+        return publications;
     }
 }
