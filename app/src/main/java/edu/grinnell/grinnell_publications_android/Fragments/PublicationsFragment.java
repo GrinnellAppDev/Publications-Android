@@ -27,7 +27,7 @@ import edu.grinnell.grinnell_publications_android.R;
 public class PublicationsFragment extends Fragment implements UserInterface, SearchView.OnQueryTextListener {
 
     RecyclerView recyclerView;
-    List<RealmPublication> publications = new ArrayList<>();
+    List<RealmPublication> mPublications = new ArrayList<>();
 
     public PublicationsFragment() {
 
@@ -82,6 +82,8 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
 
     @Override
     public boolean onQueryTextChange(String query) {
-        return false;
+        final List<RealmPublication> publications = filter(mPublications, query);
+        recyclerView.scrollToPosition(0);
+        return true;
     }
 }
