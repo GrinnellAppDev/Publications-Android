@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
@@ -72,6 +73,14 @@ public class PublicationsFragment extends Fragment implements UserInterface {
     }
 
     private List<RealmPublication> filter(List<RealmPublication> publications, String query) {
-        return publications;
+        query = query.toLowerCase();
+        final List<RealmPublication> filteredModelList = new ArrayList<>();
+        for (RealmPublication publication : publications) {
+            final String publicationName = publication.getPublicationName().toLowerCase();
+            if (publicationName.contains(query)) {
+                filteredModelList.add(publication);
+            }
+        }
+        return filteredModelList;
     }
 }
