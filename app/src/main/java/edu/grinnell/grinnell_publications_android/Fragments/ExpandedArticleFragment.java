@@ -1,6 +1,10 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
@@ -33,10 +37,10 @@ import java.util.Date;
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
     @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.backdrop) ImageView imageView;
+    @Bind(R.id.header_image) ImageView headerImage;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
-    @Bind(R.id.invite) FloatingActionButton inviteButton;
-    @Bind(R.id.appbar) AppBarLayout appbar;
+    @Bind(R.id.floating_action_button) FloatingActionButton favorite;
+    @Bind(R.id.appbar_layout) AppBarLayout appbar;
 
 
     ExpandedArticleFragment context = this;
@@ -68,7 +72,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     @Override
     public void initializeUI(){
         beginWithToolbarCollapsed(false);
-        loadData();
+        loadDefaultData();
         setOnClickListeners();
     }
 
@@ -88,10 +92,10 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
             }
         });
 
-        inviteButton.setOnClickListener(new View.OnClickListener() {
+        favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "FAB click", Snackbar.LENGTH_SHORT);
+                Snackbar.make(v, "Article added to Favorites", Snackbar.LENGTH_SHORT);
             }
         });
 
@@ -100,28 +104,24 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     /**
      * loads the data from article
      */
-    private void loadData(){
-        //method for pulling data
+    private void loadDefaultData(){
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.grinnell_gates);
+        Drawable defaultImage = new BitmapDrawable(getResources(), image);
+        setHeaderImage(defaultImage);
     }
 
+    /**
+     * Sets the heading image
+     */
+    public void setHeaderImage(Drawable image) {
+        this.headerImage.setImageDrawable(image);
+    }
 
     /**
      * Sets
      */
-    private void setContent(String name, Date startDate, Date endDate, String imageURL, String description, String location){
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels/4;
-        int height = dm.heightPixels/10;
-
-        collapsingToolbar.setTitle(name);
-        Picasso
-                .with(context.getContext())
-                .load(imageURL)
-                .resize(width, height)
-                .centerCrop()
-                .into(imageView);
+    private void setContent(Drawable image) {
+        setHeaderImage(image);
     }
 
 
