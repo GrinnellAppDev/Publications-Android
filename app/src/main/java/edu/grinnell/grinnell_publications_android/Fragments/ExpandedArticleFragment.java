@@ -5,6 +5,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
@@ -66,20 +67,19 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(){
-        setupToolbar();
+        beginWithToolbarCollapsed(false);
         loadData();
         setOnClickListeners();
     }
 
-    private void setupToolbar(){
-        //appbar.setExpanded(false);
+    //if true, begins the fragment with the toolbar collapsed
+    private void beginWithToolbarCollapsed(Boolean bool){
+        appbar.setExpanded(!bool);
     }
 
 
 
-
     public void setOnClickListeners() {
-
         //onClick for back button
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         inviteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onclick for the FAB
+                Snackbar.make(v, "FAB click", Snackbar.LENGTH_SHORT);
             }
         });
 

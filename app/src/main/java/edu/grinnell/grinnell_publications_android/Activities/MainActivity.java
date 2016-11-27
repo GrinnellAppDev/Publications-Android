@@ -115,10 +115,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
 
     private void replaceFrameWithFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame, fragment);
+        transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();
     }
-
     public void openDrawer(){
         drawerLayout.openDrawer(GravityCompat.START);
     }
