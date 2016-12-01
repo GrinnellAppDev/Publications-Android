@@ -46,7 +46,10 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
     }
 
     private void configureViews() {
-        
+        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(mLayoutManager);
     }
 
     @Override
