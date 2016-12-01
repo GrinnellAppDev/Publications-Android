@@ -45,6 +45,10 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
         return inflater.inflate(R.layout.fragment_publications, container, false);
     }
 
+    private void configureViews() {
+        
+    }
+
     @Override
     public void initializeUI() {
 
