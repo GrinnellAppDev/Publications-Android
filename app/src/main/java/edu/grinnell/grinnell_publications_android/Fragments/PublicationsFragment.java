@@ -4,6 +4,8 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
@@ -28,6 +30,7 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
 
     RecyclerView recyclerView;
     List<RealmPublication> mPublications = new ArrayList<>();
+    LinearLayoutManager mLayoutManager;
 
     public PublicationsFragment() {
 
