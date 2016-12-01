@@ -42,7 +42,10 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
                              Bundle savedInstanceState) {
         initializeUI();
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_publications, container, false);
+        final View view = inflater.inflate(R.layout.fragment_publications, container, false);
+        //recyclerView = (RecyclerView) view.findViewById(R.id.rv);
+        configureViews();
+        return view;
     }
 
     private void configureViews() {
