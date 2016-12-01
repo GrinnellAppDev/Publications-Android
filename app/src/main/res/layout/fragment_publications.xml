@@ -3,24 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.PublicationsFragment">
+    
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/publications_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:text="Publications Fragment" />
+        android:text="@string/pf_placeholder" />
 
     <ListView
         android:id="@+id/dummy_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/dummy_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </ListView>
+    <TextView
+        android:id="@+id/dummy_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

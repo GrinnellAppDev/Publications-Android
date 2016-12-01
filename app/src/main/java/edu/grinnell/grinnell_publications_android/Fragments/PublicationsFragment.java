@@ -4,7 +4,6 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -43,7 +42,7 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
         initializeUI();
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
-        //recyclerView = (RecyclerView) view.findViewById(R.id.rv);
+        recyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
         configureViews();
         return view;
     }
