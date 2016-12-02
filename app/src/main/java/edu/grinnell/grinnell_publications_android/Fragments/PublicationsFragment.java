@@ -63,7 +63,6 @@ public class PublicationsFragment extends Fragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
 
         final MenuItem item = menu.findItem(R.id.menu_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
@@ -74,6 +73,8 @@ public class PublicationsFragment extends Fragment
                 return false;
             }
         });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private List<RealmPublication> filter(List<RealmPublication> publications, String query) {
