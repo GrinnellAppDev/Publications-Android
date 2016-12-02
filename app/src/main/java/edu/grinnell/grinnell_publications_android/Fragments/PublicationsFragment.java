@@ -25,11 +25,12 @@ import edu.grinnell.grinnell_publications_android.R;
  * {@link Fragment} to display users' subscribed publications.
  * @author Larry Boateng Asante
  */
-public class PublicationsFragment extends Fragment implements UserInterface, SearchView.OnQueryTextListener {
+public class PublicationsFragment extends Fragment
+        implements UserInterface, SearchView.OnQueryTextListener {
 
-    RecyclerView recyclerView;
-    List<RealmPublication> mPublications = new ArrayList<>();
-    LinearLayoutManager mLayoutManager;
+    private RecyclerView mRecyclerView;
+    private List<RealmPublication> mPublications = new ArrayList<>();
+    private LinearLayoutManager mLayoutManager;
 
     public PublicationsFragment() {
 
@@ -42,7 +43,7 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
         initializeUI();
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
         configureViews();
         return view;
     }
@@ -50,8 +51,8 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
     private void configureViews() {
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
     @Override
@@ -95,7 +96,7 @@ public class PublicationsFragment extends Fragment implements UserInterface, Sea
     @Override
     public boolean onQueryTextChange(String query) {
         final List<RealmPublication> publications = filter(mPublications, query);
-        recyclerView.scrollToPosition(0);
+        mRecyclerView.scrollToPosition(0);
         return true;
     }
 }
