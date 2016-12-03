@@ -22,11 +22,10 @@
             <meta-data android:name="android.app.default_searchable"
                 android:value=".PublicationsFragment"/>
 
-
             <meta-data android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
-
         </activity>
+
         <activity android:name=".Activities.MainSettingsActivity"
             android:label="Settings">
             <meta-data android:name="android.support.PARENT_ACTIVITY"

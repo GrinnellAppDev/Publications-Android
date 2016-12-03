@@ -29,11 +29,11 @@ import edu.grinnell.grinnell_publications_android.R;
 public class PublicationsFragment extends Fragment
         implements UserInterface, SearchView.OnQueryTextListener {
 
+    public static final int DEFAULT_POSITION = 0;
+
     private RecyclerView mRecyclerView;
-    private ListView mListView;
     private List<RealmPublication> mPublications;
     private LinearLayoutManager mLayoutManager;
-    private ArrayAdapter<String> mTestAdapter;
 
     public PublicationsFragment() {
 
@@ -48,7 +48,6 @@ public class PublicationsFragment extends Fragment
 
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
-        mListView = (ListView) view.findViewById(R.id.publications_lv);
         configureViews();
 
         return view;
@@ -59,39 +58,6 @@ public class PublicationsFragment extends Fragment
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mPublications = new ArrayList<>();
-        populateDummyData();
-
-        mTestAdapter = createTestAdapter();
-        mListView.setAdapter(mTestAdapter);
-        //mRecyclerView.setAdapter(mTestAdapter);
-    }
-
-    private ArrayAdapter<String> createTestAdapter() {
-        List<String> publicationNames = new ArrayList<>();
-        for (RealmPublication p : mPublications) {
-            publicationNames.add(p.getPublicationName());
-        }
-        return new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1,
-                publicationNames);
-    }
-
-    public void populateDummyData() {
-        // create dummy values to test search filter
-        RealmPublication larry = new RealmPublication();
-        larry.setPublicationName("Larry");
-        mPublications.add(larry);
-        RealmPublication matt = new RealmPublication();
-        matt.setPublicationName("Matt");
-        mPublications.add(matt);
-        RealmPublication mattori = new RealmPublication();
-        mattori.setPublicationName("Mattori");
-        mPublications.add(mattori);
-        RealmPublication yazan = new RealmPublication();
-        yazan.setPublicationName("Yazan");
-        mPublications.add(yazan);
     }
 
     @Override
@@ -125,14 +91,10 @@ public class PublicationsFragment extends Fragment
     @Override
     public boolean onQueryTextChange(String query) {
         if (query.length() <= 0) {
-            mListView.setAdapter(mTestAdapter);
+            //TODO: Set default recyclerview
         }
-
-        mTestAdapter.getFilter().filter(query);
-        mListView.setAdapter(mTestAdapter);
-        
-        //mRecyclerView.scrollToPosition(0);
-        mListView.smoothScrollToPosition(0);
+        //TODO: use recyclerview.adapter to filter by query
+        //      apply filtered recyclerview.adapter to recyclerview
         return true;
     }
 }
