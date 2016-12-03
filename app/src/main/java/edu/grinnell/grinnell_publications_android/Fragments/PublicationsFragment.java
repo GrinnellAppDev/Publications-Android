@@ -117,18 +117,6 @@ public class PublicationsFragment extends Fragment
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private List<RealmPublication> filter(List<RealmPublication> publications, String query) {
-        query = query.toLowerCase();
-        final List<RealmPublication> filteredModelList = new ArrayList<>();
-        for (RealmPublication publication : publications) {
-            final String publicationName = publication.getPublicationName().toLowerCase();
-            if (publicationName.contains(query)) {
-                filteredModelList.add(publication);
-            }
-        }
-        return filteredModelList;
-    }
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
@@ -140,8 +128,9 @@ public class PublicationsFragment extends Fragment
             mListView.setAdapter(mTestAdapter);
         }
 
-        final List<RealmPublication> publications = filter(mPublications, query);
-
+        mTestAdapter.getFilter().filter(query);
+        mListView.setAdapter(mTestAdapter);
+        
         //mRecyclerView.scrollToPosition(0);
         mListView.smoothScrollToPosition(0);
         return true;
