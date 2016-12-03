@@ -1,6 +1,5 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -13,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,10 @@ public class PublicationsFragment extends Fragment
         implements UserInterface, SearchView.OnQueryTextListener {
 
     private RecyclerView mRecyclerView;
-    private List<RealmPublication> mPublications = new ArrayList<>();
+    private ListView mListView;
+    private List<RealmPublication> mPublications;
     private LinearLayoutManager mLayoutManager;
+    private ArrayAdapter<String> mTestAdapter;
 
     public PublicationsFragment() {
 
@@ -42,9 +45,12 @@ public class PublicationsFragment extends Fragment
                              Bundle savedInstanceState) {
         initializeUI();
         setHasOptionsMenu(true);
+
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
+        mListView = (ListView) view.findViewById(R.id.publications_lv);
         configureViews();
+
         return view;
     }
 
@@ -53,6 +59,39 @@ public class PublicationsFragment extends Fragment
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mPublications = new ArrayList<>();
+        populateDummyData();
+
+        mTestAdapter = createTestAdapter();
+        mListView.setAdapter(mTestAdapter);
+        //mRecyclerView.setAdapter(mTestAdapter);
+    }
+
+    private ArrayAdapter<String> createTestAdapter() {
+        List<String> publicationNames = new ArrayList<>();
+        for (RealmPublication p : mPublications) {
+            publicationNames.add(p.getPublicationName());
+        }
+        return new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_list_item_1,
+                publicationNames);
+    }
+
+    public void populateDummyData() {
+        // create dummy values to test search filter
+        RealmPublication larry = new RealmPublication();
+        larry.setPublicationName("Larry");
+        mPublications.add(larry);
+        RealmPublication matt = new RealmPublication();
+        matt.setPublicationName("Matt");
+        mPublications.add(matt);
+        RealmPublication mattori = new RealmPublication();
+        mattori.setPublicationName("Mattori");
+        mPublications.add(mattori);
+        RealmPublication yazan = new RealmPublication();
+        yazan.setPublicationName("Yazan");
+        mPublications.add(yazan);
     }
 
     @Override
@@ -67,6 +106,7 @@ public class PublicationsFragment extends Fragment
         final MenuItem item = menu.findItem(R.id.menu_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setQueryHint("Search by Title");
+        searchView.setOnQueryTextListener(this);
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -96,8 +136,13 @@ public class PublicationsFragment extends Fragment
 
     @Override
     public boolean onQueryTextChange(String query) {
+        if (query.length() <= 0) {
+            mListView.setAdapter(mTestAdapter);
+        }
         final List<RealmPublication> publications = filter(mPublications, query);
-        mRecyclerView.scrollToPosition(0);
+
+        //mRecyclerView.scrollToPosition(0);
+        mListView.smoothScrollToPosition(0);
         return true;
     }
 }

@@ -17,10 +17,9 @@
         android:text="@string/pf_placeholder" />
 
     <ListView
-        android:id="@+id/dummy_list"
+        android:id="@+id/publications_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:entries="@array/dummy_data"/>
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/dummy_text"
