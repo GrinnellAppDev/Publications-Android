@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 
 import android.support.v7.widget.Toolbar;
@@ -36,15 +37,11 @@ import java.util.Date;
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.header_image) ImageView headerImage;
-    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
-    @Bind(R.id.floating_action_button) FloatingActionButton favorite;
-    @Bind(R.id.appbar_layout) AppBarLayout appbar;
-
-
-    ExpandedArticleFragment context = this;
-
+    private @Bind(R.id.toolbar) Toolbar toolbar;
+    private @Bind(R.id.header_image) ImageView headerImage;
+    private @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
+    private @Bind(R.id.floating_action_button) FloatingActionButton favorite;
+    private @Bind(R.id.appbar_layout) AppBarLayout appbar;
 
     public ExpandedArticleFragment() {}
 
@@ -64,7 +61,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              Bundle savedInstanceState) {
         final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
         ButterKnife.bind(this, expandedArticleFragment);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_search)); //todo: Replace with backbutton
+        toolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_search)); //todo: Replace with backbutton
         initializeUI();
         return expandedArticleFragment;
     }

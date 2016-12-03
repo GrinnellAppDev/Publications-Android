@@ -48,7 +48,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
                 Fragment expandedArticleFragment = ExpandedArticleFragment.newInstance();
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction()
-                        .add(R.id.container_layout, expandedArticleFragment).addToBackStack(null).commit();
+                        .add(R.id.container_layout, expandedArticleFragment).addToBackStack("").commit();
             }
         });
     }
