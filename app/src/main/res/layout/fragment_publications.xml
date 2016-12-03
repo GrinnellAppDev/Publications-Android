@@ -16,14 +16,4 @@
         android:layout_gravity="center"
         android:text="@string/pf_placeholder" />
 
-    <ListView
-        android:id="@+id/publications_lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/dummy_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </FrameLayout>
