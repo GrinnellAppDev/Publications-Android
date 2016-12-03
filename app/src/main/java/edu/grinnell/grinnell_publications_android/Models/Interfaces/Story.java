@@ -21,7 +21,7 @@ public interface Story {
      *
      * @return the publication the story belongs to.
      */
-    AbstractList<? extends Publication> getPublications();
+    Publication getPublication();
 
     /**
      * Returns the date that the story was published.

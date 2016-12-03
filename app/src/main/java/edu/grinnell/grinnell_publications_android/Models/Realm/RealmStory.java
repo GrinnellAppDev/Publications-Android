@@ -1,15 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Reactions;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
-import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -21,7 +12,7 @@ import io.realm.RealmObject;
  * @see RealmObject
  */
 public class RealmStory extends RealmObject implements Story{
-    private RealmList<RealmPublication> publications;
+    private RealmPublication publication;
     private String publicationDate;
     private String lastUpdated;
     private RealmList<RealmAuthor> author;
@@ -35,8 +26,8 @@ public class RealmStory extends RealmObject implements Story{
     /* Default constructor for Realm */
     public RealmStory(){}
     /** Setters */
-    public void setPublications(RealmList<RealmPublication> publications){
-        this.publications = publications;
+    public void setPublication(RealmPublication publication){
+        this.publication = publication;
     }
     public void setPublicationDate(String publicationDate){
         this.publicationDate = publicationDate;
@@ -55,8 +46,8 @@ public class RealmStory extends RealmObject implements Story{
     public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
     /** Getters */
     @Override
-    public RealmList<RealmPublication> getPublications() {
-        return  this.publications;
+    public RealmPublication getPublication() {
+        return  this.publication;
     }
 
     @Override
