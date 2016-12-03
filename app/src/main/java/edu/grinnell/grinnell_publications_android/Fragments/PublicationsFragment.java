@@ -12,10 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
@@ -71,7 +68,7 @@ public class PublicationsFragment extends Fragment
 
         final MenuItem item = menu.findItem(R.id.menu_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setQueryHint("Search by Title");
+        searchView.setQueryHint(getContext().getString(R.string.query_hint));
         searchView.setOnQueryTextListener(this);
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
