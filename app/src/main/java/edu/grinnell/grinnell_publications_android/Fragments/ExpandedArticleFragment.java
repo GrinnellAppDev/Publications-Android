@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -30,24 +31,25 @@ import edu.grinnell.grinnell_publications_android.R;
 
 
 import java.util.Date;
+import java.util.logging.StreamHandler;
 
 /**
- * TODO: Fix getDrawable deprication
- *
+ * Fragment that displays the expanded article content.
+ * Fragment allows for favoriting of the article.
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
-    private @Bind(R.id.toolbar) Toolbar toolbar;
-    private @Bind(R.id.header_image) ImageView headerImage;
-    private @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbar;
-    private @Bind(R.id.floating_action_button) FloatingActionButton favorite;
-    private @Bind(R.id.appbar_layout) AppBarLayout appbar;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.header_image) ImageView mHeaderImage;
+    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
+    @Bind(R.id.floating_action_button) FloatingActionButton mFavoriteButton;
+    @Bind(R.id.article_content) TextView mArticleContent;
 
     public ExpandedArticleFragment() {}
 
     public static ExpandedArticleFragment newInstance(){
-        ExpandedArticleFragment fragment = new ExpandedArticleFragment();
-        return fragment;
+        ExpandedArticleFragment expandedArticleFragment = new ExpandedArticleFragment();
+        return expandedArticleFragment;
     }
 
     @Override
@@ -61,65 +63,60 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              Bundle savedInstanceState) {
         final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
         ButterKnife.bind(this, expandedArticleFragment);
-        toolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_search)); //todo: Replace with backbutton
         initializeUI();
         return expandedArticleFragment;
     }
 
     @Override
     public void initializeUI(){
-        beginWithToolbarCollapsed(false);
-        loadDefaultData();
+        mToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
+        loadPlaceHolderData();
         setOnClickListeners();
     }
 
-    //if true, begins the fragment with the toolbar collapsed
-    private void beginWithToolbarCollapsed(Boolean bool){
-        appbar.setExpanded(!bool);
-    }
-
-
 
     public void setOnClickListeners() {
-        //onClick for back button
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStack();
             }
         });
 
-        favorite.setOnClickListener(new View.OnClickListener() {
+        mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Article added to Favorites", Snackbar.LENGTH_SHORT);
+                Snackbar.make(v, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    /**
-     * loads the data from article
-     */
-    private void loadDefaultData(){
+    /** Fills fragment with placeholder content */
+    private void loadPlaceHolderData(){
         Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.grinnell_gates);
         Drawable defaultImage = new BitmapDrawable(getResources(), image);
+        setHeaderText("Sample title");
+        setContentText(                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.");
         setHeaderImage(defaultImage);
     }
 
-    /**
-     * Sets the heading image
-     */
-    public void setHeaderImage(Drawable image) {
-        this.headerImage.setImageDrawable(image);
+    /** Gets image from Header**/
+     public Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
+
+    /** Gets text from content **/
+    public String getTextContent() { return this.mArticleContent.getText().toString();}
+
+    /** Sets the heading image **/
+    private void setHeaderImage(Drawable image) {
+        this.mHeaderImage.setImageDrawable(image);
     }
 
-    /**
-     * Sets
-     */
-    private void setContent(Drawable image) {
-        setHeaderImage(image);
-    }
+    /** Sets text into header field **/
+    private void setHeaderText(String titleText) { this.mCollapsingToolbar.setTitle(titleText);}
+
+    /** Sets text into content field **/
+    private void setContentText(String content) { this.mArticleContent.setText(content);}
+
 
 
 }
