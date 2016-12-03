@@ -139,6 +139,7 @@ public class PublicationsFragment extends Fragment
         if (query.length() <= 0) {
             mListView.setAdapter(mTestAdapter);
         }
+
         final List<RealmPublication> publications = filter(mPublications, query);
 
         //mRecyclerView.scrollToPosition(0);
