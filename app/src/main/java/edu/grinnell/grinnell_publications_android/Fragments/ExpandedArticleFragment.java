@@ -18,9 +18,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -31,11 +28,13 @@ import edu.grinnell.grinnell_publications_android.R;
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
-    @Bind(R.id.header_image) ImageView mHeaderImage;
-    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
-    @Bind(R.id.floating_action_button) FloatingActionButton mFavoriteButton;
-    @Bind(R.id.article_content) TextView mArticleContent;
-    @Bind(R.id.article_toolbar) Toolbar mArticleToolbar;
+
+    private ImageView mHeaderImage;
+    private CollapsingToolbarLayout mCollapsingToolbar;
+    private FloatingActionButton mFavoriteButton;
+    private TextView mArticleContent;
+    private Toolbar mArticleToolbar;
+
 
     public ExpandedArticleFragment() {}
 
@@ -54,7 +53,12 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
-        ButterKnife.bind(this, expandedArticleFragment);
+        mHeaderImage = (ImageView) expandedArticleFragment.findViewById(R.id.header_image);
+        mCollapsingToolbar = (CollapsingToolbarLayout) expandedArticleFragment.findViewById(R.id.collapsing_toolbar);
+        mFavoriteButton = (FloatingActionButton) expandedArticleFragment.findViewById(R.id.floating_action_button);
+        mArticleContent = (TextView) expandedArticleFragment.findViewById(R.id.article_content);
+        mArticleToolbar = (Toolbar) expandedArticleFragment.findViewById(R.id.article_toolbar);
+
         initializeUI();
         return expandedArticleFragment;
     }
@@ -64,6 +68,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mArticleToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
         loadPlaceHolderData();
         setOnClickListeners();
+
     }
 
 
