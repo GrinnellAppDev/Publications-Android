@@ -1,8 +1,12 @@
 package edu.grinnell.grinnell_publications_android.Adapters;
 
+import android.support.v7.widget.RecyclerView;
+
 /**
- * Created by mattmurphy on 12/3/16.
+ * {@link RecyclerView} Adapter for all {@code RealmPublications} to be displayed in the
+ * {@code PublicationsFragment}
  */
 
 public class PublicationAdapter {
+
 }
