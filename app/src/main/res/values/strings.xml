@@ -6,6 +6,7 @@
     <string name="newsfeed">Newsfeed</string>
     <string name="publications">Publications</string>
     <string name="bookmarks">Bookmarks</string>
+    <string name="article">Article</string>
     <string name="settings">Settings</string>
     <string name="profle">Profile</string>
 
@@ -19,7 +20,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="query_hint">Search by title...</string>
     <string name="menu_search">menu search</string>
-    
+
 
     <string name="publication_logo">Publication Logo</string>
 </resources>

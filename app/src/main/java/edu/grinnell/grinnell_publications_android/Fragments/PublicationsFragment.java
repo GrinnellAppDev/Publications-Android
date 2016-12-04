@@ -76,7 +76,6 @@ public class PublicationsFragment extends Fragment
                 return false;
             }
         });
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
