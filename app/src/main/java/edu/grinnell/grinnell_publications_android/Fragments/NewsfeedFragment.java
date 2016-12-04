@@ -23,7 +23,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newfeed, container, false);
+        final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
         initializeUI();
         return newsfeedFragment;
     }
