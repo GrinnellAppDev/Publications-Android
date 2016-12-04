@@ -43,7 +43,8 @@
             app:headerLayout="@layout/drawer_header"
             app:theme="@style/NavigationDrawerTheme"
             app:itemBackground="@drawable/drawer_list_selector"
-            app:menu="@menu/drawer_menu" />
+            app:menu="@menu/drawer_menu"
+            />
     </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

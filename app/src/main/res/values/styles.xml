@@ -27,5 +27,9 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="FabButton" parent="@style/AppTheme">
+        <item name="colorAccent">@color/black</item>
+    </style>
+
 
 </resources>

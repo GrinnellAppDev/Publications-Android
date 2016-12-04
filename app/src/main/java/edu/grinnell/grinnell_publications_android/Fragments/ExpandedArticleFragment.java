@@ -1,31 +1,26 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
-
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.os.Bundle;
 
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 
-
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -40,12 +35,12 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
     @Bind(R.id.floating_action_button) FloatingActionButton mFavoriteButton;
     @Bind(R.id.article_content) TextView mArticleContent;
+    @Bind(R.id.article_toolbar) Toolbar mArticleToolbar;
 
     public ExpandedArticleFragment() {}
 
     public static ExpandedArticleFragment newInstance() {
-        ExpandedArticleFragment expandedArticleFragment = new ExpandedArticleFragment();
-        return expandedArticleFragment;
+        return new ExpandedArticleFragment();
     }
 
 
@@ -66,12 +61,20 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(){
+        mArticleToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
         loadPlaceHolderData();
         setOnClickListeners();
     }
 
 
     public void setOnClickListeners() {
+        mArticleToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
             }
         });
     }
-
 
     /** Fills fragment with placeholder content */
     private void loadPlaceHolderData(){
