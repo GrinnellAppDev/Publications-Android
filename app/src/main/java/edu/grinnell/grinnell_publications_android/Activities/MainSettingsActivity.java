@@ -13,7 +13,7 @@ import edu.grinnell.grinnell_publications_android.R;
  */
 public class MainSettingsActivity extends AppCompatActivity implements UserInterface {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,9 @@ public class MainSettingsActivity extends AppCompatActivity implements UserInter
     @Override
     public void initializeUI() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (toolbar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
