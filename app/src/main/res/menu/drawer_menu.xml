@@ -26,11 +26,6 @@
             android:checked="false"
             android:icon="@drawable/ic_bookmark_black_24dp"
             android:title="@string/bookmarks"/>
-        <item
-            android:id="@+id/article"
-            android:checked="false"
-            android:icon="@drawable/ic_bookmark_black_24dp"
-            android:title="@string/article"/>
 
         <item
             android:id="@+id/settings"
