@@ -11,8 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
@@ -30,15 +28,20 @@ import static android.widget.Toast.LENGTH_LONG;
  * @author Larry Boateng Asante
  */
 public class MainActivity extends AppCompatActivity implements UserInterface {
-    @Bind(R.id.main_toolbar) Toolbar toolbar;
-    @Bind(R.id.navigation_view) NavigationView navigationView;
-    @Bind(R.id.drawer_layout) DrawerLayout drawerLayout;
+
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
         initializeUI();
     }
 
