@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -56,45 +54,37 @@ public class PublicationAdapter
         // TODO: Use actual publication image and name as retrieved from database
         holder.setPublicationLogo(ContextCompat.getDrawable(mContext, R.drawable.grinnell_gates));
         holder.setPublicationName("Scarlet & Black");
-        holder.getFavoriteButton().setOnClickListener(new View.OnClickListener() {
+
+        final ImageButton favoriteButton = holder.getFavoriteButton();
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: set drawable for favorite button as opposite of previous state
+                if (publication.getIsFavoriteButtonToggled()) {
+                    favoriteButton.setImageResource(R.drawable.ic_star_transparent);
+                } else {
+                    favoriteButton.setImageResource(R.drawable.ic_star_gold);
+                }
+                publication.setIsFavoriteButtonToggled();
             }
         });
-
-
-    }
-
-    public Context getContext() {
-        return mContext;
     }
 
     static class PublicationsViewHolder extends RecyclerView.ViewHolder {
 
-        private @BindView(R.id.publication_img) ImageView mPublicationLogo;
-        private @BindView(R.id.publication_name) TextView mPublicationName;
-        private @BindView(R.id.favorites_btn) ImageButton mFavoriteButton;
+        private ImageView mPublicationLogo;
+        private TextView mPublicationName;
+        private ImageButton mFavoriteButton;
 
         public PublicationsViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            mPublicationLogo = (ImageView)itemView.findViewById(R.id.publication_img);
+            mPublicationName = (TextView)itemView.findViewById(R.id.publication_name);
+            mFavoriteButton = (ImageButton)itemView.findViewById(R.id.favorites_btn);
         }
 
         public ImageButton getFavoriteButton() {
             return mFavoriteButton;
-        }
-
-        public ImageView getPublicationLogo() {
-            return mPublicationLogo;
-        }
-
-        public TextView getPublicationName() {
-            return mPublicationName;
-        }
-
-        public void toggleFavoriteButton(Drawable favoriteButton) {
-            this.mFavoriteButton.setImageDrawable(favoriteButton);
         }
 
         public void setPublicationLogo(Drawable publicationLogo) {
