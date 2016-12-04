@@ -17,19 +17,20 @@ import edu.grinnell.grinnell_publications_android.R;
 public class NewsfeedFragment extends Fragment implements UserInterface {
 
     public NewsfeedFragment() {
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newfeed, container, false);
         initializeUI();
-        return inflater.inflate(R.layout.fragment_newfeed, container, false);
+        return newsfeedFragment;
     }
 
     @Override
     public void initializeUI() {
-
     }
+
+
 }
