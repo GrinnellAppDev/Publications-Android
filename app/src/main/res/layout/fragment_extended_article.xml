@@ -36,7 +36,7 @@
                 app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/article_fragment_toolbar"
                 android:layout_width="match_parent"
                  android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -75,7 +75,7 @@
     </android.support.v4.widget.NestedScrollView>x
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/t"
+        android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="12dp"

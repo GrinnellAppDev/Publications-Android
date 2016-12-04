@@ -1,10 +1,12 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
@@ -15,7 +17,11 @@ import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -39,7 +45,7 @@ import java.util.logging.StreamHandler;
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.article_fragment_toolbar) Toolbar mToolbar;
     @Bind(R.id.header_image) ImageView mHeaderImage;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
     @Bind(R.id.floating_action_button) FloatingActionButton mFavoriteButton;
@@ -47,22 +53,27 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     public ExpandedArticleFragment() {}
 
-    public static ExpandedArticleFragment newInstance(){
+    public static ExpandedArticleFragment newInstance() {
         ExpandedArticleFragment expandedArticleFragment = new ExpandedArticleFragment();
+        expandedArticleFragment.setHasOptionsMenu(true);
         return expandedArticleFragment;
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mToolbar.inflateMenu(R.menu.toolbar_settings_menu);
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
+        Log.d("Oncreateview", "Inside the method");
+        final View expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
         ButterKnife.bind(this, expandedArticleFragment);
+        setHasOptionsMenu(true);
         initializeUI();
         return expandedArticleFragment;
     }
@@ -70,6 +81,9 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     @Override
     public void initializeUI(){
         mToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
+        mToolbar.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.scarlet_red));
+        mCollapsingToolbar.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.scarlet_red));
+        mToolbar.inflateMenu(R.menu.toolbar_settings_menu);
         loadPlaceHolderData();
         setOnClickListeners();
     }
@@ -83,6 +97,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
             }
         });
 
+
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +106,34 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         });
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        String TAG = "onCreateOptionsMenu: ";
+        Log.d(TAG, "Inside the method");
+        inflater.inflate(R.menu.toolbar_settings_menu, menu);
+        Log.d(TAG, "after inflate");
+        super.onCreateOptionsMenu(menu, inflater);
+        Log.d(TAG, "Called super method");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        String TAG = "onOptionsItemSelected: ";
+        Log.d(TAG, "Inside the method");
+        switch(item.getItemId()) {
+            case R.id.article_settings:
+                Log.d(TAG, "Switch activated");
+                Snackbar.make(getView(), "Setting button pressed", Snackbar.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /** Fills fragment with placeholder content */
     private void loadPlaceHolderData(){
-        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.grinnell_gates);
-        Drawable defaultImage = new BitmapDrawable(getResources(), image);
+        Drawable defaultImage = ContextCompat.getDrawable(getContext(), R.drawable.grinnell_gates);
         setHeaderText("Sample title");
-        setContentText(                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.");
+        setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.");
         setHeaderImage(defaultImage);
     }
 
@@ -116,7 +153,4 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     /** Sets text into content field **/
     private void setContentText(String content) { this.mArticleContent.setText(content);}
-
-
-
 }
