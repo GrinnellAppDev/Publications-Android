@@ -25,6 +25,21 @@ public class RealmStory extends RealmObject implements Story{
 
     /* Default constructor for Realm */
     public RealmStory(){}
+
+    public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
+                      RealmList<RealmAuthor> author, RealmReactions reactions, String fullText,
+                      String blurb, String title, String thumbnailUrl) {
+        this.publication = publication;
+        this.publicationDate = publicationDate;
+        this.lastUpdated = lastUpdated;
+        this.author = author;
+        this.reactions = reactions;
+        this.fullText = fullText;
+        this.blurb = blurb;
+        this.title = title;
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
     /** Setters */
     public void setPublication(RealmPublication publication){
         this.publication = publication;

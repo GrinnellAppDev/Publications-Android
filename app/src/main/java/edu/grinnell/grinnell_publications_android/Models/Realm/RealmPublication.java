@@ -21,8 +21,16 @@ public class RealmPublication extends RealmObject implements Publication {
     private String publicationImageUrl;
 
     /* Default constructor required by Realm*/
-    public RealmPublication(){
+    public RealmPublication(){}
 
+    public RealmPublication(String publicationName, int publicationId,
+                            RealmList<RealmSeries> series, RealmList<RealmStory> stories,
+                            String publicationImageUrl) {
+        this.publicationName = publicationName;
+        this.publicationId = publicationId;
+        this.series = series;
+        this.stories = stories;
+        this.publicationImageUrl = publicationImageUrl;
     }
 
     /** Setters */
