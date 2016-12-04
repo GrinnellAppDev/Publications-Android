@@ -63,12 +63,12 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              Bundle savedInstanceState) {
         final View  expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
         ButterKnife.bind(this, expandedArticleFragment);
-        initializeUI(expandedArticleFragment);
+        initializeUI();
         return expandedArticleFragment;
     }
 
     @Override
-    public void initializeUI(View view){
+    public void initializeUI(){
         mToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
         loadPlaceHolderData();
         setOnClickListeners();
