@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment implements UserInterface {
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
 
-        rv.setAdapter(new ArticleAdapter(retrieveStories()));
+        rv.setAdapter(new ArticleAdapter(retrieveStories(), getContext()));
     }
 
     private List<RealmStory> retrieveStories() {
@@ -87,7 +87,8 @@ public class ProfileFragment extends Fragment implements UserInterface {
         List<RealmStory> stories = new ArrayList<>();
         stories.add(new RealmStory(snb, "December 4, 2016", "December 4, 2016", auts, null,
                                    "people performed multiple songs!", "Songs were performed",
-                                   "There Was A Performance and It was Great", null));
+                                   "There Was A Performance and It was Great",
+                                   "https://placeholdit.imgix.net/~text?txtsize=68&txt=720%C3%97500&w=720&h=500"));
 
         return stories;
     }
