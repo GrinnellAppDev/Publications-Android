@@ -1,21 +1,19 @@
 package edu.grinnell.grinnell_publications_android.Adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -31,7 +29,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         public ImageView mImage;
         public ImageView mThumbnail;
         public TextView mTitle;
-        public TextView mAuthor;
+        public TextView mAuthors;
         public TextView mPublication;
 
         public ArticleViewHolder(View view) {
@@ -39,7 +37,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             mImage = (ImageView) view.findViewById(R.id.image);
             mThumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             mTitle = (TextView) view.findViewById(R.id.title);
-            mAuthor = (TextView) view.findViewById(R.id.author);
+            mAuthors = (TextView) view.findViewById(R.id.authors);
             mPublication = (TextView) view.findViewById(R.id.publication);
         }
     }
@@ -63,6 +61,14 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         // TODO: placeholder and error images
         Picasso.with(mContext).load(story.getImageUrl()).into(holder.mImage);
         Picasso.with(mContext).load(story.getThumbnailUrl()).into(holder.mThumbnail);
+        holder.mTitle.setText(story.getTitle());
+        holder.mAuthors.setText(formatAuthorList(story.getAuthors(), holder.mAuthors));
+        holder.mPublication.setText(story.getPublication().getPublicationName());
+    }
+
+    private CharSequence formatAuthorList(List<RealmAuthor> authors, TextView target) {
+        return TextUtils.commaEllipsize(TextUtils.join(", ", authors), target.getPaint(),
+                                        target.getWidth(), "1 more", "%d more");
     }
 
     @Override
