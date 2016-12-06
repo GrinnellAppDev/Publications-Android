@@ -88,7 +88,8 @@ public class ProfileFragment extends Fragment implements UserInterface {
         stories.add(new RealmStory(snb, "December 4, 2016", "December 4, 2016", auts, null,
                                    "people performed multiple songs!", "Songs were performed",
                                    "There Was A Performance and It was Great",
-                                   "https://placeholdit.imgix.net/~text?txtsize=68&txt=720%C3%97500&w=720&h=500"));
+                                   "https://placeholdit.imgix.net/~text?txtsize=15&txt=thumb&w=200&h=200",
+                "https://placeholdit.imgix.net/~text?txtsize=29&txt=story+image&w=430&h=272"));
 
         return stories;
     }
