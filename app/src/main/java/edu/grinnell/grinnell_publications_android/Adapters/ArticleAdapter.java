@@ -2,6 +2,7 @@ package edu.grinnell.grinnell_publications_android.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,8 +68,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     private CharSequence formatAuthorList(List<RealmAuthor> authors, TextView target) {
-        return TextUtils.commaEllipsize(TextUtils.join(", ", authors), target.getPaint(),
-                                        target.getWidth(), "1 more", "%d more");
+        TextPaint paint = target.getPaint();
+        String[] ats = new String[authors.size()];
+        for(int i = 0; i < authors.size(); i++) {
+            ats[i] = authors.get(i).getFullName();
+        }
+        String text = TextUtils.join(", ", ats);
+        return TextUtils.commaEllipsize(text, paint, paint.measureText(text), "1 more", "%d more");
     }
 
     @Override
