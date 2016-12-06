@@ -15,7 +15,7 @@ public class RealmStory extends RealmObject implements Story{
     private RealmPublication publication;
     private String publicationDate;
     private String lastUpdated;
-    private RealmList<RealmAuthor> author;
+    private RealmList<RealmAuthor> authors;
     private RealmReactions reactions;
     private String fullText;
     private String blurb;
@@ -28,12 +28,12 @@ public class RealmStory extends RealmObject implements Story{
     public RealmStory(){}
 
     public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
-                      RealmList<RealmAuthor> author, RealmReactions reactions, String fullText,
+                      RealmList<RealmAuthor> authors, RealmReactions reactions, String fullText,
                       String blurb, String title, String thumbnailUrl, String imageUrl) {
         this.publication = publication;
         this.publicationDate = publicationDate;
         this.lastUpdated = lastUpdated;
-        this.author = author;
+        this.authors = authors;
         this.reactions = reactions;
         this.fullText = fullText;
         this.blurb = blurb;
@@ -60,7 +60,7 @@ public class RealmStory extends RealmObject implements Story{
     public void setBlurb(String blurb){this.blurb = blurb;}
     public void setStoryTitle(String title){this.title = title;}
     public void setThumbnailUrl(String thumbnailUrl){this.thumbnailUrl = thumbnailUrl;}
-    public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
+    public void setAuthors(RealmList<RealmAuthor> author){this.authors = author;}
     public void setImageUrl(String imageUrl){this.imageUrl = imageUrl;}
     /** Getters */
     @Override
@@ -77,8 +77,8 @@ public class RealmStory extends RealmObject implements Story{
     public String getLastUpdated(){ return this.lastUpdated;}
 
     @Override
-    public RealmList<RealmAuthor> getAuthor() {
-        return  this.author;
+    public RealmList<RealmAuthor> getAuthors() {
+        return  this.authors;
     }
 
     @Override

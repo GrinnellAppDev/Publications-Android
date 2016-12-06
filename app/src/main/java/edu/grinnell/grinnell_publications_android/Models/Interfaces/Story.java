@@ -48,7 +48,7 @@ public interface Story {
      *
      * @return  all the @code{author}s of the story.
      */
-    AbstractList<? extends Author> getAuthor();
+    AbstractList<? extends Author> getAuthors();
 
     /**
      * @return the reactions that have been made towards this article
