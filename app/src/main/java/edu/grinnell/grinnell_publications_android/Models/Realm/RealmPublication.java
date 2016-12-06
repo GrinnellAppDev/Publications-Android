@@ -19,6 +19,7 @@ public class RealmPublication extends RealmObject implements Publication {
     private RealmList<RealmSeries> series;
     private RealmList<RealmStory> stories;
     private String publicationImageUrl;
+    private boolean isFavoriteButtonToggled = false;
 
     /* Default constructor required by Realm*/
     public RealmPublication(){}
@@ -44,6 +45,9 @@ public class RealmPublication extends RealmObject implements Publication {
     public void setPublicationImageUrl(String publicationImageUrl){
         this.publicationImageUrl = publicationImageUrl;
     }
+    public void setIsFavoriteButtonToggled() {
+        this.isFavoriteButtonToggled = !isFavoriteButtonToggled;
+    }
 
     /** Getters */
     @Override
@@ -68,4 +72,6 @@ public class RealmPublication extends RealmObject implements Publication {
     public String getPublicationImageUrl() {
         return this.publicationImageUrl;
     }
+
+    public boolean getIsFavoriteButtonToggled() { return this.isFavoriteButtonToggled; }
 }

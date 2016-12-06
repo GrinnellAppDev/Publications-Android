@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
 import edu.grinnell.grinnell_publications_android.Adapters.ArticleAdapter;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;

@@ -24,9 +24,9 @@
             android:orientation="vertical">
 
             <include
-                android:id="@+id/main_toolbar"
-                layout="@layout/toolbar"
-                ></include>
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar"
+            ></include>
 
             <FrameLayout
                 android:id="@+id/frame_layout"
@@ -43,7 +43,8 @@
             app:headerLayout="@layout/drawer_header"
             app:theme="@style/NavigationDrawerTheme"
             app:itemBackground="@drawable/drawer_list_selector"
-            app:menu="@menu/drawer_menu" />
+            app:menu="@menu/drawer_menu"
+            />
     </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>
