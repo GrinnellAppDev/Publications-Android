@@ -3,10 +3,13 @@ package edu.grinnell.grinnell_publications_android.Adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -25,11 +28,19 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     private Context mContext;
 
     public static class ArticleViewHolder extends RecyclerView.ViewHolder {
+        public ImageView mImage;
         public ImageView mThumbnail;
+        public TextView mTitle;
+        public TextView mAuthor;
+        public TextView mPublication;
 
         public ArticleViewHolder(View view) {
             super(view);
-            this.mThumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            mImage = (ImageView) view.findViewById(R.id.image);
+            mThumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            mTitle = (TextView) view.findViewById(R.id.title);
+            mAuthor = (TextView) view.findViewById(R.id.author);
+            mPublication = (TextView) view.findViewById(R.id.publication);
         }
     }
 
@@ -47,10 +58,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     @Override
-    public void onBindViewHolder(ArticleViewHolder holder, int position) {
+    public void onBindViewHolder(final ArticleViewHolder holder, int position) {
         RealmStory story = mStories.get(position);
-        Toast.makeText(mContext, story.getThumbnailUrl(), Toast.LENGTH_LONG).show();
         // TODO: placeholder and error images
+        Picasso.with(mContext).load(story.getImageUrl()).into(holder.mImage);
         Picasso.with(mContext).load(story.getThumbnailUrl()).into(holder.mThumbnail);
     }
 
