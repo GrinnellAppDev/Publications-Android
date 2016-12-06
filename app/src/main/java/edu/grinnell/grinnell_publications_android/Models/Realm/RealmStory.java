@@ -21,6 +21,7 @@ public class RealmStory extends RealmObject implements Story{
     private String blurb;
     private String title;
     private String thumbnailUrl;
+    private String imageUrl;
 
 
     /* Default constructor for Realm */
@@ -28,7 +29,7 @@ public class RealmStory extends RealmObject implements Story{
 
     public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
                       RealmList<RealmAuthor> author, RealmReactions reactions, String fullText,
-                      String blurb, String title, String thumbnailUrl) {
+                      String blurb, String title, String thumbnailUrl, String imageUrl) {
         this.publication = publication;
         this.publicationDate = publicationDate;
         this.lastUpdated = lastUpdated;
@@ -38,6 +39,7 @@ public class RealmStory extends RealmObject implements Story{
         this.blurb = blurb;
         this.title = title;
         this.thumbnailUrl = thumbnailUrl;
+        this.imageUrl = imageUrl;
     }
 
     /** Setters */
@@ -59,6 +61,7 @@ public class RealmStory extends RealmObject implements Story{
     public void setStoryTitle(String title){this.title = title;}
     public void setThumbnailUrl(String thumbnailUrl){this.thumbnailUrl = thumbnailUrl;}
     public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
+    public void setImageUrl(String imageUrl){this.imageUrl = imageUrl;}
     /** Getters */
     @Override
     public RealmPublication getPublication() {
@@ -98,9 +101,11 @@ public class RealmStory extends RealmObject implements Story{
         return this.title;
     }
 
-
     @Override
     public String getThumbnailUrl() {
         return this.thumbnailUrl;
     }
+
+    @Override
+    public String getImageUrl() { return this.imageUrl; }
 }

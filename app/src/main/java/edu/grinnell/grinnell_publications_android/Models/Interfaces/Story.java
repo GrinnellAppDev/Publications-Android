@@ -78,4 +78,10 @@ public interface Story {
 
     String getThumbnailUrl();
 
+
+    /**
+     * @return the main image url for the story
+     */
+    String getImageUrl();
+
 }
