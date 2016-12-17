@@ -69,6 +69,16 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mHeaderImage = null;
+        mCollapsingToolbar = null;
+        mFavoriteButton = null;
+        mArticleContent = null;
+        mArticleToolbar = null;
+    }
+
     private void bindView(View view) {
         mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
         mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);

@@ -58,6 +58,14 @@ public class ProfileFragment extends Fragment implements UserInterface {
         initRecyclerView(mRecycler);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mRecycler = null;
+        mHeaderImage = null;
+        mCollapsingToolbar = null;
+    }
+
     private void bindView(View view) {
         mRecycler = (RecyclerView) view.findViewById(R.id.articles_recyclerview);
         mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
