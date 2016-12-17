@@ -5,24 +5,23 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-
+import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
-import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
-import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
-import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
 
 import static android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
-import static android.widget.Toast.makeText;
+import static android.support.v4.view.GravityCompat.START;
 import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.makeText;
 
 /**
  * Represents the {@link AppCompatActivity} that hosts all the various Fragments and the Navigation
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         transaction.commit();
     }
     public void openDrawer(){
-        drawerLayout.openDrawer(GravityCompat.START);
+        drawerLayout.openDrawer(START);
     }
 
     @Override

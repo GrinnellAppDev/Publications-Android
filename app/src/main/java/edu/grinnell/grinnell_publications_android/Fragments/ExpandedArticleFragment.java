@@ -21,6 +21,9 @@ import android.widget.TextView;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
+import static android.support.design.widget.Snackbar.make;
+import static android.support.v4.content.ContextCompat.getDrawable;
+
 
 /**
  * Fragment that displays the expanded article content.
@@ -65,7 +68,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(){
-        mArticleToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
+        mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
         loadPlaceHolderData();
         setOnClickListeners();
 
@@ -83,14 +86,14 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
+                make(v, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
 
     /** Fills fragment with placeholder content */
     private void loadPlaceHolderData(){
-        Drawable defaultImage = ContextCompat.getDrawable(getContext(), R.drawable.grinnell_gates);
+        Drawable defaultImage = getDrawable(getContext(), R.drawable.grinnell_gates);
         setHeaderText("Sample title");
         setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.");
         setHeaderImage(defaultImage);
