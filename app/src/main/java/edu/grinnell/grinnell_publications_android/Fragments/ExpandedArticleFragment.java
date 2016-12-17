@@ -78,15 +78,15 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     public void setOnClickListeners() {
         mArticleToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 getFragmentManager().popBackStack();
             }
         });
 
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                make(v, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                make(view, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

@@ -76,15 +76,15 @@ public class ProfileFragment extends Fragment implements UserInterface {
     private List<RealmStory> retrieveStories() {
         // TODO: implement with network
         // for now, dummy data
-        RealmPublication snb = new RealmPublication("S&B", 0, null, null, null);
-        RealmList<RealmPublication> pubs = new RealmList<>();
-        pubs.add(snb);
-        RealmAuthor richard = new RealmAuthor("Rick and Morty", null, pubs, null);
-        RealmList<RealmAuthor> auts = new RealmList<>();
-        auts.add(richard);
+        RealmPublication sAndB = new RealmPublication("S&B", 0, null, null, null);
+        RealmList<RealmPublication> publications = new RealmList<>();
+        publications.add(sAndB);
+        RealmAuthor rickAndMorty = new RealmAuthor("Rick and Morty", null, publications, null);
+        RealmList<RealmAuthor> authors = new RealmList<>();
+        authors.add(rickAndMorty);
 
         List<RealmStory> stories = new ArrayList<>();
-        stories.add(new RealmStory(snb, "December 4, 2016", "December 4, 2016", auts, null,
+        stories.add(new RealmStory(sAndB, "December 4, 2016", "December 4, 2016", authors, null,
                                    "people performed multiple songs!", "Songs were performed",
                                    "There Was A Performance and It was Great", null));
 
