@@ -55,22 +55,26 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
-        mHeaderImage = (ImageView) expandedArticleFragment.findViewById(R.id.header_image);
-        mCollapsingToolbar = (CollapsingToolbarLayout) expandedArticleFragment.findViewById(R.id.collapsing_toolbar);
-        mFavoriteButton = (FloatingActionButton) expandedArticleFragment.findViewById(R.id.floating_action_button);
-        mArticleContent = (TextView) expandedArticleFragment.findViewById(R.id.article_content);
-        mArticleToolbar = (Toolbar) expandedArticleFragment.findViewById(R.id.article_toolbar);
 
-        initializeUI();
+        initializeUI(expandedArticleFragment);
         return expandedArticleFragment;
     }
 
     @Override
-    public void initializeUI(){
+    public void initializeUI(View view){
         mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
+        bindView(view);
         loadPlaceHolderData();
         setOnClickListeners();
 
+    }
+
+    private void bindView(View view) {
+        mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
+        mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        mFavoriteButton = (FloatingActionButton) view.findViewById(R.id.floating_action_button);
+        mArticleContent = (TextView) view.findViewById(R.id.article_content);
+        mArticleToolbar = (Toolbar) view.findViewById(R.id.article_toolbar);
     }
 
 

@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
@@ -39,15 +40,13 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navigationView = (NavigationView)findViewById(R.id.navigation_view);
-        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-
-        initializeUI();
+        initializeUI(findViewById(android.R.id.content));
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
+        bindView();
+
         setSupportActionBar(toolbar);
 
         // We are doing this so we always start the app in the News Feed
@@ -55,6 +54,12 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         replaceFrameWithFragment(newsfeed);
 
         buildNavDrawer();
+    }
+
+    private void bindView() {
+        navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
     }
 
     private void buildNavDrawer() {

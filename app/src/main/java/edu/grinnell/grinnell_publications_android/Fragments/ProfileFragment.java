@@ -45,18 +45,23 @@ public class ProfileFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        mRecycler = (RecyclerView) view.findViewById(R.id.articles_recyclerview);
-        mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
-        mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
-        initializeUI();
+        initializeUI(view);
         return view;
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
+        bindView(view);
+
         loadPlaceHolderData();
 
         initRecyclerView(mRecycler);
+    }
+
+    private void bindView(View view) {
+        mRecycler = (RecyclerView) view.findViewById(R.id.articles_recyclerview);
+        mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
+        mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
     }
 
     private void loadPlaceHolderData(){

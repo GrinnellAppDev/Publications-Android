@@ -40,10 +40,10 @@ public class PublicationsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        initializeUI();
         setHasOptionsMenu(true);
 
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
+        initializeUI(view);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
         configureViews();
 
@@ -58,7 +58,7 @@ public class PublicationsFragment extends Fragment
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
 
     }
 
