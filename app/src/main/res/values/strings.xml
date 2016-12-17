@@ -23,4 +23,8 @@
 
 
     <string name="publication_logo">Publication Logo</string>
+
+    <string name="article_sample_favorited">Sample article added to Favorites</string>
+    <string name="article_sample_title">Sample title</string>
+    <string name="article_sample_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.</string>
 </resources>

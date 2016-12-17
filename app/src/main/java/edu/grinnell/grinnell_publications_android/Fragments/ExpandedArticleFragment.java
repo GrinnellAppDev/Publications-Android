@@ -9,7 +9,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -86,7 +85,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                make(view, "Sample article added to Favorites", Snackbar.LENGTH_SHORT).show();
+                make(view, getText(R.string.article_sample_favorited), Snackbar.LENGTH_SHORT).show();
             }
         });
     }
@@ -94,8 +93,8 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     /** Fills fragment with placeholder content */
     private void loadPlaceHolderData(){
         Drawable defaultImage = getDrawable(getContext(), R.drawable.grinnell_gates);
-        setHeaderText("Sample title");
-        setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.");
+        setHeaderText(getText(R.string.article_sample_title).toString());
+        setContentText(getText(R.string.article_sample_content).toString());
         setHeaderImage(defaultImage);
     }
 
