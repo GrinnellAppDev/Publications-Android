@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -26,7 +25,4 @@
     <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentTransitions">true</item>
     </style>
-
-
-
 </resources>
