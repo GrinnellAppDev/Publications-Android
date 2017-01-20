@@ -1,13 +1,13 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
 import android.support.v7.widget.Toolbar;
@@ -22,11 +22,12 @@ import edu.grinnell.grinnell_publications_android.R;
 
 import static android.support.design.widget.Snackbar.make;
 import static android.support.v4.content.ContextCompat.getDrawable;
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 
 /**
- * Fragment that displays the expanded article content.
- * Fragment allows for favoriting of the article.
+ * Fragment displays articles and allows users to mark article as favorited.
+ * @author Yazan Kittaneh
  */
 
 public class ExpandedArticleFragment extends Fragment implements UserInterface {
@@ -37,6 +38,9 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     private TextView mArticleContent;
     private Toolbar mArticleToolbar;
 
+    private boolean isFavorited = false;
+    private int colorFilter;
+    private String snackBarMessage;
 
     public ExpandedArticleFragment() {}
 
@@ -55,7 +59,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
-
         initializeUI(expandedArticleFragment);
         return expandedArticleFragment;
     }
@@ -66,7 +69,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         bindView(view);
         loadPlaceHolderData();
         setOnClickListeners();
-
     }
 
     @Override
@@ -86,7 +88,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mArticleContent = (TextView) view.findViewById(R.id.article_content);
         mArticleToolbar = (Toolbar) view.findViewById(R.id.article_toolbar);
     }
-
 
     public void setOnClickListeners() {
         mArticleToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -110,6 +111,16 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         setHeaderText(getText(R.string.article_sample_title).toString());
         setContentText(getText(R.string.article_sample_content).toString());
         setHeaderImage(defaultImage);
+    }
+
+    @Override
+    public void onDestroyView(){
+        mHeaderImage = null;
+        mCollapsingToolbar = null;
+        mFavoriteButton = null;
+        mArticleContent = null;
+        mArticleToolbar = null;
+        super.onDestroyView();
     }
 
     /** Gets image from Header**/
