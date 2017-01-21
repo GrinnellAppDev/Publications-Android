@@ -100,7 +100,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                make(view, getText(R.string.article_sample_favorited), Snackbar.LENGTH_SHORT).show();
+                make(view, getText(R.string.article_sample_favorited), LENGTH_SHORT).show();
             }
         });
     }
@@ -111,16 +111,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         setHeaderText(getText(R.string.article_sample_title).toString());
         setContentText(getText(R.string.article_sample_content).toString());
         setHeaderImage(defaultImage);
-    }
-
-    @Override
-    public void onDestroyView(){
-        mHeaderImage = null;
-        mCollapsingToolbar = null;
-        mFavoriteButton = null;
-        mArticleContent = null;
-        mArticleToolbar = null;
-        super.onDestroyView();
     }
 
     /** Gets image from Header**/
