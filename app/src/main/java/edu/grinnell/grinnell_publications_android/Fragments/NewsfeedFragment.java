@@ -24,12 +24,12 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
-        initializeUI();
+        initializeUI(newsfeedFragment);
         return newsfeedFragment;
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
     }
 
 

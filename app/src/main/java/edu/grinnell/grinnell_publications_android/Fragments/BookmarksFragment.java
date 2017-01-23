@@ -24,12 +24,13 @@ public class BookmarksFragment extends Fragment implements UserInterface {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        initializeUI();
-        return inflater.inflate(R.layout.fragment_bookmark, container, false);
+        View view = inflater.inflate(R.layout.fragment_bookmark, container, false);
+        initializeUI(view);
+        return view;
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
 
     }
 }

@@ -8,9 +8,8 @@ import android.os.Bundle;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +20,8 @@ import android.widget.TextView;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
+import static android.support.design.widget.Snackbar.make;
+import static android.support.v4.content.ContextCompat.getDrawable;
 import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 
@@ -58,69 +59,58 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View expandedArticleFragment = inflater.inflate(R.layout.fragment_extended_article, container, false);
-        setViewBindings(expandedArticleFragment);
-        initializeUI();
+        initializeUI(expandedArticleFragment);
         return expandedArticleFragment;
     }
 
     @Override
-    public void initializeUI(){
-        mArticleToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_action_back));
+    public void initializeUI(View view){
+        mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
+        bindView(view);
         loadPlaceHolderData();
         setOnClickListeners();
     }
 
-    public void setViewBindings(View v){
-        mHeaderImage = (ImageView) v.findViewById(R.id.header_image);
-        mCollapsingToolbar = (CollapsingToolbarLayout) v.findViewById(R.id.collapsing_toolbar);
-        mFavoriteButton = (FloatingActionButton) v.findViewById(R.id.floating_action_button);
-        mArticleContent = (TextView) v.findViewById(R.id.article_content);
-        mArticleToolbar = (Toolbar) v.findViewById(R.id.article_toolbar);
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mHeaderImage = null;
+        mCollapsingToolbar = null;
+        mFavoriteButton = null;
+        mArticleContent = null;
+        mArticleToolbar = null;
+    }
+
+    private void bindView(View view) {
+        mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
+        mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        mFavoriteButton = (FloatingActionButton) view.findViewById(R.id.floating_action_button);
+        mArticleContent = (TextView) view.findViewById(R.id.article_content);
+        mArticleToolbar = (Toolbar) view.findViewById(R.id.article_toolbar);
     }
 
     public void setOnClickListeners() {
         mArticleToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 getFragmentManager().popBackStack();
             }
         });
 
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //check if article is already in favorites
-                if(isFavorited) {
-                    isFavorited = false;
-                    colorFilter = ContextCompat.getColor(getContext(), R.color.white);
-                    snackBarMessage = getContext().getString(R.string.article_remove_favorite_snackbar);
-                } else {
-                    isFavorited = true;
-                    colorFilter = ContextCompat.getColor(getContext(), R.color.scarlet_red);
-                    snackBarMessage = getContext().getString(R.string.article_favorite_snackbar);
-                }
-                mFavoriteButton.setColorFilter(colorFilter, PorterDuff.Mode.MULTIPLY);
-                Snackbar.make(v, snackBarMessage, LENGTH_SHORT).show();
+            public void onClick(View view) {
+                make(view, getText(R.string.article_sample_favorited), LENGTH_SHORT).show();
             }
         });
     }
 
     /** Fills fragment with placeholder content */
     private void loadPlaceHolderData(){
-        Drawable defaultImage = ContextCompat.getDrawable(getContext(), R.drawable.grinnell_gates);
-        setHeaderText(getContext().getString(R.string.article_title));
-        setContentText(getContext().getString(R.string.article_content));
+        Drawable defaultImage = getDrawable(getContext(), R.drawable.grinnell_gates);
+        setHeaderText(getText(R.string.article_sample_title).toString());
+        setContentText(getText(R.string.article_sample_content).toString());
         setHeaderImage(defaultImage);
-    }
-
-    @Override
-    public void onDestroyView(){
-        mHeaderImage = null;
-        mCollapsingToolbar = null;
-        mFavoriteButton = null;
-        mArticleContent = null;
-        mArticleToolbar = null;
-        super.onDestroyView();
     }
 
     /** Gets image from Header**/

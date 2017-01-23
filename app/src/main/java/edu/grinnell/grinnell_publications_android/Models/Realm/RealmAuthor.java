@@ -21,10 +21,16 @@ public class RealmAuthor extends RealmObject implements Author {
     private RealmList<RealmSeries> series;
 
     /* Default constructor needed for Realm*/
-    public RealmAuthor(){
+    public RealmAuthor(){}
 
-
+    public RealmAuthor(String fullName, RealmAuthorContact authorContactInfo,
+                       RealmList<RealmPublication> publications, RealmList<RealmSeries> series) {
+        this.fullName = fullName;
+        this.authorContactInfo = authorContactInfo;
+        this.publications = publications;
+        this.series = series;
     }
+
     /** Setters */
     public void setFullName(String fullName){ this.fullName = fullName;}
     public void setAuthorContactInfo(RealmAuthorContact authorContact){this.authorContactInfo = authorContact;}

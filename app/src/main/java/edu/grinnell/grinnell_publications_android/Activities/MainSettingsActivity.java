@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
@@ -21,11 +22,11 @@ public class MainSettingsActivity extends AppCompatActivity implements UserInter
 
         toolbar = (Toolbar)findViewById(R.id.settings_toolbar);
 
-        initializeUI();
+        initializeUI(findViewById(android.R.id.content));
     }
 
     @Override
-    public void initializeUI() {
+    public void initializeUI(View view) {
         setSupportActionBar(toolbar);
         if (toolbar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
