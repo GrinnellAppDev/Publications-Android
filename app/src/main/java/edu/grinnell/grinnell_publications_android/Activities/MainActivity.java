@@ -31,9 +31,9 @@ import static android.widget.Toast.makeText;
  */
 public class MainActivity extends AppCompatActivity implements UserInterface {
 
-    private NavigationView navigationView;
-    private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
+    private NavigationView mNavigationView;
+    private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     public void initializeUI(View view) {
         bindView();
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
         // We are doing this so we always start the app in the News Feed
         NewsfeedFragment newsfeed = new NewsfeedFragment();
@@ -57,13 +57,13 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     private void bindView() {
-        navigationView = (NavigationView)findViewById(R.id.navigation_view);
-        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
+        mToolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
     }
 
     private void buildNavDrawer() {
-        navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
+        mNavigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 if (menuItem.isChecked()) {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                     menuItem.setChecked(false);
                 }
 
-                drawerLayout.closeDrawers();
+                mDrawerLayout.closeDrawers();
 
                 switchFragments(menuItem);
 
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
 
     private void setUpToolbarToggle() {
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this,
-                drawerLayout,
-                toolbar,
+                mDrawerLayout,
+                mToolbar,
                 R.string.drawer_open,
                 R.string.drawer_close);
-        drawerLayout.addDrawerListener(drawerToggle);
+        mDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
 
@@ -125,15 +125,16 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();
     }
-    public void openDrawer(){
-        drawerLayout.openDrawer(START);
+
+    private void openDrawer(){
+        mDrawerLayout.openDrawer(START);
     }
 
     @Override
     protected void onDestroy() {
-        toolbar = null;
-        drawerLayout = null;
-        navigationView = null;
+        mToolbar = null;
+        mDrawerLayout = null;
+        mNavigationView = null;
         super.onDestroy();
     }
 }
