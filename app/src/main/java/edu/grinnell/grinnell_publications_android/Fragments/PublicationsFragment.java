@@ -26,8 +26,6 @@ import edu.grinnell.grinnell_publications_android.R;
 public class PublicationsFragment extends Fragment
         implements UserInterface, SearchView.OnQueryTextListener {
 
-    public static final int DEFAULT_POSITION = 0;
-
     private RecyclerView mRecyclerView;
     private List<RealmPublication> mPublications;
     private LinearLayoutManager mLayoutManager;
@@ -43,7 +41,6 @@ public class PublicationsFragment extends Fragment
         setHasOptionsMenu(true);
 
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
-        initializeUI(view);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
         configureViews();
 
@@ -86,11 +83,6 @@ public class PublicationsFragment extends Fragment
 
     @Override
     public boolean onQueryTextChange(String query) {
-        if (query.length() <= 0) {
-            //TODO: Set default recyclerview
-        }
-        //TODO: use recyclerview.adapter to filter by query
-        //      apply filtered recyclerview.adapter to recyclerview
         return true;
     }
 }

@@ -31,7 +31,7 @@ import io.realm.RealmList;
  * @author Larry Boateng Asante
  */
 public class ProfileFragment extends Fragment implements UserInterface {
-    private RecyclerView mRecycler;
+    private RecyclerView mRecyclerView;
     private ImageView mHeaderImage;
     private CollapsingToolbarLayout mCollapsingToolbar;
 
@@ -52,22 +52,20 @@ public class ProfileFragment extends Fragment implements UserInterface {
     @Override
     public void initializeUI(View view) {
         bindView(view);
-
         loadPlaceHolderData();
-
-        initRecyclerView(mRecycler);
+        initRecyclerView(mRecyclerView);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mRecycler = null;
+        mRecyclerView = null;
         mHeaderImage = null;
         mCollapsingToolbar = null;
     }
 
     private void bindView(View view) {
-        mRecycler = (RecyclerView) view.findViewById(R.id.articles_recyclerview);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.articles_recyclerview);
         mHeaderImage = (ImageView) view.findViewById(R.id.header_image);
         mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
     }
@@ -79,11 +77,11 @@ public class ProfileFragment extends Fragment implements UserInterface {
         setHeaderImage(defaultImage);
     }
 
-    private void initRecyclerView(RecyclerView rv) {
-        RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
-        rv.setLayoutManager(lm);
+    private void initRecyclerView(RecyclerView recyclerView) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
 
-        rv.setAdapter(new ArticleAdapter(retrieveStories()));
+        recyclerView.setAdapter(new ArticleAdapter(retrieveStories()));
     }
 
     private List<RealmStory> retrieveStories() {
@@ -104,7 +102,7 @@ public class ProfileFragment extends Fragment implements UserInterface {
         return stories;
     }
 
-    public Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
+    private Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
 
     private void setHeaderImage(Drawable image) {
         this.mHeaderImage.setImageDrawable(image);
