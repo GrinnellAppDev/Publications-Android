@@ -12,22 +12,15 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * Created by Mattori on 12/3/16.
+ * Adapter to bridge Article data and the custom Article view
+ * @author Mattori Birnbaum
  */
 
 public class ArticleAdapter extends RecyclerView.Adapter {
-    private List<RealmStory> stories;
-
-    public static class ArticleViewHolder extends RecyclerView.ViewHolder {
-        public CardView card;
-
-        public ArticleViewHolder(View view) {
-            super(view);
-        }
-    }
+    private List<RealmStory> mStories;
 
     public ArticleAdapter(List<RealmStory> stories) {
-        this.stories = stories;
+        this.mStories = stories;
     }
 
     @Override
@@ -40,11 +33,23 @@ public class ArticleAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        RealmStory story = stories.get(position);
+        RealmStory story = mStories.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return stories.size();
+        return mStories.size();
+    }
+
+    /**
+     * View holder for custom article
+     * @author Mattori Birnbaum
+     */
+    public static class ArticleViewHolder extends RecyclerView.ViewHolder {
+        public CardView mCard;
+
+        public ArticleViewHolder(View view) {
+            super(view);
+        }
     }
 }
