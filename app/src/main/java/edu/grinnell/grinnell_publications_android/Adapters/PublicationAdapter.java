@@ -70,6 +70,10 @@ public class PublicationAdapter
         });
     }
 
+    /**
+     * ViewHolder for single {@link RealmPublication}
+     * @author Matt Murphy & Larry Asante
+     */
     static class PublicationsViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mPublicationLogo;
