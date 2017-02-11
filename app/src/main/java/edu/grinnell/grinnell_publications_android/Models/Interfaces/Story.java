@@ -103,6 +103,9 @@ public interface Story {
      */
     String getIssue();
 
+    /**
+     * @return the id of the article
+     */
     int getArticleId();
 
 }

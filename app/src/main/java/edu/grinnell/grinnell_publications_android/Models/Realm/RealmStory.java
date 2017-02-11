@@ -13,7 +13,6 @@ import io.realm.RealmObject;
  */
 public class RealmStory extends RealmObject implements Story{
     private String publication;
-    private String publicationId;
     private String datePublished;
     private String lastUpdated;
     private RealmList<RealmAuthor> author;
@@ -57,23 +56,34 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     /** Setters */
-    public void setPublication(String publication){
-        this.publication = publication;
-    }
-    public void setPublicationDate(String publicationDate){
-        this.datePublished = publicationDate;
-    }
-    public void setLastUpdated(String lastUpdated){
-        this.lastUpdated = lastUpdated;
-    }
-    public void setReactions(RealmReactions realmReactions){
-        this.reactions = realmReactions;
-    }
-    public void setFullText(String fullText){this.content = fullText;}
-    public void setBlurb(String blurb){this.brief = blurb;}
-    public void setStoryTitle(String title){this.title = title;}
-    public void setThumbnailUrl(String thumbnailUrl){this.thumbnailUrl = thumbnailUrl;}
-    public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
+    public void setPublication(String publication) {this.publication = publication;}
+
+    public void setDatePublished(String datePublished) {this.datePublished = datePublished;}
+
+    public void setLastUpdated(String lastUpdated) {this.lastUpdated = lastUpdated;}
+
+    public void setAuthor(RealmList<RealmAuthor> author) {this.author = author;}
+
+    public void setReactions(RealmReactions reactions) {this.reactions = reactions;}
+
+    public void setContent(String content) {this.content = content;}
+
+    public void setBrief(String brief) {this.brief = brief;}
+
+    public void setTitle(String title) {this.title = title;}
+
+    public void setThumbnailUrl(String thumbnailUrl) {this.thumbnailUrl = thumbnailUrl;}
+
+    public void setWebUrl(String webUrl) {this.webUrl = webUrl;}
+
+    public void setSeries(String series) {this.series = series;}
+
+    public void setTags(String tags) {this.tags = tags;}
+
+    public void setIssue(String issue) {this.issue = issue;}
+
+    public void setArticleId(int articleId) {this.articleId = articleId;}
+
     /** Getters */
     @Override
     public String getPublication() {
@@ -124,7 +134,7 @@ public class RealmStory extends RealmObject implements Story{
 
     @Override
     public String tags() { return this.tags; }
-    
+
     @Override
     public String issue() { return this.issue; }
 
