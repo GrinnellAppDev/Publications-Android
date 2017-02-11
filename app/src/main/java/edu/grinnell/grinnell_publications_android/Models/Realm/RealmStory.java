@@ -25,7 +25,7 @@ public class RealmStory extends RealmObject implements Story{
     private String series;
     private String tags;
     private String issue;
-    private String articleId;
+    private int articleId;
 
 
 
@@ -38,7 +38,7 @@ public class RealmStory extends RealmObject implements Story{
     public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
                       RealmList<RealmAuthor> author, RealmReactions reactions, String content,
                       String brief, String title, String thumbnailUrl, String webUrl, String series,
-                      String tags, String issue, String articleId) {
+                      String tags, String issue, int articleId) {
         this.publication = publication;
         this.datePublished = publicationDate;
         this.lastUpdated = lastUpdated;
@@ -123,5 +123,5 @@ public class RealmStory extends RealmObject implements Story{
     public String getSeries() { return this.series; }
 
     @Override
-    public String getArticleId() { return this.articleId; }
+    public int getArticleId() { return this.articleId; }
 }

@@ -93,6 +93,6 @@ public interface Story {
      * @return the id of the article
      */
 
-    String getArticleId();
+    int getArticleId();
 
 }
