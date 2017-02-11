@@ -58,12 +58,12 @@ public interface Story {
     /**
      * @return the text body of the story
      */
-    String getFullText();
+    String getContent();
 
     /**
      * @return the summary text  of the story
      */
-    String getBlurb();
+    String getBrief();
 
     /**
      * @return the title of the story
@@ -77,5 +77,22 @@ public interface Story {
      */
 
     String getThumbnailUrl();
+
+    /**
+     * @return the web url of the story
+     */
+
+    String getWebUrl();
+
+    /**
+     * @return the series the article is in
+     */
+    String getSeries();
+
+    /**
+     * @return the id of the article
+     */
+
+    String getArticleId();
 
 }
