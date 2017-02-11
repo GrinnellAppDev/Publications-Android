@@ -19,9 +19,9 @@ public interface Story {
      * <p>If the story belongs to a single @code{publication} then the size of the list returned is
      * 1.</p>
      *
-     * @return the publication the story belongs to.
+     * @return the publication id the story belongs to.
      */
-    Publication getPublication();
+    String getPublication();
 
     /**
      * Returns the date that the story was published.
@@ -92,6 +92,16 @@ public interface Story {
     /**
      * @return the id of the article
      */
+
+    /**
+     * @return the tag of the article
+     */
+    String getTags();
+
+    /**
+     * @return the issue the story belongs to
+     */
+    String getIssue();
 
     int getArticleId();
 

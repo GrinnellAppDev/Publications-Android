@@ -12,7 +12,8 @@ import io.realm.RealmObject;
  * @see RealmObject
  */
 public class RealmStory extends RealmObject implements Story{
-    private RealmPublication publication;
+    private String publication;
+    private String publicationId;
     private String datePublished;
     private String lastUpdated;
     private RealmList<RealmAuthor> author;
@@ -35,7 +36,7 @@ public class RealmStory extends RealmObject implements Story{
     /* Default constructor for Realm */
     public RealmStory(){}
 
-    public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
+    public RealmStory(String publication, String publicationDate, String lastUpdated,
                       RealmList<RealmAuthor> author, RealmReactions reactions, String content,
                       String brief, String title, String thumbnailUrl, String webUrl, String series,
                       String tags, String issue, int articleId) {
@@ -56,13 +57,12 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     /** Setters */
-    public void setPublication(RealmPublication publication){
+    public void setPublication(String publication){
         this.publication = publication;
     }
     public void setPublicationDate(String publicationDate){
         this.datePublished = publicationDate;
     }
-
     public void setLastUpdated(String lastUpdated){
         this.lastUpdated = lastUpdated;
     }
@@ -76,8 +76,8 @@ public class RealmStory extends RealmObject implements Story{
     public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
     /** Getters */
     @Override
-    public RealmPublication getPublication() {
-        return  this.publication;
+    public String getPublication() {
+        return this.publication;
     }
 
     @Override
@@ -121,6 +121,12 @@ public class RealmStory extends RealmObject implements Story{
 
     @Override
     public String getSeries() { return this.series; }
+
+    @Override
+    public String tags() { return this.tags; }
+    
+    @Override
+    public String issue() { return this.issue; }
 
     @Override
     public int getArticleId() { return this.articleId; }
