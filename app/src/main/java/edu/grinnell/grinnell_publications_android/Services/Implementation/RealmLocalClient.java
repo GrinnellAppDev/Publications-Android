@@ -6,7 +6,10 @@ import java.util.List;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Implements a local client for on device persistence using Realm.
@@ -34,12 +37,28 @@ public class RealmLocalClient implements LocalClientAPI {
 
     @Override
     public void savePublications(List<Publication> publications) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
 
+        for(int i = 0; i < publications.size(); i++) {
+            realm.copyToRealmOrUpdate((RealmPublication)publications.get(i));
+        }
+        realm.commitTransaction();
     }
 
     @Override
     public void savePublication(Publication publication) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
 
+        RealmResults<RealmPublication> pubList = realm.where(RealmPublication.class)
+                .equalTo("PublicationId", publication.getPublicationId())
+                .findAll();
+
+        if(pubList.size() == 0) {
+            realm.copyToRealm((RealmPublication) publication);
+        }
+        realm.commitTransaction();
     }
 
     @Override

@@ -12,77 +12,97 @@ import io.realm.RealmObject;
  * @see RealmObject
  */
 public class RealmStory extends RealmObject implements Story{
-    private String publication;
     private String datePublished;
-    private String lastUpdated;
-    private RealmList<RealmAuthor> author;
-    private RealmReactions reactions;
-    private String content;
     private String brief;
-    private String title;
-    private String thumbnailUrl;
-    private String webUrl;
-    private String series;
-    private String tags;
-    private String issue;
+    private String headerImage;
+    private String publication;
+    private String dateEdited;
     private int articleId;
-
-
-
-
+    private String title;
+    private String content;
+    private RealmList authors;
 
 
     /* Default constructor for Realm */
     public RealmStory(){}
 
-    public RealmStory(String publication, String publicationDate, String lastUpdated,
-                      RealmList<RealmAuthor> author, RealmReactions reactions, String content,
-                      String brief, String title, String thumbnailUrl, String webUrl, String series,
-                      String tags, String issue, int articleId) {
-        this.publication = publication;
-        this.datePublished = publicationDate;
-        this.lastUpdated = lastUpdated;
-        this.author = author;
-        this.reactions = reactions;
-        this.content = content;
+    public RealmStory(String datePublished, String brief, String headerImage, String publication,
+                      String dateEdited, int articleId, String title, String content,
+                      RealmList authors) {
+        this.datePublished = datePublished;
         this.brief = brief;
-        this.title = title;
-        this.thumbnailUrl = thumbnailUrl;
-        this.webUrl = webUrl;
-        this.series = series;
-        this.tags = tags;
-        this.issue = issue;
+        this.headerImage = headerImage;
+        this.publication = publication;
+        this.dateEdited = dateEdited;
         this.articleId = articleId;
+        this.title = title;
+        this.content = content;
+        this.authors = authors;
     }
 
     /** Setters */
-    public void setPublication(String publication) {this.publication = publication;}
+    public void setPublication(String publication) {
+        if (publication.isEmpty() || publication == null) {
+            return;
+        }
+        this.publication = publication;
+    }
 
-    public void setDatePublished(String datePublished) {this.datePublished = datePublished;}
+    public void setDatePublished(String datePublished) {
+        if (datePublished.isEmpty() || datePublished == null) {
+            return;
+        }
+        this.datePublished = datePublished;
+    }
 
-    public void setLastUpdated(String lastUpdated) {this.lastUpdated = lastUpdated;}
+    public void setDateEdited(String dateEdited) {
+        if (dateEdited.isEmpty() || dateEdited == null) {
+            return;
+        }
+        this.dateEdited = dateEdited;
+    }
 
-    public void setAuthor(RealmList<RealmAuthor> author) {this.author = author;}
+    public void setAuthors(RealmList<RealmAuthor> authors) {
+        if (authors.isEmpty() || authors == null) {
+            return;
+        }
+        this.authors = authors;
+    }
 
-    public void setReactions(RealmReactions reactions) {this.reactions = reactions;}
+    public void setContent(String content) {
+        if (content.isEmpty() || content == null) {
+            return;
+        }
+        this.content = content;
+    }
 
-    public void setContent(String content) {this.content = content;}
+    public void setBrief(String brief) {
+        if (brief.isEmpty() || brief == null) {
+            return;
+        }
+        this.brief = brief;
+    }
 
-    public void setBrief(String brief) {this.brief = brief;}
+    public void setTitle(String title) {
+        if(title.isEmpty() || title == null) {
+            return;
+        }
+        this.title = title;
+    }
 
-    public void setTitle(String title) {this.title = title;}
+    public void setArticleId(int articleId) {
+        if (articleId == null) {
+            return;
+        }
+        this.articleId = articleId;
+    }
 
-    public void setThumbnailUrl(String thumbnailUrl) {this.thumbnailUrl = thumbnailUrl;}
-
-    public void setWebUrl(String webUrl) {this.webUrl = webUrl;}
-
-    public void setSeries(String series) {this.series = series;}
-
-    public void setTags(String tags) {this.tags = tags;}
-
-    public void setIssue(String issue) {this.issue = issue;}
-
-    public void setArticleId(int articleId) {this.articleId = articleId;}
+    public void setHeaderImage(String headerImage) {
+        if (headerImage.isEmpty() || headerImage == null) {
+            return;
+        }
+        this.headerImage = headerImage;
+    }
 
     /** Getters */
     @Override
@@ -91,21 +111,16 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     @Override
-    public String getPublicationDate() {
+    public String getDatePublished() {
         return this.datePublished;
     }
 
     @Override
-    public String getLastUpdated(){ return this.lastUpdated;}
+    public String getDateEdited() { return this.dateEdited; }
 
     @Override
-    public RealmList<RealmAuthor> getAuthor() {
-        return  this.author;
-    }
-
-    @Override
-    public RealmReactions getReactions() {
-        return this.reactions;
+    public RealmList<RealmAuthor> getAuthors() {
+        return  this.authors;
     }
 
     @Override
@@ -122,22 +137,8 @@ public class RealmStory extends RealmObject implements Story{
     public String getTitle() { return this.title; }
 
     @Override
-    public String getThumbnailUrl() {
-        return this.thumbnailUrl;
-    }
-
-    @Override
-    public String getWebUrl() { return this.webUrl; }
-
-    @Override
-    public String getSeries() { return this.series; }
-
-    @Override
-    public String tags() { return this.tags; }
-
-    @Override
-    public String issue() { return this.issue; }
-
-    @Override
     public int getArticleId() { return this.articleId; }
+
+    @Override
+    public String getHeaderImage() { return this.headerImage;}
 }

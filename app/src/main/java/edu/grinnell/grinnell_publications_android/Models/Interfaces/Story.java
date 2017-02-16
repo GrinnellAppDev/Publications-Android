@@ -30,16 +30,7 @@ public interface Story {
      *
      * @return the date that the story was published.
      */
-    String getPublicationDate();
-
-    /**
-     * Returns the date on which the story was last updated.
-     *
-     *  <p>Note that by default the date is ISO8601 formatted @code{yyyy-MM-dd'T'HH:mm:ssZ}. </p>
-     *
-     * @return the data that the story was lastUpdated
-     */
-    String getLastUpdated();
+    String getDatePublished();
 
     /**
      * Returns all the @code{author}s of the story.
@@ -48,12 +39,7 @@ public interface Story {
      *
      * @return  all the @code{author}s of the story.
      */
-    AbstractList<? extends Author> getAuthor();
-
-    /**
-     * @return the reactions that have been made towards this article
-     */
-    Reactions getReactions();
+    AbstractList<? extends Author> getAuthors();
 
     /**
      * @return the text body of the story
@@ -61,7 +47,7 @@ public interface Story {
     String getContent();
 
     /**
-     * @return the summary text  of the story
+     * @return the summary text of the story
      */
     String getBrief();
 
@@ -71,41 +57,21 @@ public interface Story {
 
     String getTitle();
 
-
-    /**
-     * @return the thumbnail image url for the story
-     */
-
-    String getThumbnailUrl();
-
-    /**
-     * @return the web url of the story
-     */
-
-    String getWebUrl();
-
-    /**
-     * @return the series the article is in
-     */
-    String getSeries();
-
-    /**
-     * @return the id of the article
-     */
-
-    /**
-     * @return the tag of the article
-     */
-    String getTags();
-
-    /**
-     * @return the issue the story belongs to
-     */
-    String getIssue();
-
     /**
      * @return the id of the article
      */
     int getArticleId();
+
+    /**
+     * @return the header image
+     */
+    String getHeaderImage();
+
+    /**
+     * Returns the date on which the story was last edited.
+     * *
+     * @return the data that the story was edited
+     */
+    String getDateEdited();
 
 }
