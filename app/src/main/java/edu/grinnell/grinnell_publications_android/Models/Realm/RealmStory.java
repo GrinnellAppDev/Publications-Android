@@ -91,7 +91,7 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     public void setArticleId(int articleId) {
-        if (articleId == null) {
+        if (articleId == 0) {
             return;
         }
         this.articleId = articleId;
