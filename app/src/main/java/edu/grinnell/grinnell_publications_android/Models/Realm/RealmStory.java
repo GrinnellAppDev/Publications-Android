@@ -133,10 +133,10 @@ public class RealmStory extends RealmObject implements Story{
     public String getSeries() { return this.series; }
 
     @Override
-    public String tags() { return this.tags; }
+    public String getTags() { return this.tags; }
 
     @Override
-    public String issue() { return this.issue; }
+    public String getIssue() { return this.issue; }
 
     @Override
     public int getArticleId() { return this.articleId; }
