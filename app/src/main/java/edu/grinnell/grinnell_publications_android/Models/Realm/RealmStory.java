@@ -17,7 +17,7 @@ public class RealmStory extends RealmObject implements Story{
     private String headerImage;
     private String publication;
     private String dateEdited;
-    private int articleId;
+    private String articleId;
     private String title;
     private String content;
     private RealmList<RealmAuthor> authors;
@@ -27,7 +27,7 @@ public class RealmStory extends RealmObject implements Story{
     public RealmStory(){}
 
     public RealmStory(String datePublished, String brief, String headerImage, String publication,
-                      String dateEdited, int articleId, String title, String content,
+                      String dateEdited, String articleId, String title, String content,
                       RealmList authors) {
         this.datePublished = datePublished;
         this.brief = brief;
@@ -90,8 +90,8 @@ public class RealmStory extends RealmObject implements Story{
         this.title = title;
     }
 
-    public void setArticleId(int articleId) {
-        if (articleId == 0) {
+    public void setArticleId(String articleId) { //changed from int to string
+        if (articleId == "0") {
             return;
         }
         this.articleId = articleId;
@@ -137,7 +137,7 @@ public class RealmStory extends RealmObject implements Story{
     public String getTitle() { return this.title; }
 
     @Override
-    public int getArticleId() { return this.articleId; }
+    public String getArticleId() { return this.articleId; }
 
     @Override
     public String getHeaderImage() { return this.headerImage;}

@@ -60,7 +60,7 @@ public interface Story {
     /**
      * @return the id of the article
      */
-    int getArticleId();
+    String getArticleId();
 
     /**
      * @return the header image
