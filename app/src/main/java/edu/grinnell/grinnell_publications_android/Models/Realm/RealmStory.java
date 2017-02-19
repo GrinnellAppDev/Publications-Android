@@ -20,7 +20,7 @@ public class RealmStory extends RealmObject implements Story{
     private int articleId;
     private String title;
     private String content;
-    private RealmList authors;
+    private RealmList<RealmAuthor> authors;
 
 
     /* Default constructor for Realm */
