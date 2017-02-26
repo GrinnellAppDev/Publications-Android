@@ -67,7 +67,6 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
       public void onResponse(Call<List<JPublication>> call, Response<List<JPublication>> response) {
         storeRealmPublication(response.body());
       }
-
       public void onFailure(Call<List<JPublication>> call, Throwable t) {
         Toast.makeText(getActivity(), "Failed to get all publication!", Toast.LENGTH_LONG).show();
       }
@@ -100,9 +99,8 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   }
 
   private void storeRealmStory(RealmStory realmStory) {
-    // TODO: store realm story into realm objects
-    //>get & return list of publications from realm
-    //>update realm publication with story
+    // TODO: store realm story into realm objects, will be implemented after pulling from update
+    // Update realm publication with story
   }
 
   private void storeRealmPublication(List<JPublication> list) {
