@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import edu.grinnell.grinnell_publications_android.CONSTANTS;
+import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -55,7 +55,7 @@ public class RealmLocalClient implements LocalClientAPI {
     Creates a list of realm publications that match with the user input.
      */
     RealmResults<RealmPublication> pubList = realm.where(RealmPublication.class)
-        .equalTo(CONSTANTS.PUBLICATION_ID, publication.getPublicationId())
+        .equalTo(Constants.PUBLICATION_ID, publication.getPublicationId())
         .findAll();
 
     if (pubList.size() == 0) {
@@ -91,8 +91,8 @@ public class RealmLocalClient implements LocalClientAPI {
 
     for (Integer currentPublicationId : subscribedPublicationIds) { //for each subscribed publication
       RealmResults<RealmStory> publicationStories = realm.where(RealmStory.class)
-          .equalTo(CONSTANTS.PUBLICATION_ID, currentPublicationId)
-          .greaterThan(CONSTANTS.LAST_UPDATED, mostRecentStory)
+          .equalTo(Constants.PUBLICATION_ID, currentPublicationId)
+          .greaterThan(Constants.LAST_UPDATED, mostRecentStory)
           .findAll();
       allStories.addAll(
           publicationStories.subList(0, publicationStories.size())); //puts realmResults in a list
@@ -103,7 +103,7 @@ public class RealmLocalClient implements LocalClientAPI {
 
   @Override public Story getFullStoryById(int storyId) {
     Realm realm = Realm.getDefaultInstance();
-    return realm.where(RealmStory.class).equalTo(CONSTANTS.STORY_ID, storyId).findFirst();
+    return realm.where(RealmStory.class).equalTo(Constants.STORY_ID, storyId).findFirst();
   }
 
   @Override public List<Story> getAllStoriesInSeries(int publicationId, int seriesId, int page,
@@ -117,10 +117,10 @@ public class RealmLocalClient implements LocalClientAPI {
     }
     Realm realm = Realm.getDefaultInstance();
     RealmResults<RealmStory> mRealmResults = realm.where(RealmStory.class)
-        .greaterThan(CONSTANTS.LAST_UPDATED, mostRecentStoryInSeries)
+        .greaterThan(Constants.LAST_UPDATED, mostRecentStoryInSeries)
         .findAll();
     List<Story> mResults = new ArrayList<>();
-    mResults.addAll(mRealmResults.subList(CONSTANTS.LIST_START, mRealmResults.size())); //puts realmResults in a list
+    mResults.addAll(mRealmResults.subList(Constants.LIST_START, mRealmResults.size())); //puts realmResults in a list
     return mResults;
   }
 
@@ -135,7 +135,7 @@ public class RealmLocalClient implements LocalClientAPI {
   @Override public Publication getPublicationById(String publicationId) {
     Realm realm = Realm.getDefaultInstance();
     return realm.where(RealmPublication.class)
-        .equalTo(CONSTANTS.PUBLICATION_ID, publicationId)
+        .equalTo(Constants.PUBLICATION_ID, publicationId)
         .findFirst();
   }
 }
