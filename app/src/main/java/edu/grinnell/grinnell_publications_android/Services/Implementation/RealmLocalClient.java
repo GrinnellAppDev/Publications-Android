@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import edu.grinnell.grinnell_publications_android.CONSTANTS;
+import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -13,6 +13,7 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 import io.realm.Realm;
 import io.realm.RealmResults;
+
 
 /**
  * Implements a local client for on device persistence using Realm.
@@ -39,9 +40,10 @@ public class RealmLocalClient implements LocalClientAPI {
     Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
 
-    for (int i = 0; i < publications.size(); i++) {
-      realm.copyToRealmOrUpdate((RealmPublication) publications.get(i));
+    for(Publication pub : publications) {
+      realm.copyToRealmOrUpdate((RealmPublication) pub);
     }
+
     realm.commitTransaction();
   }
 
@@ -49,8 +51,11 @@ public class RealmLocalClient implements LocalClientAPI {
     Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
 
+    /*
+    Creates a list of realm publications that match with the user input.
+     */
     RealmResults<RealmPublication> pubList = realm.where(RealmPublication.class)
-        .equalTo(CONSTANTS.PUBLICATIONID, publication.getPublicationId())
+        .equalTo(Constants.PUBLICATION_ID, publication.getPublicationId())
         .findAll();
 
     if (pubList.size() == 0) {
@@ -86,8 +91,8 @@ public class RealmLocalClient implements LocalClientAPI {
 
     for (Integer currentPublicationId : subscribedPublicationIds) { //for each subscribed publication
       RealmResults<RealmStory> publicationStories = realm.where(RealmStory.class)
-          .equalTo(CONSTANTS.PUBLICATIONID, currentPublicationId)
-          .greaterThan(CONSTANTS.LASTUPDATED, mostRecentStory)
+          .equalTo(Constants.PUBLICATION_ID, currentPublicationId)
+          .greaterThan(Constants.LAST_UPDATED, mostRecentStory)
           .findAll();
       allStories.addAll(
           publicationStories.subList(0, publicationStories.size())); //puts realmResults in a list
@@ -98,7 +103,7 @@ public class RealmLocalClient implements LocalClientAPI {
 
   @Override public Story getFullStoryById(int storyId) {
     Realm realm = Realm.getDefaultInstance();
-    return realm.where(RealmStory.class).equalTo(CONSTANTS.STORYID, storyId).findFirst();
+    return realm.where(RealmStory.class).equalTo(Constants.STORY_ID, storyId).findFirst();
   }
 
   @Override public List<Story> getAllStoriesInSeries(int publicationId, int seriesId, int page,
@@ -107,12 +112,15 @@ public class RealmLocalClient implements LocalClientAPI {
   }
 
   @Override public List<Story> getRecentStories(int seriesId, Date mostRecentStoryInSeries) {
+    if(mostRecentStoryInSeries == null) {
+      throw new IllegalArgumentException();
+    }
     Realm realm = Realm.getDefaultInstance();
     RealmResults<RealmStory> mRealmResults = realm.where(RealmStory.class)
-        .greaterThan(CONSTANTS.LASTUPDATED, mostRecentStoryInSeries)
+        .greaterThan(Constants.LAST_UPDATED, mostRecentStoryInSeries)
         .findAll();
     List<Story> mResults = new ArrayList<>();
-    mResults.addAll(mRealmResults.subList(0, mRealmResults.size())); //puts realmResults in a list
+    mResults.addAll(mRealmResults.subList(Constants.LIST_START, mRealmResults.size())); //puts realmResults in a list
     return mResults;
   }
 
@@ -127,7 +135,7 @@ public class RealmLocalClient implements LocalClientAPI {
   @Override public Publication getPublicationById(String publicationId) {
     Realm realm = Realm.getDefaultInstance();
     return realm.where(RealmPublication.class)
-        .equalTo(CONSTANTS.PUBLICATIONID, publicationId)
+        .equalTo(Constants.PUBLICATION_ID, publicationId)
         .findFirst();
   }
 }
