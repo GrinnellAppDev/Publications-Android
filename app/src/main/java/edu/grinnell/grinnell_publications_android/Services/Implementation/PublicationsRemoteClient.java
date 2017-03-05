@@ -19,6 +19,8 @@ import io.realm.RealmList;
 import java.util.List;
 import java.util.Set;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -55,25 +57,25 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   }
 
   @Override public void getAllPublications() {
-    Call<List<JPublication>> call = mPubAPI.publications();
-    call.enqueue(new Callback<List<JPublication>>() {
+    Call<List<JsonPublication>> call = mPubAPI.publications();
+    call.enqueue(new Callback<List<JsonPublication>>() {
       @Override
-      public void onResponse(Call<List<JPublication>> call, Response<List<JPublication>> response) {
+      public void onResponse(Call<List<JsonPublication>> call, Response<List<JsonPublication>> response) {
         storeRealmPublication(response.body());
       }
-      public void onFailure(Call<List<JPublication>> call, Throwable t) {
+      public void onFailure(Call<List<JsonPublication>> call, Throwable t) {
         Snackbar.make(parentView, "Error fetching publications", Snackbar.LENGTH_LONG).show();
       }
     });
   }
 
   public void getStory(String publicationId, String articleId) {
-    Call<JStory> call = mPubAPI.article(publicationId, articleId);
-    call.enqueue(new Callback<JStory>() {
-      @Override public void onResponse(Call<JStory> call, Response<JStory> response) {
+    Call<JsonStory> call = mPubAPI.article(publicationId, articleId);
+    call.enqueue(new Callback<JsonStory>() {
+      @Override public void onResponse(Call<JsonStory> call, Response<JsonStory> response) {
         storeRealmStory(convertToRealmStory(response.body()));
       }
-      public void onFailure(Call<JStory> call, Throwable t) {
+      public void onFailure(Call<JsonStory> call, Throwable t) {
         Snackbar.make(parentView, "Error fetching story", Snackbar.LENGTH_LONG).show();
       }
     });
