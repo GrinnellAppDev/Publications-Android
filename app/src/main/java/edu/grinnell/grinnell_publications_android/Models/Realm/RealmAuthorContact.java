@@ -22,7 +22,7 @@ public class RealmAuthorContact extends RealmObject implements AuthorContact {
     private Map<Utils.AuthorContactUrl,String> contactUrlMap;
 
     /* Default constructor needed by Realm*/
-    public RealmAuthorContact(){
+    public RealmAuthorContact(String email, String phoneNumber, String somethingElse){
     }
 
     /** Setters */
