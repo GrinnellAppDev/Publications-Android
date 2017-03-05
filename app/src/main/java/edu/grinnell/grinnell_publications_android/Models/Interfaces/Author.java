@@ -36,5 +36,5 @@ public interface Author {
      * @return all the series the author has published to.
      */
 
-    List<? extends Series> getSeries();
+    List<? extends Story> getStories();
 }
