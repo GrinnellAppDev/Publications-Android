@@ -12,62 +12,87 @@ import io.realm.RealmObject;
  * @see RealmObject
  */
 public class RealmStory extends RealmObject implements Story{
-    private RealmPublication publication;
-    private String publicationDate;
+    private String publication;
+    private String datePublished;
     private String lastUpdated;
     private RealmList<RealmAuthor> author;
     private RealmReactions reactions;
-    private String fullText;
-    private String blurb;
+    private String content;
+    private String brief;
     private String title;
     private String thumbnailUrl;
+    private String webUrl;
+    private String series;
+    private String tags;
+    private String issue;
+    private int articleId;
+
+
+
+
 
 
     /* Default constructor for Realm */
     public RealmStory(){}
 
-    public RealmStory(RealmPublication publication, String publicationDate, String lastUpdated,
-                      RealmList<RealmAuthor> author, RealmReactions reactions, String fullText,
-                      String blurb, String title, String thumbnailUrl) {
+    public RealmStory(String publication, String publicationDate, String lastUpdated,
+                      RealmList<RealmAuthor> author, RealmReactions reactions, String content,
+                      String brief, String title, String thumbnailUrl, String webUrl, String series,
+                      String tags, String issue, int articleId) {
         this.publication = publication;
-        this.publicationDate = publicationDate;
+        this.datePublished = publicationDate;
         this.lastUpdated = lastUpdated;
         this.author = author;
         this.reactions = reactions;
-        this.fullText = fullText;
-        this.blurb = blurb;
+        this.content = content;
+        this.brief = brief;
         this.title = title;
         this.thumbnailUrl = thumbnailUrl;
+        this.webUrl = webUrl;
+        this.series = series;
+        this.tags = tags;
+        this.issue = issue;
+        this.articleId = articleId;
     }
 
     /** Setters */
-    public void setPublication(RealmPublication publication){
-        this.publication = publication;
-    }
-    public void setPublicationDate(String publicationDate){
-        this.publicationDate = publicationDate;
-    }
+    public void setPublication(String publication) {this.publication = publication;}
 
-    public void setLastUpdated(String lastUpdated){
-        this.lastUpdated = lastUpdated;
-    }
-    public void setReactions(RealmReactions realmReactions){
-        this.reactions = realmReactions;
-    }
-    public void setFullText(String fullText){this.fullText = fullText;}
-    public void setBlurb(String blurb){this.blurb = blurb;}
-    public void setStoryTitle(String title){this.title = title;}
-    public void setThumbnailUrl(String thumbnailUrl){this.thumbnailUrl = thumbnailUrl;}
-    public void setAuthor(RealmList<RealmAuthor> author){this.author = author;}
+    public void setDatePublished(String datePublished) {this.datePublished = datePublished;}
+
+    public void setLastUpdated(String lastUpdated) {this.lastUpdated = lastUpdated;}
+
+    public void setAuthor(RealmList<RealmAuthor> author) {this.author = author;}
+
+    public void setReactions(RealmReactions reactions) {this.reactions = reactions;}
+
+    public void setContent(String content) {this.content = content;}
+
+    public void setBrief(String brief) {this.brief = brief;}
+
+    public void setTitle(String title) {this.title = title;}
+
+    public void setThumbnailUrl(String thumbnailUrl) {this.thumbnailUrl = thumbnailUrl;}
+
+    public void setWebUrl(String webUrl) {this.webUrl = webUrl;}
+
+    public void setSeries(String series) {this.series = series;}
+
+    public void setTags(String tags) {this.tags = tags;}
+
+    public void setIssue(String issue) {this.issue = issue;}
+
+    public void setArticleId(int articleId) {this.articleId = articleId;}
+
     /** Getters */
     @Override
-    public RealmPublication getPublication() {
-        return  this.publication;
+    public String getPublication() {
+        return this.publication;
     }
 
     @Override
     public String getPublicationDate() {
-        return this.publicationDate;
+        return this.datePublished;
     }
 
     @Override
@@ -84,23 +109,35 @@ public class RealmStory extends RealmObject implements Story{
     }
 
     @Override
-    public String getFullText() {
-        return this.fullText;
+    public String getContent() {
+        return this.content;
     }
 
     @Override
-    public String getBlurb() {
-        return this.blurb;
+    public String getBrief() {
+        return this.brief;
     }
 
     @Override
-    public String getTitle() {
-        return this.title;
-    }
-
+    public String getTitle() { return this.title; }
 
     @Override
     public String getThumbnailUrl() {
         return this.thumbnailUrl;
     }
+
+    @Override
+    public String getWebUrl() { return this.webUrl; }
+
+    @Override
+    public String getSeries() { return this.series; }
+
+    @Override
+    public String tags() { return this.tags; }
+
+    @Override
+    public String issue() { return this.issue; }
+
+    @Override
+    public int getArticleId() { return this.articleId; }
 }
