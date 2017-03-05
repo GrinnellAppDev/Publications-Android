@@ -50,6 +50,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   public PublicationsRemoteClient(LocalClientAPI localClient) {
     this.mLocalClient = localClient;
 
+    //TODO: Put BASE_API into Constant
     mRetrofit = new Retrofit.Builder().baseUrl(BASE_API)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
@@ -64,7 +65,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
         storeRealmPublication(response.body());
       }
       public void onFailure(Call<List<JsonPublication>> call, Throwable t) {
-        Snackbar.make(parentView, "Error fetching publications", Snackbar.LENGTH_LONG).show();
+        //TODO: Throw Error
       }
     });
   }
@@ -76,7 +77,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
         storeRealmStory(convertToRealmStory(response.body()));
       }
       public void onFailure(Call<JsonStory> call, Throwable t) {
-        Snackbar.make(parentView, "Error fetching story", Snackbar.LENGTH_LONG).show();
+        //TODO: Throw Error
       }
     });
   }
