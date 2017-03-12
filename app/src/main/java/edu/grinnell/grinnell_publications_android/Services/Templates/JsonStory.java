@@ -1,110 +1,110 @@
-package edu.grinnell.grinnell_publications_android.Services.POJO;
+package edu.grinnell.grinnell_publications_android.Services.Templates;
 
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class JStory {
+public class JsonStory {
 
     @SerializedName("datePublished")
     @Expose
-    private String datePublished;
+    private String mDatePublished;
     @SerializedName("brief")
     @Expose
-    private String brief;
+    private String mBrief;
     @SerializedName("headerImage")
     @Expose
-    private String headerImage;
+    private String mHeaderImage;
     @SerializedName("publication")
     @Expose
-    private String publication;
+    private String mPublication;
     @SerializedName("dateEdited")
     @Expose
-    private String dateEdited;
+    private String mDateEdited;
     @SerializedName("id")
     @Expose
-    private String id;
+    private String mId;
     @SerializedName("title")
     @Expose
-    private String title;
+    private String mTitle;
     @SerializedName("content")
     @Expose
-    private String content;
+    private String mContent;
     @SerializedName("authors")
     @Expose
-    private List<JAuthor> authors = null;
+    private List<JsonAuthor> mAuthors = null;
 
     public String getDatePublished() {
-        return datePublished;
+        return mDatePublished;
     }
 
     public void setDatePublished(String datePublished) {
-        this.datePublished = datePublished;
+        this.mDatePublished = datePublished;
     }
 
     public String getBrief() {
-        return brief;
+        return mBrief;
     }
 
     public void setBrief(String brief) {
-        this.brief = brief;
+        this.mBrief = brief;
     }
 
     public String getHeaderImage() {
-        return headerImage;
+        return mHeaderImage;
     }
 
     public void setHeaderImage(String headerImage) {
-        this.headerImage = headerImage;
+        this.mHeaderImage = headerImage;
     }
 
     public String getPublication() {
-        return publication;
+        return mPublication;
     }
 
     public void setPublication(String publication) {
-        this.publication = publication;
+        this.mPublication = publication;
     }
 
     public String getDateEdited() {
-        return dateEdited;
+        return mDateEdited;
     }
 
     public void setDateEdited(String dateEdited) {
-        this.dateEdited = dateEdited;
+        this.mDateEdited = dateEdited;
     }
 
     public String getId() {
-        return id;
+        return mId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.mTitle = title;
     }
 
     public String getContent() {
-        return content;
+        return mContent;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.mContent = content;
     }
 
-    public List<JAuthor> getAuthors() {
-        return authors;
+    public List<JsonAuthor> getAuthors() {
+        return mAuthors;
     }
 
-    public void setAuthors(List<JAuthor> authors) {
-        this.authors = authors;
+    public void setAuthors(List<JsonAuthor> authors) {
+        this.mAuthors = authors;
     }
 
 }

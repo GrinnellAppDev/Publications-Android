@@ -1,4 +1,4 @@
-package edu.grinnell.grinnell_publications_android.Services.POJO;
+package edu.grinnell.grinnell_publications_android.Services.Templates;
 
 /**
  * Created by dennis on 2/19/17.
@@ -6,29 +6,29 @@ package edu.grinnell.grinnell_publications_android.Services.POJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class JPublication {
+public class JsonPublication {
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private String mId;
     @SerializedName("name")
     @Expose
-    private String name;
+    private String mName;
 
     public String getId() {
-        return id;
+        return mId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
 }
