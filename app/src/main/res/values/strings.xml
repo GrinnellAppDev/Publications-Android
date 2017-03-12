@@ -18,16 +18,16 @@
     <string name="search_label">Search Publications</string>
     <string name="pf_placeholder">Publications Fragment</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="query_hint">Search by title...</string>
+    <string name="query_hint">Search by mTitle...</string>
     <string name="menu_search">menu search</string>
     <string name="publication_logo">Publication Logo</string>
 
-    <string name="article_title">Sample title</string>
+    <string name="article_title">Sample mTitle</string>
     <string name="article_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna</string>
     <string name="article_favorite_snackbar">This article was added to your Favorites</string>
     <string name="article_remove_favorite_snackbar">This article was removed from your Favorites</string>
 
     <string name="article_sample_favorited">Sample article added to Favorites</string>
-    <string name="article_sample_title">Sample title</string>
+    <string name="article_sample_title">Sample mTitle</string>
     <string name="article_sample_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat diam sollicitudin est semper, eu porta libero pulvinar. Aenean at lacus rhoncus, pharetra elit ut, ultricies magna.</string>
 </resources>
