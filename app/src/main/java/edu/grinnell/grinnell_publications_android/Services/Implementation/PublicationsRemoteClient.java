@@ -52,8 +52,8 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     this.mLocalClient = localClient;
 
     mRetrofit = new Retrofit.Builder().baseUrl(Constants.AWS_BASE_API)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build();
+        .addConverterFactory(GsonConverterFactory.create()).build();
+
     mPubAPI = mRetrofit.create(PublicationsAPI.class);
   }
 
@@ -70,6 +70,15 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     });
   }
 
+  private void storeRealmPublication(List<JsonPublication> list) {
+    instantiateRealmPObject();
+    for (JsonPublication item : list) {
+      RealmPublication pub = new RealmPublication(item.getName(), item.getId(), null, null, null);
+      mRealm.copyToRealm(pub);
+      mRealm.commitTransaction();
+    }
+  }
+
   public void getStory(String publicationId, String articleId) {
     Call<JsonStory> call = mPubAPI.article(publicationId, articleId);
     call.enqueue(new Callback<JsonStory>() {
@@ -82,35 +91,25 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     });
   }
 
-  private RealmStory convertToRealmStory(JsonStory story) {
+  private RealmStory convertToRealmStory(JsonStory s) {
     RealmList realmAuthorList = new RealmList<RealmAuthor>();
-    for (JsonAuthor author : story.getAuthors()) {
+    for (JsonAuthor author : s.getAuthors()) {
       RealmAuthorContact contact = new RealmAuthorContact(author.getEmail(), null, null);
       realmAuthorList.add(new RealmAuthor(author.getName(), contact, null, null));
     }
-    return new RealmStory(story.getDatePublished(), story.getBrief(), story.getHeaderImage(),
-            story.getPublication(), story.getDateEdited(), story.getId(), story.getTitle(),
-            story.getContent(), realmAuthorList);
+    return new RealmStory(s.getDatePublished(), s.getBrief(), s.getHeaderImage(), s.getPublication(),
+            s.getDateEdited(), s.getId(), s.getTitle(), s.getContent(), realmAuthorList);
+  }
+
+  private void storeRealmStory(RealmStory realmStory) {
+    instantiateRealmPObject();
+    mRealm.copyToRealm(realmStory);
+    mRealm.commitTransaction();
   }
 
   private void instantiateRealmPObject() {
     mRealm = Realm.getDefaultInstance();
     mRealm.beginTransaction();
-  }
-
-  private void storeRealmStory(RealmStory realmStory) {
-    // TODO: store mRealm story into mRealm objects, will be implemented after pulling from update
-    // Update mRealm publication with story
-    instantiateRealmPObject();
-  }
-
-  private void storeRealmPublication(List<JsonPublication> list) {
-    instantiateRealmPObject();
-    for (JsonPublication item : list) {
-      RealmPublication pub = new RealmPublication(item.getName(), item.getId(), null, null, null);
-      mRealm.copyToRealm(pub);
-      mRealm.commitTransaction();
-    }
   }
 
   /* Not currently supported by AWS endpoints*/
