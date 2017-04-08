@@ -50,18 +50,16 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
 
   public PublicationsRemoteClient(LocalClientAPI localClient) {
     this.mLocalClient = localClient;
-
     mRetrofit = new Retrofit.Builder().baseUrl(Constants.AWS_BASE_API)
         .addConverterFactory(GsonConverterFactory.create()).build();
-
     mPubAPI = mRetrofit.create(PublicationsAPI.class);
   }
 
   @Override public void getAllPublications() {
     Call<List<JsonPublication>> call = mPubAPI.publications();
     call.enqueue(new Callback<List<JsonPublication>>() {
-      @Override
-      public void onResponse(Call<List<JsonPublication>> call, Response<List<JsonPublication>> response) {
+      @Override public void onResponse(Call<List<JsonPublication>> call,
+                                       Response<List<JsonPublication>> response) {
         storeRealmPublication(response.body());
       }
       public void onFailure(Call<List<JsonPublication>> call, Throwable t) {
