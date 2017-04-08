@@ -88,8 +88,9 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
       RealmAuthorContact contact = new RealmAuthorContact(author.getEmail(), null, null);
       realmAuthorList.add(new RealmAuthor(author.getName(), contact, null, null));
     }
-    return new RealmStory(null, story.getDatePublished(), story.getDateEdited(), realmAuthorList,
-            null, story.getContent(), story.getBrief(), story.getTitle(), story.getHeaderImage());
+    return new RealmStory(story.getDatePublished(), story.getBrief(), story.getHeaderImage(),
+            story.getPublication(), story.getDateEdited(), story.getId(), story.getTitle(),
+            story.getContent(), realmAuthorList);
   }
 
   private void instantiateRealmPObject() {
