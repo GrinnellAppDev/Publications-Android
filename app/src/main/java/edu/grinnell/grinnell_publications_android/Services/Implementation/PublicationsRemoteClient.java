@@ -1,7 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
 import android.support.design.widget.Snackbar;
-
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthorContact;
@@ -25,6 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+
 
 /**
  * Remote client that connects to remote end points through networking calls.
@@ -112,7 +112,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     }
   }
 
-  /* Not currently supported by database people/AWS endpoints*/
+  /* Not currently supported by AWS endpoints*/
   @Override public void getPublications(Set<Integer> publicationIds) { }
   public void getPublicationById(int id) { }
 
@@ -124,8 +124,8 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     @GET("publications/{publicationId}/articles/{articleId}") Call<JsonStory> article(
         @Path("publicationId") String publicationId, @Path("articleId") String articleId);
 
-    /* Not currently supported by database people/AWS */
-        /* Publications by id */
+    /* Not currently supported by AWS endpoints*/
+    /* Publications by id */
     @GET("publications/{id}") Call<Publication> publication(@Path("id") String publicationId);
 
     /* Images */
