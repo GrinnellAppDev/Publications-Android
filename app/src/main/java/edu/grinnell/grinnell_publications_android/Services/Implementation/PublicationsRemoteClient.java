@@ -1,6 +1,8 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
 import android.support.design.widget.Snackbar;
+
+import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthorContact;
@@ -24,7 +26,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-
 
 /**
  * Remote client that connects to remote end points through networking calls.
@@ -50,8 +51,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   public PublicationsRemoteClient(LocalClientAPI localClient) {
     this.mLocalClient = localClient;
 
-    //TODO: Put BASE_API into Constant
-    mRetrofit = new Retrofit.Builder().baseUrl(BASE_API)
+    mRetrofit = new Retrofit.Builder().baseUrl(Constants.AWS_BASE_API)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
     mPubAPI = mRetrofit.create(PublicationsAPI.class);
