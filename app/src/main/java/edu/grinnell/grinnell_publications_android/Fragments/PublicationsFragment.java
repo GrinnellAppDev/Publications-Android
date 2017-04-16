@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -20,7 +21,7 @@ import edu.grinnell.grinnell_publications_android.Adapters.*;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.R;
-
+import edu.grinnell.grinnell_publications_android.Adapters.PublicationAdapter;
 /**
  * {@link Fragment} to display users' subscribed publications.
  * @author Larry Boateng Asante
@@ -45,7 +46,7 @@ public class PublicationsFragment extends Fragment
         configureViews();
 
         GridView gridview = (GridView) view.findViewById(R.id.publicationsGridView);
-        gridview.setAdapter(new PublicationAdapter(getActivity()));
+        gridview.setAdapter(new PublicationAdapter(getActivity().getApplicationContext()));
 
         return view;
     }

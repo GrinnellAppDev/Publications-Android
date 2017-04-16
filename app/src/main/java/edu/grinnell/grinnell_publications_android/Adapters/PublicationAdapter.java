@@ -1,11 +1,10 @@
-package edu.grinnell.test_frontpage_gridview;
+package edu.grinnell.grinnell_publications_android.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,11 +13,10 @@ import java.util.ArrayList;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * @uahtor Dennis Chan on 4/15/2017.
+ * Created by Cx831 on 4/16/2017.
  */
 
 public class PublicationAdapter extends BaseAdapter {
-
     private class Publication {
         String mName;
         int mImageLink;
