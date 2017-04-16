@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         setContentView(R.layout.activity_main);
 
         initializeUI(findViewById(android.R.id.content));
+
     }
 
     @Override
