@@ -38,7 +38,7 @@ public class PublicationAdapter extends BaseAdapter {
 
     private void populateArrayTest() {
         String[] pubNames = {"S&B", "The GUM", "B&S", "KDIC"};
-        int[] pubImages = {R.drawable.sandb, R.drawable.thegum, R.drawable.bands, R.drawable.sandb};
+        int[] pubImages = {R.drawable.sandb, R.drawable.thegum, R.drawable.bands, R.drawable.thegum};
         boolean[] isFavorite = {true, true, false, false};
         for (int i = 0; i < pubNames.length; i++) {
             mPublications.add(new Publication(pubNames[i], pubImages[i], isFavorite[i]));
