@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
- * Created by Cx831 on 4/16/2017.
+ * @auhtor Dennis Chan on 4/16/2017.
  */
 
 public class PublicationAdapter extends BaseAdapter {
+
     private class Publication {
         String mName;
         int mImageLink;
@@ -26,28 +27,28 @@ public class PublicationAdapter extends BaseAdapter {
         }
     }
 
-    ArrayList<Publication> mPublications;
     Context mContext;
+    ArrayList<Publication> mPublications;
 
-    // Constructor
     public PublicationAdapter(Context c) {
-        mPublications = new ArrayList<>();
-        mContext = c;
+        mPublications = new ArrayList<>(); mContext = c;
         populateArrayTest();
     }
 
     private void populateArrayTest() {
         String[] pubNames = {"S&B", "The GUM", "B&S", "KDIC"};
-        int[] pubImages = {R.drawable.sandb, R.drawable.thegum, R.drawable.bands, R.drawable.thegum};
+        int[] pubImages = {R.drawable.sandb, R.drawable.thegum,
+                R.drawable.bands, R.drawable.thegum};
         boolean[] isFavorite = {true, true, false, false};
+
         for (int i = 0; i < pubNames.length; i++) {
             mPublications.add(new Publication(pubNames[i], pubImages[i], isFavorite[i]));
         }
     }
 
+    public long getItemId (int i) { return i; }
     public int getCount() { return mPublications.size(); }
     public Object getItem (int i) { return mPublications.get(i); }
-    public long getItemId (int i) { return i; }
 
     class ViewHolder {
         ImageView mImageView;
@@ -60,11 +61,12 @@ public class PublicationAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View view, ViewGroup viewGroup) {
-
         View row = view;
         ViewHolder holder;
+
         if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) mContext.
+                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.layout_publication_item, viewGroup, false);
             holder = new ViewHolder(row);
             row.setTag(holder);
