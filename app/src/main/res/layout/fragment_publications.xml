@@ -4,23 +4,33 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.PublicationsFragment">
 
-    <GridView
-        android:id="@+id/publicationsGridView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:numColumns="auto_fit"
-        android:columnWidth="100dp"
-        android:layout_marginTop="20dp" />
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:text="@string/pf_placeholder" />
+        android:textStyle="bold"
+        android:paddingTop="25dp"
+        android:paddingLeft="27dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="All Publications" />
 
+    <GridView
+        android:id="@+id/publicationsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="40dp"
+        android:paddingLeft="15dp"
+        android:horizontalSpacing="-32dp"
+        android:verticalSpacing="-10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:numColumns="3"
+        android:columnWidth="110dp"
+        android:stretchMode="columnWidth"
+        android:layout_marginTop="20dp" />
 
 
 </FrameLayout>

@@ -39,16 +39,14 @@ public class PublicationAdapter extends BaseAdapter {
     private void populateArrayTest() {
         String[] pubNames = {"S&B", "The GUM", "B&S", "KDIC"};
         int[] pubImages = {R.drawable.sandb, R.drawable.thegum, R.drawable.bands, R.drawable.sandb};
-        boolean[] isFavorite = {true, true, true, false};
+        boolean[] isFavorite = {true, true, false, false};
         for (int i = 0; i < pubNames.length; i++) {
             mPublications.add(new Publication(pubNames[i], pubImages[i], isFavorite[i]));
         }
     }
 
     public int getCount() { return mPublications.size(); }
-
     public Object getItem (int i) { return mPublications.get(i); }
-
     public long getItemId (int i) { return i; }
 
     class ViewHolder {
@@ -57,7 +55,6 @@ public class PublicationAdapter extends BaseAdapter {
         TextView mTextView;
         public ViewHolder (View v) {
             mImageView = (ImageView) v.findViewById(R.id.publication_img);
-            mStar = (ImageView) v.findViewById(R.id.favorites_btn);
             mTextView = (TextView) v.findViewById(R.id.publication_name);
         }
     }
@@ -73,7 +70,6 @@ public class PublicationAdapter extends BaseAdapter {
             row.setTag(holder);
         } else { holder = (ViewHolder) row.getTag(); }
 
-        //if (mPublications.get(position).mIsFavorite) holder.mStar.setImageResource(R.drawable.star);
         holder.mImageView.setImageResource(mPublications.get(position).mImageLink);
         holder.mTextView.setText(mPublications.get(position).mName);
 
