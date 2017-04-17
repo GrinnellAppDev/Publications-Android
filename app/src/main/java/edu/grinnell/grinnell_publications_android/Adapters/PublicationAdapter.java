@@ -51,6 +51,7 @@ public class PublicationAdapter extends BaseAdapter {
     public Object getItem (int i) { return mPublications.get(i); }
 
     class ViewHolder {
+        //needs refactoring
         ImageView mImageView;
         ImageView mStar;
         TextView mTextView;

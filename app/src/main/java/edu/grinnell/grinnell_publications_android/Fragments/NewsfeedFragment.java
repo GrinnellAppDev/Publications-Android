@@ -6,7 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ListView;
 
+import edu.grinnell.grinnell_publications_android.Adapters.NewsfeedAdapter;
+import edu.grinnell.grinnell_publications_android.Adapters.PublicationAdapter;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -25,6 +29,11 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
                              Bundle savedInstanceState) {
         final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
         initializeUI(newsfeedFragment);
+
+
+        ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
+        gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext()));
+
         return newsfeedFragment;
     }
 

@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.NewsfeedFragment">
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="Newsfeed Fragment" />
+        android:id="@+id/newsfeed_listview"
+        android:paddingLeft="-1dp"
+        android:paddingRight="-1dp" />
 </FrameLayout>
