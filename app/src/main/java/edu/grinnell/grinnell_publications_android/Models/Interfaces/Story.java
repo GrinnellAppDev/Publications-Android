@@ -19,9 +19,9 @@ public interface Story {
      * <p>If the story belongs to a single @code{publication} then the size of the list returned is
      * 1.</p>
      *
-     * @return the publication the story belongs to.
+     * @return the publication id the story belongs to.
      */
-    Publication getPublication();
+    String getPublication();
 
     /**
      * Returns the date that the story was published.
@@ -30,16 +30,7 @@ public interface Story {
      *
      * @return the date that the story was published.
      */
-    String getPublicationDate();
-
-    /**
-     * Returns the date on which the story was last updated.
-     *
-     *  <p>Note that by default the date is ISO8601 formatted @code{yyyy-MM-dd'T'HH:mm:ssZ}. </p>
-     *
-     * @return the data that the story was lastUpdated
-     */
-    String getLastUpdated();
+    String getDatePublished();
 
     /**
      * Returns all the @code{author}s of the story.
@@ -48,22 +39,17 @@ public interface Story {
      *
      * @return  all the @code{author}s of the story.
      */
-    AbstractList<? extends Author> getAuthor();
-
-    /**
-     * @return the reactions that have been made towards this article
-     */
-    Reactions getReactions();
+    AbstractList<? extends Author> getAuthors();
 
     /**
      * @return the text body of the story
      */
-    String getFullText();
+    String getContent();
 
     /**
-     * @return the summary text  of the story
+     * @return the summary text of the story
      */
-    String getBlurb();
+    String getBrief();
 
     /**
      * @return the title of the story
@@ -71,11 +57,21 @@ public interface Story {
 
     String getTitle();
 
+    /**
+     * @return the id of the article
+     */
+    String getArticleId();
 
     /**
-     * @return the thumbnail image url for the story
+     * @return the header image
      */
+    String getHeaderImage();
 
-    String getThumbnailUrl();
+    /**
+     * Returns the date on which the story was last edited.
+     * *
+     * @return the data that the story was edited
+     */
+    String getDateEdited();
 
 }
