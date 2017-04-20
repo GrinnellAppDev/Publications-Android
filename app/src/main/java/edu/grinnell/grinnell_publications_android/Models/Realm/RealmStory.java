@@ -7,7 +7,7 @@ import io.realm.RealmObject;
 /**
  * This class implements @code{Story} using Realm Persistence
  *
- * @author Albert Owusu-Asare
+ * @author Albert Owusu-Asare, Jemuel Santos
  * @see Story
  * @see RealmObject
  * @since 1.1 Fri May  6 10:01:38 CDT 2016
