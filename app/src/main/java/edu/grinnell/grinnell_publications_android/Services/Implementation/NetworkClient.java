@@ -60,4 +60,7 @@ public class NetworkClient implements NetworkClientAPI {
     public User getProfile() {
         return null;
     }
+
+    @Override
+    public Publication getPublicationById(String publicationId) { return null;}
 }
