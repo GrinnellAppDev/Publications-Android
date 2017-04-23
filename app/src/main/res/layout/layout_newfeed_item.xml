@@ -30,7 +30,7 @@
                     android:layout_alignLeft="@+id/nf_articletitle"
                     android:layout_alignStart="@+id/nf_articletitle"
                     android:layout_alignTop="@+id/nf_author"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="3dp"
                     app:srcCompat="@drawable/sandb" />
 
                 <TextView
@@ -38,8 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/nf_articletitle"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/nf_articlepub"
                     android:layout_toRightOf="@+id/nf_articlepub"
                     android:text="TextView"
@@ -53,22 +53,23 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="26dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
+                    android:alpha=".40"
                     android:text="TextView"
-                    android:textColor="@color/cardview_shadow_start_color"
+                    android:textColor="@color/black"
                     android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/nf_articletitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/nf_date"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="72dp"
-                    android:layout_marginStart="72dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="78dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center_vertical"
                     android:text="TextView"
                     android:textColor="@color/black"
