@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Activities;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -24,6 +25,9 @@ import static android.support.v4.view.GravityCompat.START;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
+
 /**
  * Represents the {@link AppCompatActivity} that hosts all the various Fragments and the Navigation
  * drawer implemented via the {@link NavigationView}
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Fabric.with(this, new Crashlytics());
         initializeUI(findViewById(android.R.id.content));
     }
 
@@ -137,4 +141,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         mNavigationView = null;
         super.onDestroy();
     }
+
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
 }
