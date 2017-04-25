@@ -1,6 +1,5 @@
 package edu.grinnell.grinnell_publications_android.Activities;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -141,9 +140,4 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         mNavigationView = null;
         super.onDestroy();
     }
-
-    public void forceCrash(View view) {
-        throw new RuntimeException("This is a crash");
-    }
-
 }
