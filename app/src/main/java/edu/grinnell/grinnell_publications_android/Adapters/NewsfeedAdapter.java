@@ -8,10 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
+import io.realm.Realm;
 
 /**
  * @author Dennis Chan on 4/16/2017.
@@ -36,28 +41,18 @@ public class NewsfeedAdapter extends BaseAdapter{
         }
     }
 
-        Context mContext;
-        ArrayList<Article> a;
 
-    public NewsfeedAdapter (Context c) {
+    Context mContext;
+    ArrayList<RealmStory> mStories;
+
+    public NewsfeedAdapter (Context c, ArrayList<RealmStory> stories) {
         mContext = c;
-        a = new ArrayList<>();
-        populateArrayTest();
-    }
-
-    public void populateArrayTest () {
-        a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
-                "This Is a Super Long Title. Lets See How it Shows Up", "Andrea Baumgartel & Some Long Nameeeee", "March 27"));
-        a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
-                "This Is a Even Longer Title. Lets See How it Shows Uppppppppppp", "Andrea Baumgartel & Long Name", "February 32"));
-        for (int i = 0; i < 10; i++)
-            a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
-                "Ray King rayray k is rayking rk", "Andrea Baumgartel", "March 27"));
+        mStories = stories;
     }
 
     public long getItemId (int i) { return i; }
-    public int getCount() { return a.size(); }
-    public Object getItem (int i) { return a.get(i); }
+    public int getCount() { return mStories.size(); }
+    public Object getItem (int i) { return mStories.get(i); }
 
     class ViewHolder {
         ImageView mThumbnail;
@@ -86,15 +81,29 @@ public class NewsfeedAdapter extends BaseAdapter{
             row.setTag(holder);
         } else holder = (ViewHolder) row.getTag();
 
-        holder.mThumbnail.setImageResource(a.get(i).mThumbnail);
-        holder.mPublicationIcon.setImageResource(a.get(i).mPubIcon);
-        holder.mAuthor.setText(a.get(i).mAuhtor);
-        holder.mDatePublished.setText(a.get(i).mDatePubllished);
-
-        if (a.get(i).mTitle.length() < 50)  holder.mTitle.setText(a.get(i).mTitle);
-        else  holder.mTitle.setText(a.get(i).mTitle.substring(0,50) + "...");
+        holder = populateSingleView(holder, mStories.get(i));
 
         return row;
+    }
+
+    public ViewHolder populateSingleView (ViewHolder holder, RealmStory story) {
+
+        holder.mDatePublished.setText(story.getPublicationDate());
+
+        if (story.getThumbnailUrl() != null)
+            Glide.with(mContext).load(story.getThumbnailUrl()).into(holder.mThumbnail);
+        if (story.getPublication().getPublicationImageUrl() != null)
+            Glide.with(mContext).load(story.getPublication()
+                    .getPublicationImageUrl()).into(holder.mPublicationIcon);
+
+        holder.mAuthor.setText(story.getAuthor().get(0).getFullName());
+
+        // Concatenating Long Titles
+        String title = story.getTitle();
+        if (title.length() < 50)  holder.mTitle.setText(title);
+        else  holder.mTitle.setText(title.substring(0,50) + "...");
+
+        return holder;
     }
 
 }
