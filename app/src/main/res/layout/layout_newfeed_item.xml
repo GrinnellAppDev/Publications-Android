@@ -44,7 +44,7 @@
                     android:layout_toRightOf="@+id/nf_articlepub"
                     android:text="TextView"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="13.5dp" />
 
                 <TextView
                     android:id="@+id/nf_date"
@@ -53,7 +53,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="17dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:alpha=".40"

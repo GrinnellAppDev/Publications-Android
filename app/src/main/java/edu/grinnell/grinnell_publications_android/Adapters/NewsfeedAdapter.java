@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -46,12 +47,13 @@ public class NewsfeedAdapter extends BaseAdapter{
 
     public void populateArrayTest () {
         a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
-                "This Is a Super Long Title. Lets See How it Shows Up", "Andrea Baumgartel & Some Lnog Nameeeee", "March 27"));
+                "This Is a Super Long Title. Lets See How it Shows Up", "Andrea Baumgartel & Some Long Nameeeee", "March 27"));
+        a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
+                "This Is a Even Longer Title. Lets See How it Shows Uppppppppppp", "Andrea Baumgartel & Long Name", "February 32"));
         for (int i = 0; i < 10; i++)
             a.add(new Article(R.drawable.grinnell_gates, R.drawable.sandb,
                 "Ray King rayray k is rayking rk", "Andrea Baumgartel", "March 27"));
     }
-
 
     public long getItemId (int i) { return i; }
     public int getCount() { return a.size(); }
@@ -87,8 +89,10 @@ public class NewsfeedAdapter extends BaseAdapter{
         holder.mThumbnail.setImageResource(a.get(i).mThumbnail);
         holder.mPublicationIcon.setImageResource(a.get(i).mPubIcon);
         holder.mAuthor.setText(a.get(i).mAuhtor);
-        holder.mTitle.setText(a.get(i).mTitle);
         holder.mDatePublished.setText(a.get(i).mDatePubllished);
+
+        if (a.get(i).mTitle.length() < 50)  holder.mTitle.setText(a.get(i).mTitle);
+        else  holder.mTitle.setText(a.get(i).mTitle.substring(0,50) + "...");
 
         return row;
     }
