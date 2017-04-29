@@ -17,6 +17,8 @@ import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
 import edu.grinnell.grinnell_publications_android.Utils;
 import io.realm.Realm;
 import io.realm.RealmList;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import retrofit2.Call;
@@ -70,11 +72,11 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
 
   private void storeRealmPublication(List<JsonPublication> list) {
     instantiateRealmPObject();
+    List<Publication> publications = new ArrayList<Publication>();
     for (JsonPublication item : list) {
-      RealmPublication pub = new RealmPublication(item.getName(), item.getId(), null, null, null);
-      mRealm.copyToRealm(pub);
-      mRealm.commitTransaction();
+      publications.add(new RealmPublication(item.getName(), item.getId(), null, null, null));
     }
+    mLocalClient.savePublications(publications);
   }
 
   public void getStory(String publicationId, String articleId) {
