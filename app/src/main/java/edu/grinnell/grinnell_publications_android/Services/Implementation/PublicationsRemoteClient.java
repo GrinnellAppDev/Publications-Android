@@ -71,7 +71,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   }
 
   private void storeRealmPublication(List<JsonPublication> list) {
-    instantiateRealmPObject();
+    instantiateRealmObject();
     List<Publication> publications = new ArrayList<Publication>();
     for (JsonPublication item : list) {
       publications.add(new RealmPublication(item.getName(), item.getId(), null, null, null));
@@ -102,12 +102,12 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   }
 
   private void storeRealmStory(RealmStory realmStory) {
-    instantiateRealmPObject();
+    instantiateRealmObject();
     mRealm.copyToRealm(realmStory);
     mRealm.commitTransaction();
   }
 
-  private void instantiateRealmPObject() {
+  private void instantiateRealmObject() {
     mRealm = Realm.getDefaultInstance();
     mRealm.beginTransaction();
   }
