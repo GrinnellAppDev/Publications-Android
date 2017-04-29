@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 @Config(constants = BuildConfig.class)
 
 public class MainSettingsTest {
+
   private MainSettingsActivity mSettingsActivity;
 
   @Before
@@ -30,4 +31,5 @@ public class MainSettingsTest {
       Toolbar mToolbar = (Toolbar) mSettingsActivity.findViewById(R.id.settings_toolbar);
       assertTrue("Check toolbar title",  mToolbar.getTitle().toString().compareTo("Settings") == 0);
   }
+
 }

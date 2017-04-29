@@ -19,28 +19,19 @@ import static junit.framework.TestCase.assertTrue;
 public class MainActivityTest {
   private MainActivity mMainActivity;
 
-  @Before
-  public void setUp() {mMainActivity = Robolectric.setupActivity(MainActivity.class);}
+  @Before public void setUp() {
+    mMainActivity = Robolectric.setupActivity(MainActivity.class);
+  }
 
-  @Test
-  public void testDoesToolbarHaveTitle(){
+  @Test public void testDoesToolbarHaveTitle() {
     Toolbar toolbar = (Toolbar) mMainActivity.findViewById(R.id.main_toolbar);
     assertTrue("The Toolbar has a title", toolbar.getTitle() != null);
   }
 
-  @Test
-  public void testDoesHaveNavigationView(){
 
-  }
-
-
-
-  @Test
-  public void drawerLayoutClosedOnStartup(){
+  @Test public void drawerLayoutClosedOnStartup() {
     DrawerLayout mDrawerLayout = (DrawerLayout) mMainActivity.findViewById(R.id.drawer_layout);
-      NavigationView mNavigationView = (NavigationView) mMainActivity.findViewById(R.id.navigation_view);
+    NavigationView mNavigationView = (NavigationView) mMainActivity.findViewById(R.id.navigation_view);
     assertFalse("Testing if drawer is closed", mDrawerLayout.isDrawerOpen(mNavigationView));
   }
-
-
 }
