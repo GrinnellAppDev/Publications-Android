@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
+import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsRemoteClient;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
 
 /**
@@ -25,6 +27,9 @@ import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmL
  * @author Larry Boateng Asante
  */
 public class NewsfeedFragment extends Fragment implements UserInterface {
+
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    RealmLocalClient mRealmClient = new RealmLocalClient();
 
     public NewsfeedFragment() {
     }
@@ -36,11 +41,15 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
         final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
         initializeUI(newsfeedFragment);
 
-        // Getting stories from Realm
-        int seriesId = 0;
-        Date date = new Date();
-        RealmLocalClient rlc = new RealmLocalClient();
-        List<Story> stories = rlc.getRecentStories(seriesId, date);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+        });
+
+        List<Story> stories = getStoriesFromRealm();
 
         ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
         gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext(), stories));
@@ -48,6 +57,18 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
         return newsfeedFragment;
     }
 
+    private void refreshContent() {
+        PublicationsRemoteClient prc = new PublicationsRemoteClient(mRealmClient);
+        // get stories
+        prc.
+    }
+
+    public List<Story> getStoriesFromRealm () {
+        // Getting stories from Realm
+        int seriesId = 0;
+        Date date = new Date();
+       return mRealmClient.getRecentStories(seriesId, date);
+    }
     @Override
     public void initializeUI(View view) {
     }
