@@ -91,6 +91,7 @@ public class NewsfeedAdapter extends BaseAdapter{
         holder.mAuthor.setText(a.get(i).mAuhtor);
         holder.mDatePublished.setText(a.get(i).mDatePubllished);
 
+
         if (a.get(i).mTitle.length() < 50)  holder.mTitle.setText(a.get(i).mTitle);
         else  holder.mTitle.setText(a.get(i).mTitle.substring(0,50) + "...");
 

@@ -64,11 +64,41 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <TextView
-                android:id="@+id/article_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
 
+            <include
+              android:id="@+id/article_detail1"
+                layout="@layout/article_detail">
+            </include>
+
+            </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+
+            <include
+                android:id="@+id/article_detail2"
+                layout="@layout/article_detail">
+            </include>
+
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+
+            <include
+                android:id="@+id/article_detail3"
+                layout="@layout/article_detail">
+            </include>
+
+          </LinearLayout>
 
         </LinearLayout>
 
