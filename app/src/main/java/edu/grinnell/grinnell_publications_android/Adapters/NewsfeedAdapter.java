@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 import io.realm.Realm;
@@ -43,9 +44,9 @@ public class NewsfeedAdapter extends BaseAdapter{
 
 
     Context mContext;
-    ArrayList<RealmStory> mStories;
+    List<Story> mStories;
 
-    public NewsfeedAdapter (Context c, ArrayList<RealmStory> stories) {
+    public NewsfeedAdapter (Context c, List<Story> stories) {
         mContext = c;
         mStories = stories;
     }
@@ -86,7 +87,7 @@ public class NewsfeedAdapter extends BaseAdapter{
         return row;
     }
 
-    public ViewHolder populateSingleView (ViewHolder holder, RealmStory story) {
+    public ViewHolder populateSingleView (ViewHolder holder, Story story) {
 
         holder.mDatePublished.setText(story.getPublicationDate());
 
@@ -98,7 +99,7 @@ public class NewsfeedAdapter extends BaseAdapter{
 
         holder.mAuthor.setText(story.getAuthor().get(0).getFullName());
 
-        // Concatenating Long Titles
+        // Handling long titles
         String title = story.getTitle();
         if (title.length() < 50)  holder.mTitle.setText(title);
         else  holder.mTitle.setText(title.substring(0,50) + "...");
