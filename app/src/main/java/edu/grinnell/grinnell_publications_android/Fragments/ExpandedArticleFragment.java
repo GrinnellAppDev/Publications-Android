@@ -1,6 +1,7 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -11,14 +12,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 
 import android.support.v7.widget.Toolbar;
+import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Set;
+
+import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
+import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
 
 import static android.support.design.widget.Snackbar.make;
 import static android.support.v4.content.ContextCompat.getDrawable;
@@ -129,4 +135,9 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     /** Sets text into content field **/
     private void setContentText(String content) { this.mArticleContent.setText(content);}
+
+    private void addBookmark(String publication_id, String article_id){
+        RealmLocalClient client = new RealmLocalClient();
+        client.addBookmark(publication_id, article_id);
+    }
 }

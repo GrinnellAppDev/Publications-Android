@@ -11,5 +11,10 @@ public class Constants {
     public static final String LAST_UPDATED ="lastUpdated";
     public static final String STORY_ID ="storyId";
     public static final int LIST_START = 0;
+    public static final String BOOKMARK = "snbBookmark";
+
+    public class Bookmarks{
+        public static final String ARTICLE = "article";
+    }
 
 }

@@ -36,7 +36,7 @@ public interface LocalClientAPI  extends NetworkClientAPI{
      *
      * @param publicationId the publication to add.
      */
-    void addToSubscribedPublications(int publicationId);
+    void addToSubscribedPublications(String publicationId);
 
 
     /**
@@ -53,4 +53,5 @@ public interface LocalClientAPI  extends NetworkClientAPI{
 
     void savePublication(Publication publication);
 
+    void addBookmark(String publicationId, String storyId);
 }

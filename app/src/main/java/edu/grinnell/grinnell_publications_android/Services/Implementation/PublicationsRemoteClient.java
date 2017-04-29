@@ -46,11 +46,11 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     return null;
   }
 
-  @Override public Publication getPublication(int id) {
+  @Override public Publication getPublication(String id) {
     return null;
   }
 
-  @Override public List<Publication> getPublications(Set<Integer> publicationIds) {
+  @Override public List<Publication> getPublications(Set<String> publicationIds) {
     return null;
   }
 
