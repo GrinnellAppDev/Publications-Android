@@ -24,6 +24,9 @@ import static android.support.v4.view.GravityCompat.START;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
+
 /**
  * Represents the {@link AppCompatActivity} that hosts all the various Fragments and the Navigation
  * drawer implemented via the {@link NavigationView}
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Fabric.with(this, new Crashlytics());
         initializeUI(findViewById(android.R.id.content));
     }
 
