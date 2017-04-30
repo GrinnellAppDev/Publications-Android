@@ -2,8 +2,6 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 
 import java.util.List;
 
-import edu.grinnell.grinnell_publications_android.Bookmarks;
-import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
