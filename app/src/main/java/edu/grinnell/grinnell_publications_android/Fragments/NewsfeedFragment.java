@@ -12,6 +12,7 @@ import edu.grinnell.grinnell_publications_android.R;
 
 /**
  * {@link Fragment} to display all news in user's Newsfeed.
+ *
  * @author Larry Boateng Asante
  */
 public class NewsfeedFragment extends Fragment implements UserInterface {

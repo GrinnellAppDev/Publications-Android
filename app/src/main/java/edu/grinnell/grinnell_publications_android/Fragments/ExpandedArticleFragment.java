@@ -33,6 +33,7 @@ import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 /**
  * Fragment displays articles and allows users to mark article as favorited.
+ *
  * @author Yazan Kittaneh
  */
 
@@ -48,7 +49,8 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     private int colorFilter;
     private String snackBarMessage;
 
-    public ExpandedArticleFragment() {}
+    public ExpandedArticleFragment() {
+    }
 
     public static ExpandedArticleFragment newInstance() {
         return new ExpandedArticleFragment();
@@ -70,7 +72,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     }
 
     @Override
-    public void initializeUI(View view){
+    public void initializeUI(View view) {
         mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
         bindView(view);
         loadPlaceHolderData();
@@ -111,32 +113,52 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         });
     }
 
-    /** Fills fragment with placeholder content */
-    private void loadPlaceHolderData(){
+    /**
+     * Fills fragment with placeholder content
+     */
+    private void loadPlaceHolderData() {
         Drawable defaultImage = getDrawable(getContext(), R.drawable.grinnell_gates);
         setHeaderText(getText(R.string.article_sample_title).toString());
         setContentText(getText(R.string.article_sample_content).toString());
         setHeaderImage(defaultImage);
     }
 
-    /** Gets image from Header**/
-     public Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
+    /**
+     * Gets image from Header
+     **/
+    public Drawable getHeaderImage() {
+        return this.mHeaderImage.getDrawable();
+    }
 
-    /** Gets text from content **/
-    public String getTextContent() { return this.mArticleContent.getText().toString();}
+    /**
+     * Gets text from content
+     **/
+    public String getTextContent() {
+        return this.mArticleContent.getText().toString();
+    }
 
-    /** Sets the heading image **/
+    /**
+     * Sets the heading image
+     **/
     private void setHeaderImage(Drawable image) {
         this.mHeaderImage.setImageDrawable(image);
     }
 
-    /** Sets text into header field **/
-    private void setHeaderText(String titleText) { this.mCollapsingToolbar.setTitle(titleText);}
+    /**
+     * Sets text into header field
+     **/
+    private void setHeaderText(String titleText) {
+        this.mCollapsingToolbar.setTitle(titleText);
+    }
 
-    /** Sets text into content field **/
-    private void setContentText(String content) { this.mArticleContent.setText(content);}
+    /**
+     * Sets text into content field
+     **/
+    private void setContentText(String content) {
+        this.mArticleContent.setText(content);
+    }
 
-    private void addBookmark(String publication_id, String article_id){
+    private void addBookmark(String publication_id, String article_id) {
         RealmLocalClient client = new RealmLocalClient();
         client.addBookmark(publication_id, article_id);
     }
