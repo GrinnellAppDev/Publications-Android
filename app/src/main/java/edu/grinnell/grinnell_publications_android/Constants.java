@@ -7,7 +7,6 @@ package edu.grinnell.grinnell_publications_android;
  */
 
 public class Constants {
-
     public static final String AWS_BASE_API =
             "https://g2j7qs2xs7.execute-api.us-west-2.amazonaws.com/devstable/";
     public static final String PUBLICATION_ID ="publicationId";
