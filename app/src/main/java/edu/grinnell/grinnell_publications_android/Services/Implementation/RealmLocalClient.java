@@ -1,10 +1,5 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static edu.grinnell.grinnell_publications_android.Constants.*;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -13,7 +8,14 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import static edu.grinnell.grinnell_publications_android.Constants.LAST_UPDATED;
+import static edu.grinnell.grinnell_publications_android.Constants.LIST_START;
+import static edu.grinnell.grinnell_publications_android.Constants.PUBLICATION_ID;
+import static edu.grinnell.grinnell_publications_android.Constants.STORY_ID;
 
 /**
  * Implements a local client for on device persistence using Realm.
@@ -40,7 +42,7 @@ public class RealmLocalClient implements LocalClientAPI {
     Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
 
-    for(Publication pub : publications) {
+    for (Publication pub : publications) {
       realm.copyToRealmOrUpdate((RealmPublication) pub);
     }
 
@@ -112,15 +114,15 @@ public class RealmLocalClient implements LocalClientAPI {
   }
 
   @Override public List<Story> getRecentStories(int seriesId, Date mostRecentStoryInSeries) {
-    if(mostRecentStoryInSeries == null) {
+    if (mostRecentStoryInSeries == null) {
       throw new IllegalArgumentException();
     }
     Realm realm = Realm.getDefaultInstance();
-    RealmResults<RealmStory> mRealmResults = realm.where(RealmStory.class)
-        .greaterThan(LAST_UPDATED, mostRecentStoryInSeries)
-        .findAll();
+    RealmResults<RealmStory> mRealmResults =
+        realm.where(RealmStory.class).greaterThan(LAST_UPDATED, mostRecentStoryInSeries).findAll();
     List<Story> mResults = new ArrayList<>();
-    mResults.addAll(mRealmResults.subList(LIST_START, mRealmResults.size())); //puts realmResults in a list
+    mResults.addAll(
+        mRealmResults.subList(LIST_START, mRealmResults.size())); //puts realmResults in a list
     return mResults;
   }
 
@@ -134,8 +136,6 @@ public class RealmLocalClient implements LocalClientAPI {
 
   @Override public Publication getPublicationById(String publicationId) {
     Realm realm = Realm.getDefaultInstance();
-    return realm.where(RealmPublication.class)
-        .equalTo(PUBLICATION_ID, publicationId)
-        .findFirst();
+    return realm.where(RealmPublication.class).equalTo(PUBLICATION_ID, publicationId).findFirst();
   }
 }
