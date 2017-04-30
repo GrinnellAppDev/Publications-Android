@@ -28,6 +28,7 @@ import io.realm.RealmList;
 
 /**
  * {@link Fragment} to show a user's Profile
+ *
  * @author Larry Boateng Asante
  */
 public class ProfileFragment extends Fragment implements UserInterface {
@@ -70,7 +71,7 @@ public class ProfileFragment extends Fragment implements UserInterface {
         mCollapsingToolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
     }
 
-    private void loadPlaceHolderData(){
+    private void loadPlaceHolderData() {
         Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.grinnell_gates);
         Drawable defaultImage = new BitmapDrawable(getResources(), image);
         setHeaderText("Sample title");
@@ -87,7 +88,7 @@ public class ProfileFragment extends Fragment implements UserInterface {
     private List<RealmStory> retrieveStories() {
         // TODO: implement with network
         // for now, dummy data
-        RealmPublication sAndB = new RealmPublication("S&B", 0, null, null, null);
+        RealmPublication sAndB = new RealmPublication("S&B", null, null, null, null);
         RealmList<RealmPublication> publications = new RealmList<>();
         publications.add(sAndB);
         RealmAuthor rickAndMorty = new RealmAuthor("Rick and Morty", null, publications, null);
@@ -95,19 +96,23 @@ public class ProfileFragment extends Fragment implements UserInterface {
         authors.add(rickAndMorty);
 
         List<RealmStory> stories = new ArrayList<>();
-        stories.add(new RealmStory(sAndB, "December 4, 2016", "December 4, 2016", authors, null,
-                                   "people performed multiple songs!", "Songs were performed",
-                                   "There Was A Performance and It was Great", null));
+        stories.add(new RealmStory("December 4, 2016", "December 4, 2016", "sAndB", null, null,
+                "0", "Songs were performed",
+                "There Was A Performance and It was Great", null));
 
         return stories;
     }
 
-    private Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
+    private Drawable getHeaderImage() {
+        return this.mHeaderImage.getDrawable();
+    }
 
     private void setHeaderImage(Drawable image) {
         this.mHeaderImage.setImageDrawable(image);
     }
 
-    private void setHeaderText(String titleText) { this.mCollapsingToolbar.setTitle(titleText);}
+    private void setHeaderText(String titleText) {
+        this.mCollapsingToolbar.setTitle(titleText);
+    }
 
 }

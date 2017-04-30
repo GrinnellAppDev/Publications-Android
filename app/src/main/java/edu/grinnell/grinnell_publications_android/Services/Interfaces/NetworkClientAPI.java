@@ -32,6 +32,10 @@ public interface NetworkClientAPI {
      */
     List<Publication> getAllPublications();
 
+    /**
+     * @return a publication by its Id.
+     */
+    Publication getPublicationById(String publicationId);
 
     /* Stories */
 
@@ -46,23 +50,13 @@ public interface NetworkClientAPI {
     List<Story>getAllStories(int page,int numStoriesPerPage);
 
     /**
-     * Fetches the most recent stories.
-     *
-     * <p>This method can be utilized when refreshing the application's main feed.</p>
-     * @param subscribedPublicationIds
-     * @param mostRecentStory
-     * @return
-     */
-    List<Story> getRecentStories(List<Integer> subscribedPublicationIds,Date mostRecentStory);
-
-    /**
      * Fetches more details about a given story.For example the  full body text and the body image
      * urls of story.
      *
      * @param storyId the identifier for the story
      * @return a full fledged story with all the details of the story.
      */
-    Story getFullStoryById(int storyId);
+    Story getFullStoryById(String storyId);
 
 
     /* Series*/
@@ -76,16 +70,19 @@ public interface NetworkClientAPI {
      * @param numStoriesPerPage the number of stories that make up a page.
      * @return all the stories in the series.
      */
-    List<Story> getAllStoriesInSeries(int publicationId,int seriesId,int page,int numStoriesPerPage);
+    List<Story> getAllStoriesInSeries(String publicationId,String seriesId,int page,int numStoriesPerPage);
+
+
+    List<Story> getRecentSubscribedStories(List<Integer> subscribedPublicationIds, Date mostRecentStoryInSeries);
+
 
     /**
      * Fetches the most recent stories in a particular series.
      *
-     * @param seriesId the identifier for the series.
      * @param mostRecentStoryInSeries most recent story.
      * @return a list of all the most recent stories in the series.
      */
-    List<Story> getRecentStories(int seriesId,Date mostRecentStoryInSeries);
+    List<Story> getRecentStories(Date mostRecentStoryInSeries);
 
     /* Bookmarks */
 
@@ -105,5 +102,7 @@ public interface NetworkClientAPI {
     /* Search */
     //TODO add any methods that will be useful for searching. Eg. Autocomplete features?
 
+    List<String> getBookmarks(String publicationId);
 
+    List<String> getAllBookmarks();
 }
