@@ -65,6 +65,10 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     public ExpandedArticleFragment() {
     }
 
+    public static ExpandedArticleFragment newInstance() {
+        return new ExpandedArticleFragment();
+    }
+
     public static ExpandedArticleFragment newInstance(Story story) {
         ExpandedArticleFragment articleFragment = new ExpandedArticleFragment();
         mStory = story;
@@ -80,10 +84,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public static ExpandedArticleFragment newInstance() {
-        return new ExpandedArticleFragment();
     }
 
     @Override
