@@ -59,15 +59,13 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
 
     private void refreshContent() {
         PublicationsRemoteClient prc = new PublicationsRemoteClient(mRealmClient);
-        // get stories
-        prc.
+        // TODO: Get Stories through PRC
+
     }
 
     public List<Story> getStoriesFromRealm () {
         // Getting stories from Realm
-        int seriesId = 0;
-        Date date = new Date();
-       return mRealmClient.getRecentStories(seriesId, date);
+        return mRealmClient.getRecentStories(new Date());
     }
     @Override
     public void initializeUI(View view) {
