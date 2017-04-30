@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import edu.grinnell.grinnell_publications_android.Adapters.NewsfeedAdapter;
 import edu.grinnell.grinnell_publications_android.Adapters.PublicationAdapter;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsRemoteClient;
@@ -41,6 +43,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
         final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
         initializeUI(newsfeedFragment);
 
+        /*
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -48,13 +51,19 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
                 refreshContent();
             }
         });
-
+*/
         List<Story> stories = getStoriesFromRealm();
 
         ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
         gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext(), stories));
 
         return newsfeedFragment;
+    }
+
+    private List<Story> sGenerator() {
+        List<Story> stories = new ArrayList<Story>();
+        stories.add(new RealmStory("March 7", "Brief", "tnurl", "S&B", "March 7", "AId", "Opeyemi Awe '15 Wins Watson", "Content", new RealmAuthor()));
+        return null;
     }
 
     private void refreshContent() {
@@ -64,8 +73,8 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
     }
 
     public List<Story> getStoriesFromRealm () {
-        // Getting stories from Realm
-        return mRealmClient.getRecentStories(new Date());
+        // Getting stories from Realm; mRealmClient.getRecentStories(new Date());
+        return null;
     }
     @Override
     public void initializeUI(View view) {
