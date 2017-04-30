@@ -1,7 +1,5 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
-import android.support.design.widget.Snackbar;
-
 import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
@@ -14,7 +12,6 @@ import edu.grinnell.grinnell_publications_android.Services.Interfaces.RemoteClie
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonPublication;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
-import edu.grinnell.grinnell_publications_android.Utils;
 import io.realm.Realm;
 import io.realm.RealmList;
 
@@ -37,7 +34,7 @@ import retrofit2.http.Path;
  * changes to the UI or changes to the local data base.</p>
  *
  * @author Albert Owusu-Asare, Dennis Chan
- * @version 1.1 Thu May  5 15:57:45 CDT 2016
+ * @version 1.2 Thu May  5 15:57:45 CDT 2017
  */
 public class PublicationsRemoteClient implements RemoteClientAPI {
 
@@ -65,7 +62,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
         storeRealmPublication(response.body());
       }
       public void onFailure(Call<List<JsonPublication>> call, Throwable t) {
-        //TODO: Throw Error
+        throw new IllegalStateException("Unable to Retrieve Story from Server");
       }
     });
   }
@@ -86,7 +83,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
         storeRealmStory(convertToRealmStory(response.body()));
       }
       public void onFailure(Call<JsonStory> call, Throwable t) {
-        //TODO: Throw Error
+        throw new IllegalStateException("Unable to Retrieve Story from Server");
       }
     });
   }
@@ -102,6 +99,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   }
 
   private void storeRealmStory(RealmStory realmStory) {
+    if (realmStory == null) throw new NullPointerException();
     instantiateRealmObject();
     mRealm.copyToRealm(realmStory);
     mRealm.commitTransaction();
