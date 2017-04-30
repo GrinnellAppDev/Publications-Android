@@ -23,6 +23,7 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsRemoteClient;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
+import io.realm.RealmList;
 
 /**
  * {@link Fragment} to display all news in user's Newsfeed.
@@ -62,8 +63,10 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
 
     private List<Story> sGenerator() {
         List<Story> stories = new ArrayList<Story>();
-        stories.add(new RealmStory("March 7", "Brief", "tnurl", "S&B", "March 7", "AId", "Opeyemi Awe '15 Wins Watson", "Content", new RealmAuthor()));
-        return null;
+        stories.add(new RealmStory("March 7", "Brief", "tnurl", "S&B", "March 7", "AId",
+                "Opeyemi Awe '15 Wins Watson", "Content",
+                new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
+        return stories;
     }
 
     private void refreshContent() {
