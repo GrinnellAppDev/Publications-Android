@@ -35,20 +35,21 @@ public class MainActivityTest {
   }
 
   @Test
-  public void doesNavigationViewExist(){
+  public void doesNavigationViewExist() {
     NavigationView mNavigationView = (NavigationView) mMainActivity.findViewById(R.id.navigation_view);
     assertTrue("Testing if navigation-view exists", mNavigationView.isActivated());
   }
 
   @Test
-  public void doesNavigationDrawerOpenUponClick(){
+  public void doesNavigationDrawerOpenUponClick() {
     DrawerLayout mDrawerLayout = (DrawerLayout) mMainActivity.findViewById(R.id.drawer_layout);
     mDrawerLayout.performClick();
     NavigationView mToggle = (NavigationView) mMainActivity.findViewById(R.id.navigation_view);
     assertTrue("Navigation-view opens when drawer_layout clicked", mDrawerLayout.isDrawerOpen(mToggle));
   }
+
   @Test
-  public void doesNavigationDrawerCloseUponClick(){
+  public void doesNavigationDrawerCloseUponClick() {
     DrawerLayout mDrawerLayout = (DrawerLayout) mMainActivity.findViewById(R.id.drawer_layout);
     mDrawerLayout.performClick();
     mDrawerLayout.performClick();

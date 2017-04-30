@@ -12,6 +12,7 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import static junit.framework.Assert.assertTrue;
+import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 /**
  * Created by jrmunchy on 4/28/17.
@@ -23,21 +24,35 @@ import static junit.framework.Assert.assertTrue;
 public class NewsfeedFragmentTest {
   private NewsfeedFragment mNewsfeedFragment;
 
-  /*@Before
+  @Before
   public void setUp() {
-    add newInstance() to Fragment
     mNewsfeedFragment = NewsfeedFragment.newInstance();
+    startFragment(mNewsfeedFragment);
+
+  }
+
+  @Test
+  public void navigationHasCorrectHeading() {
+    Toolbar mToolbar = (Toolbar) mNewsfeedFragment.getActivity().findViewById(R.id.main_toolbar);
+    assertTrue("Check toolbar title",  mToolbar.getTitle().toString().compareTo("Newsfeed") == 0);
+  }
+
+  @Test
+  public void testDoesHaveNavigationView() {
+
+  }
+
+  @Test
+  public void clickNewsfeedItem(){
+
+}
+
+  /*public void clickItem() {
+    onView(withId(R.id.recycler_view))
+        .perform(RecyclerViewActions.actionOnItemAtPosition(27, click()));
+
+    onView(withId(R.id.text))
+        .check(matches(withText("27")))
+        .check(matches(isDisplayed()));
   }*/
-
-  @Test public void navigationHasCorrectHeading() {
-
-    NewsfeedFragment fragment = new NewsfeedFragment();
-    SupportFragmentTestUtil.startFragment(fragment);
-    //Toolbar mToolbar = (Toolbar) mNewsfeedFragment.findViewById(R.id.main_toolbar);
-    //assertTrue("Check toolbar title",  mToolbar.getTitle().toString().compareTo("Newsfeed") == 0);
-  }
-
-  @Test public void testDoesHaveNavigationView() {
-
-  }
 }
