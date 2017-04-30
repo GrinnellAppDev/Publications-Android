@@ -19,6 +19,11 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
     public NewsfeedFragment() {
     }
 
+    public static NewsfeedFragment newInstance(){
+        NewsfeedFragment newsfeedFragment = new NewsfeedFragment();
+        return newsfeedFragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
