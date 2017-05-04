@@ -15,7 +15,7 @@ public interface RemoteClientAPI {
     /**
      * @return all the available publications.
      */
-    List<Publication> getAllPublications();
+    void getAllPublications();
 
     /**
      * Fetches a publication by id
@@ -23,7 +23,7 @@ public interface RemoteClientAPI {
      * @param id the unique identifier for that publication.
      * @return the publication that matches the requested id.
      */
-    Publication getPublication(int id);
+    void getPublicationById(int id);
 
     /**
      * Returns a list of publications that matches a set of publication ids.
@@ -34,5 +34,5 @@ public interface RemoteClientAPI {
      * @param publicationIds a collection of the ids of the publications desired.
      * @return all the publications matching the various publication ids
      */
-    List<Publication> getPublications(Set<Integer> publicationIds);
+    void getPublications(Set<Integer> publicationIds);
 }

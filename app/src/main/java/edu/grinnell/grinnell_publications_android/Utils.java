@@ -31,6 +31,9 @@ public final class Utils {
     static final String VERB_PAUSED = "paused";
     static final String VERB_RESUMED = "resumed";
 
+    static final String BASE_API =
+            "https://g2j7qs2xs7.execute-mPubAPI.us-west-2.amazonaws.com/devstable/";
+
     /** Author Contact Urls */
     public enum AuthorContactUrl {
         FACEBOOK("Facebook"),

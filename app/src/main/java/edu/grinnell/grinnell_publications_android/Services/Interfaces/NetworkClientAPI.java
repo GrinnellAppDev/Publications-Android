@@ -32,6 +32,10 @@ public interface NetworkClientAPI {
      */
     List<Publication> getAllPublications();
 
+    /**
+     * @return a publication by its Id.
+     */
+    Publication getPublicationById(String publicationId);
 
     /* Stories */
 
