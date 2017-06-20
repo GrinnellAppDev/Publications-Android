@@ -58,7 +58,7 @@ public class RealmPublication extends RealmObject implements Publication {
         return this.publicationId;
     }
 
-    @Override
+    @Overridef
     public RealmList<RealmSeries> getSeries() {
         return this.series;
     }
@@ -74,4 +74,6 @@ public class RealmPublication extends RealmObject implements Publication {
     }
 
     public boolean getIsFavoriteButtonToggled() { return this.isFavoriteButtonToggled; }
+
 }
+

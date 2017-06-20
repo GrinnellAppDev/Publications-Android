@@ -16,6 +16,7 @@ package edu.grinnell.grinnell_publications_android.Fragments;
         import android.widget.LinearLayout;
         import android.widget.TextView;
 
+        import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
         import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
         import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
         import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
@@ -105,7 +106,7 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
 
         mArticleAuthor = (TextView) mArticleDetail1.findViewById(R.id.article_detail_text);
-        mArticleAuthor.setText(mStory.getAuthor().get(0).getFullName());
+        mArticleAuthor.setText(mStory.getAuthors().get(0).getFullName());
         mAuthorImage = (ImageView) mArticleDetail1.findViewById(R.id.article_detail_image);
         mAuthorImage.setImageResource(R.drawable.ic_person_black_24dp);
 
@@ -115,11 +116,11 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         mPublisherIcon.setImageResource(R.drawable.ic_picture_in_picture_black_24dp);
 
         mDatePublished = (TextView) mArticleDetail3.findViewById(R.id.article_detail_text);
-        mDatePublished.setText(mStory.getPublicationDate());
+        mDatePublished.setText(mStory.getDatePublished());
         mPublishedIcon = (ImageView) mArticleDetail3.findViewById(R.id.article_detail_image);
         mPublishedIcon.setImageResource(R.drawable.ic_event_black_24dp);
 
-        mHeaderImage.setImageDrawable(LoadImageFromWebOperations(mStory.getThumbnailUrl()));
+        mHeaderImage.setImageDrawable(LoadImageFromWebOperations(mStory.getHeaderImage()));
 
         bindView(view);
         loadPlaceHolderData();
@@ -205,8 +206,8 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         this.mArticleContent.setText(content);
     }
 
-    private void addBookmark(String publication_id, String article_id) {
+    private void addBookmark(Publication publication, String article_id) {
         RealmLocalClient client = new RealmLocalClient();
-        client.addBookmark(publication_id, article_id);
+        client.addBookmark(publication.getPublicationId(), article_id);
     }
 }

@@ -25,6 +25,9 @@ import io.realm.RealmResults;
  * @version 1.1 Fri May  6 12:34:47 CDT 2016
  * @see LocalClientAPI
  * @see io.realm.Realm
+ * TODO: abstract the local client class even further to simply requiring
+ * LocalClient client = new LocalClient("Realm");
+ * and it should use the methods chosen for Realm
  */
 public class RealmLocalClient implements LocalClientAPI {
     @Override
