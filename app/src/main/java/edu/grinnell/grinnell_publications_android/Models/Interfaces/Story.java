@@ -13,6 +13,7 @@ import java.util.List;
  * @see Reactions
  */
 public interface Story {
+
     /**
      * Returns all the @code{publication}s the story belongs to.
      *
@@ -21,7 +22,21 @@ public interface Story {
      *
      * @return the publication id the story belongs to.
      */
-    String getPublication();
+    String getPublicationId();
+
+    /**
+     * Returns all the @code{publication}s the story belongs to.
+     *
+     * <p>If the story belongs to a single @code{publication} then the size of the list returned is
+     * 1.</p>
+     *
+     * @return the publication id the story belongs to.
+     */
+    Publication getPublication();
+
+
+
+
 
     /**
      * Returns the date that the story was published.
@@ -63,9 +78,11 @@ public interface Story {
     String getArticleId();
 
     /**
-     * @return the header image
+     * @return the story image (in the form of a url)
      */
     String getHeaderImage();
+
+
 
     /**
      * Returns the date on which the story was last edited.
