@@ -89,15 +89,18 @@ public class NewsfeedAdapter extends BaseAdapter{
 
     public ViewHolder populateSingleView (ViewHolder holder, Story story) {
 
-        holder.mDatePublished.setText(story.getPublicationDate());
+        holder.mDatePublished.setText(story.getDatePublished());
 
-        if (story.getThumbnailUrl() != null)
-            Glide.with(mContext).load(story.getThumbnailUrl()).into(holder.mThumbnail);
+        if (story.getHeaderImage() != null)
+            Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
+
+
         if (story.getPublication().getPublicationImageUrl() != null)
             Glide.with(mContext).load(story.getPublication()
                     .getPublicationImageUrl()).into(holder.mPublicationIcon);
 
-        holder.mAuthor.setText(story.getAuthor().get(0).getFullName());
+
+        holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
 
         // Handling long titles
         String title = story.getTitle();
