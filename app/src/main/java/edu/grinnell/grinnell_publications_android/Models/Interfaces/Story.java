@@ -32,10 +32,7 @@ public interface Story {
      *
      * @return the publication id the story belongs to.
      */
-    Publication getPublication();
-
-
-
+    String getPublication();
 
 
     /**

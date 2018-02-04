@@ -17,7 +17,7 @@ public class RealmStory extends RealmObject implements Story {
   private String mDatePublished;
   private String mBrief;
   private String mHeaderImage;
-  private Publication mPublication;
+  private String mPublication;
   private String mPublicationId;
   private String mDateEdited;
   private String mArticleId;
@@ -32,7 +32,7 @@ public class RealmStory extends RealmObject implements Story {
   public RealmStory(String mDatePublished,
                     String mBrief,
                     String mHeaderImage,
-                    Publication mPublication,
+                    String mPublication,
                     String mPublicationId,
                     String mDateEdited,
                     String mArticleId,
@@ -148,7 +148,7 @@ public class RealmStory extends RealmObject implements Story {
   }
 
   /** Getters */
-  public Publication getPublication() {
+  public String getPublication() {
     return this.mPublication;
   }
 
