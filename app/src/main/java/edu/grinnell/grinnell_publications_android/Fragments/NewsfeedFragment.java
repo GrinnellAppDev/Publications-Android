@@ -58,19 +58,33 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
          */
         // create dummy stories
 
-        List<Story> stories = getStoriesFromRealm();
+        List<Story> stories = sGenerator();
 
-        ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
-        gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext(), stories));
+        if (stories.size() != 0) {
+            ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
+            gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext(), stories));
+        }
 
         return newsfeedFragment;
     }
 
     private List<Story> sGenerator() {
         List<Story> stories = new ArrayList<Story>();
-        stories.add(new RealmStory("March 7", "Brief", "tnurl", "S&B", "March 7", "AId",
-                "Opeyemi Awe '15 Wins Watson", "Content",
-                "", new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
+
+        String[] months = {"January", "February", "March", "April",	"May", "June", "July", "August", "September", "October", "November", "December"};
+        String[] pseudowords = {"Eum", "feugiat", "accusam", "deseruisse", "cu", "soluta", "libris", "te", "quo", "Iuvaret", "discere", "probatus", "no", "eos", "id", "qui", "malis", "dissentias", "temporibus", "eam", "audire", "civibus", "voluptaria", "ad", "Eum", "no", "molestie", "percipitur", "ei", "quo", "recusabo", "omittantur", "eos", "ancillae", "conclusionemque", "in", "Ut", "ius", "eirmod", "aperiri", "fierent", "paulo", "essent", "est", "at", "ut", "ius", "quem", "meliore", "intellegam", "In", "etiam", "quando", "sed", "facilisi", "suavitate", "cu", "mei", "ex", "viris", "graecis", "duo", "Iisque", "iudicabit", "patrioque", "mel", "ad", "has", "zril", "adipisci", "periculis", "ea", "Decore", "timeam", "vis", "id"};
+        int pseudowords_count = 0;
+        for (int i = 0; i < 10; i++) {
+            String title = "";
+            for (int w = 0; w < 8; w++) {
+                int size = pseudowords.length;
+                title = title + " " + pseudowords[pseudowords_count++ % size];
+            }
+            String date = "" + months[i] + " " + (i+10);
+            stories.add(new RealmStory(date, "Brief", "tnurl", "S&B", date, "AId",
+                    "Opeyemi Awe '15 Wins Watson", title,
+                    "", new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
+        }
         return stories;
     }
 
