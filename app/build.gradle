@@ -20,14 +20,14 @@ apply plugin: 'io.fabric'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
+
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "edu.grinnell.grinnell_publications_android"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -41,7 +41,6 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
-
 
 }
 
