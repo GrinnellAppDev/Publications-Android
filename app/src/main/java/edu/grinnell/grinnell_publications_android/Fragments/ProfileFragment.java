@@ -97,7 +97,7 @@ public class ProfileFragment extends Fragment implements UserInterface {
         List<RealmStory> stories = new ArrayList<>();
         stories.add(new RealmStory("December 4, 2016", "December 4, 2016", "sAndB",  null, null,
                                    "0", "Songs were performed",
-                                   "There Was A Performance and It was Great", null));
+                                   "There Was A Performance and It was Great", " ",null));
 
         return stories;
     }

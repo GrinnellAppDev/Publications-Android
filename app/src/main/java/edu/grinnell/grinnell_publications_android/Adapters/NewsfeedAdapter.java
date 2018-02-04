@@ -95,9 +95,8 @@ public class NewsfeedAdapter extends BaseAdapter{
             Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
 
 
-        if (story.getPublication().getPublicationImageUrl() != null)
-            Glide.with(mContext).load(story.getPublication()
-                    .getPublicationImageUrl()).into(holder.mPublicationIcon);
+        //if (story.getPublication().getPublicationImageUrl() != null)
+            Glide.with(mContext).load("https://i.imgur.com/yOjD3jo.jpg").into(holder.mPublicationIcon);
 
 
         holder.mAuthor.setText(story.getAuthors().get(0).getFullName());

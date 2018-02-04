@@ -53,6 +53,11 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
             }
         });
 */
+        /*
+
+         */
+        // create dummy stories
+
         List<Story> stories = getStoriesFromRealm();
 
         ListView gridview = (ListView) newsfeedFragment.findViewById(R.id.newsfeed_listview);
@@ -65,7 +70,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
         List<Story> stories = new ArrayList<Story>();
         stories.add(new RealmStory("March 7", "Brief", "tnurl", "S&B", "March 7", "AId",
                 "Opeyemi Awe '15 Wins Watson", "Content",
-                new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
+                "", new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
         return stories;
     }
 
