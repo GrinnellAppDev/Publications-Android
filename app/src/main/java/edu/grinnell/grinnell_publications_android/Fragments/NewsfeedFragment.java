@@ -44,20 +44,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
         final View  newsfeedFragment = inflater.inflate(R.layout.fragment_newsfeed, container, false);
         initializeUI(newsfeedFragment);
 
-        /*
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshContent();
-            }
-        });
-*/
-        /*
-
-         */
-        // create dummy stories
-
+        // Fill stories with dummy stories
         List<Story> stories = sGenerator();
 
         if (stories.size() != 0) {
@@ -65,9 +52,11 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
             gridview.setAdapter(new NewsfeedAdapter(getActivity().getApplicationContext(), stories));
         }
 
+
+
         return newsfeedFragment;
     }
-
+    
     private List<Story> sGenerator() {
         List<Story> stories = new ArrayList<Story>();
 
