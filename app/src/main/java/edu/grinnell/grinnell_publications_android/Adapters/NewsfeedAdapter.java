@@ -1,19 +1,21 @@
 package edu.grinnell.grinnell_publications_android.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
+import edu.grinnell.grinnell_publications_android.Activities.ArticleActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
@@ -84,6 +86,24 @@ public class NewsfeedAdapter extends BaseAdapter{
 
         holder = populateSingleView(holder, mStories.get(i));
 
+        // Get story id to pass into activity
+        final String storyId = mStories.get(i).getArticleId();
+
+        // Respond to Action
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ensures onclicklistener works
+                Toast.makeText(mContext, "clicked", Toast.LENGTH_LONG).show();
+                // launches article activity
+                // TODO: implement ArticleActivity.class
+                Intent intent = new Intent(this, ArticleActivity.class);
+                intent.putExtra("storyId", storyId);
+                mContext.startActivity(intent);
+
+            }
+        });
+
         return row;
     }
 
@@ -95,9 +115,14 @@ public class NewsfeedAdapter extends BaseAdapter{
             Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
 
 
+        /*  Loads publication icon from URL */
         //if (story.getPublication().getPublicationImageUrl() != null)
-            Glide.with(mContext).load("https://i.imgur.com/yOjD3jo.jpg").into(holder.mPublicationIcon);
+            Glide.with(mContext).load("https://i.imgur.com/P361xoU.jpg").into(holder.mPublicationIcon);
 
+        /*
+        final ImageView imageView = (ImageView) findViewById(R.id.mPublicationIcon);
+        imageView.setImageResource(sand.png);
+        */
 
         holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
 
