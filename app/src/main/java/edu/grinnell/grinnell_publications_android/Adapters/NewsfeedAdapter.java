@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import edu.grinnell.grinnell_publications_android.Activities.ArticleActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
@@ -97,9 +96,9 @@ public class NewsfeedAdapter extends BaseAdapter{
                 Toast.makeText(mContext, "clicked", Toast.LENGTH_LONG).show();
                 // launches article activity
                 // TODO: implement ArticleActivity.class
-                Intent intent = new Intent(this, ArticleActivity.class);
-                intent.putExtra("storyId", storyId);
-                mContext.startActivity(intent);
+                // Intent intent = new Intent(this, ArticleActivity.class);
+                // intent.putExtra("storyId", storyId);
+                // mContext.startActivity(intent);
 
             }
         });

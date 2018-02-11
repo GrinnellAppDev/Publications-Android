@@ -56,7 +56,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
 
         return newsfeedFragment;
     }
-    
+
     private List<Story> sGenerator() {
         List<Story> stories = new ArrayList<Story>();
 
