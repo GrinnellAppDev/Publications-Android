@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.PublicationsFragment">
-    
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/publications_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,12 +10,30 @@
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="90dp"
-        android:numColumns="auto_fit"
+
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:paddingTop="25dp"
+        android:paddingLeft="27dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="All Publications" />
+
+    <GridView
+        android:id="@+id/publicationsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="50dp"
+        android:paddingLeft="20dp"
+        android:horizontalSpacing="-23dp"
         android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:numColumns="3"
+        android:columnWidth="110dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
+        android:layout_marginTop="20dp" />
+
 
 </FrameLayout>

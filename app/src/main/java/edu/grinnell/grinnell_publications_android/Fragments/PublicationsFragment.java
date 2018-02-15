@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -12,13 +13,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import java.util.List;
 
+import edu.grinnell.grinnell_publications_android.Adapters.*;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.R;
-
+import edu.grinnell.grinnell_publications_android.Adapters.PublicationAdapter;
 /**
  * {@link Fragment} to display users' subscribed publications.
  * @author Larry Boateng Asante
@@ -26,7 +29,6 @@ import edu.grinnell.grinnell_publications_android.R;
 public class PublicationsFragment extends Fragment
         implements UserInterface, SearchView.OnQueryTextListener {
 
-    private RecyclerView mRecyclerView;
     private List<RealmPublication> mPublications;
     private LinearLayoutManager mLayoutManager;
 
@@ -41,8 +43,10 @@ public class PublicationsFragment extends Fragment
         setHasOptionsMenu(true);
 
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.publications_rv);
         configureViews();
+
+        GridView gridview = (GridView) view.findViewById(R.id.publicationsGridView);
+        gridview.setAdapter(new PublicationAdapter(getActivity().getApplicationContext()));
 
         return view;
     }
@@ -50,8 +54,6 @@ public class PublicationsFragment extends Fragment
     private void configureViews() {
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
     @Override

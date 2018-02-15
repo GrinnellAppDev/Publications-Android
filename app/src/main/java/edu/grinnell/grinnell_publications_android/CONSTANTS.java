@@ -6,7 +6,7 @@ package edu.grinnell.grinnell_publications_android;
  * @author  Yazan Kittaneh
  */
 
-public class Constants {
+public class CONSTANTS {
     public static final String PUBLICATION_ID="publicationId";
     public static final String LAST_UPDATED ="lastUpdated";
     public static final String STORY_ID ="storyId";

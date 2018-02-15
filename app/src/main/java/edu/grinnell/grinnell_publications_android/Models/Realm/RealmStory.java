@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -17,6 +18,7 @@ public class RealmStory extends RealmObject implements Story {
   private String mBrief;
   private String mHeaderImage;
   private String mPublication;
+  private String mPublicationId;
   private String mDateEdited;
   private String mArticleId;
   private String mTitle;
@@ -31,6 +33,7 @@ public class RealmStory extends RealmObject implements Story {
                     String mBrief,
                     String mHeaderImage,
                     String mPublication,
+                    String mPublicationId,
                     String mDateEdited,
                     String mArticleId,
                     String mTitle,
@@ -40,6 +43,7 @@ public class RealmStory extends RealmObject implements Story {
     this.mBrief = mBrief;
     this.mHeaderImage = mHeaderImage;
     this.mPublication = mPublication;
+    this.mPublicationId = mPublicationId;
     this.mDateEdited = mDateEdited;
     this.mArticleId = mArticleId;
     this.mTitle = mTitle;
@@ -48,11 +52,11 @@ public class RealmStory extends RealmObject implements Story {
   }
 
   /** Setters */
-  public void setPublication(String publication) {
-    if (publication.isEmpty() || publication == null) {
+  public void setPublicationId(String publicationId) {
+    if (publicationId.isEmpty() || publicationId == null) {
       return;
     }
-    this.mPublication = publication;
+    this.mPublicationId = publicationId;
   }
 
   /**
@@ -146,6 +150,10 @@ public class RealmStory extends RealmObject implements Story {
   /** Getters */
   public String getPublication() {
     return this.mPublication;
+  }
+
+  public String getPublicationId() {
+    return this.mPublicationId;
   }
 
   @Override public String getDatePublished() {

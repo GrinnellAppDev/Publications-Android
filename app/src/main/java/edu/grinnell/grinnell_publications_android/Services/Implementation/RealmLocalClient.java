@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static edu.grinnell.grinnell_publications_android.Constants.*;
+import static edu.grinnell.grinnell_publications_android.CONSTANTS.*;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -55,7 +55,7 @@ public class RealmLocalClient implements LocalClientAPI {
     Creates a list of realm publications that match with the user input.
      */
     RealmResults<RealmPublication> pubList = realm.where(RealmPublication.class)
-        .equalTo(PUBLICATION_ID, publication.getPublicationId())
+        .equalTo(PUBLICATION_ID, publication.getPublication())
         .findAll();
 
     if (pubList.size() == 0) {
