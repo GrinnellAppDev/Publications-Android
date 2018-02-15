@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import edu.grinnell.grinnell_publications_android.Activities.ArticleActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
@@ -86,20 +87,19 @@ public class NewsfeedAdapter extends BaseAdapter{
         holder = populateSingleView(holder, mStories.get(i));
 
         // Get story id to pass into activity
-        final String storyId = mStories.get(i).getArticleId();
+        final String title = mStories.get(i).getTitle();
 
         // Respond to Action
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // ensures onclicklistener works
-                Toast.makeText(mContext, "clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, title, Toast.LENGTH_LONG).show();
                 // launches article activity
                 // TODO: implement ArticleActivity.class
-                // Intent intent = new Intent(this, ArticleActivity.class);
-                // intent.putExtra("storyId", storyId);
-                // mContext.startActivity(intent);
-
+                Intent intent = new Intent(view.getContext(), ArticleActivity.class);
+                intent.putExtra("storyTitle", title);
+                mContext.startActivity(intent);
             }
         });
 
