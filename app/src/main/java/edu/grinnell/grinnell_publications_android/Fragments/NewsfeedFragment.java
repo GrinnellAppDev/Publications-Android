@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
+import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsRemoteClient;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.RemoteClientAPI;
 
 /**
  * {@link Fragment} to display all news in user's Newsfeed.
@@ -30,6 +32,8 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(View view) {
+        RemoteClientAPI remoteClient = new PublicationsRemoteClient();
+        remoteClient.getAllPublications();
     }
 
 
