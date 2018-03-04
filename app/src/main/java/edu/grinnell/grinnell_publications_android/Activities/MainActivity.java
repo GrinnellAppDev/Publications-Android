@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.ExpandedArticleFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         setContentView(R.layout.activity_main);
         Fabric.with(this, new Crashlytics());
         initializeUI(findViewById(android.R.id.content));
+
+        // Start expanded article fragment for now
+
+        Intent intent = new Intent(this, ExpandedArticleActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -53,8 +59,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         setSupportActionBar(mToolbar);
 
         // We are doing this so we always start the app in the News Feed
-        NewsfeedFragment newsfeed = new NewsfeedFragment();
-        replaceFrameWithFragment(newsfeed);
+        //NewsfeedFragment newsfeed = new NewsfeedFragment();
+        //ExpandedArticleFragment articleFragment = new ExpandedArticleFragment();
+        //replaceFrameWithFragment(articleFragment);
 
         buildNavDrawer();
     }
