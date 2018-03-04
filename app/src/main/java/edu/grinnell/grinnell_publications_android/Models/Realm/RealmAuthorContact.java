@@ -21,8 +21,10 @@ public class RealmAuthorContact extends RealmObject implements AuthorContact {
     @Ignore
     private Map<Utils.AuthorContactUrl,String> contactUrlMap;
 
+    public RealmAuthorContact() {}
+
     /* Default constructor needed by Realm*/
-    public RealmAuthorContact(){
+    public RealmAuthorContact(String email, String phoneNumber, String somethingElse){
     }
 
     /** Setters */

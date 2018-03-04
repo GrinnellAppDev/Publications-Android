@@ -15,7 +15,6 @@ import android.view.View;
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
-import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -86,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                     case R.id.newsfeed:
                         replaceFrameWithFragment(new NewsfeedFragment());
                         break;
-                    case R.id.publications:
+                    /*case R.id.publications:
                         replaceFrameWithFragment(new PublicationsFragment());
-                        break;
+                        break;*/
                     case R.id.profile:
                         replaceFrameWithFragment(new ProfileFragment());
                         break;

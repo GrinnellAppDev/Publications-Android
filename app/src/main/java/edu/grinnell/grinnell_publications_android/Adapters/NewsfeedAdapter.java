@@ -11,11 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
-import edu.grinnell.grinnell_publications_android.Activities.ArticleActivity;
+import edu.grinnell.grinnell_publications_android.Activities.ExpandedArticleActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
@@ -96,7 +94,7 @@ public class NewsfeedAdapter extends BaseAdapter{
                 // ensures onclicklistener works
                 Toast.makeText(mContext, title, Toast.LENGTH_LONG).show();
                 // launches article activity
-                Intent intent = new Intent(view.getContext(), ArticleActivity.class);
+                Intent intent = new Intent(view.getContext(), ExpandedArticleActivity.class);
                 intent.putExtra("storyTitle", title);
                 mContext.startActivity(intent);
             }
@@ -109,13 +107,13 @@ public class NewsfeedAdapter extends BaseAdapter{
 
         holder.mDatePublished.setText(story.getDatePublished());
 
-        if (story.getHeaderImage() != null)
-            Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
+        if (story.getHeaderImage() != null) {}
+            // Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
 
 
         /*  Loads publication icon from URL */
         //if (story.getPublication().getPublicationImageUrl() != null)
-            Glide.with(mContext).load("https://i.imgur.com/P361xoU.jpg").into(holder.mPublicationIcon);
+            //Glide.with(mContext).load("https://i.imgur.com/P361xoU.jpg").into(holder.mPublicationIcon);
 
         /*
         final ImageView imageView = (ImageView) findViewById(R.id.mPublicationIcon);

@@ -78,7 +78,6 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
     }
 
     private void refreshContent() {
-        PublicationsRemoteClient prc = new PublicationsRemoteClient(mRealmClient);
         // TODO: Get Stories through PRC
 
     }

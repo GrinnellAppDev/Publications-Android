@@ -87,4 +87,5 @@ public class PublicationsFragment extends Fragment
     public boolean onQueryTextChange(String query) {
         return true;
     }
+
 }

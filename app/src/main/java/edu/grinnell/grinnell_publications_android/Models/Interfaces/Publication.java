@@ -40,3 +40,4 @@ public interface Publication {
      */
     String getPublicationImageUrl();
 }
+

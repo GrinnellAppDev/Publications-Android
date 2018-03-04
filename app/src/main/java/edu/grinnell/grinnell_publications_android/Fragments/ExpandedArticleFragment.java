@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 
 /**
- * Fragment displays articles and allows users to mark article as favorited.
+ * Fragment displays an article and allows users to mark article as favorited.
  * @author Yazan Kittaneh
  */
 
@@ -65,7 +66,8 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(View view){
-        mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
+        Log.d("Nav icon", String.valueOf(getDrawable(getContext(), R.drawable.ic_action_back)==null));
+        //mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
         bindView(view);
         loadPlaceHolderData();
         setOnClickListeners();
@@ -129,4 +131,6 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
 
     /** Sets text into content field **/
     private void setContentText(String content) { this.mArticleContent.setText(content);}
+
+    
 }

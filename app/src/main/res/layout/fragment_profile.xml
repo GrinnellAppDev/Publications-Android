@@ -33,7 +33,7 @@
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
                 style="@style/MaterialAnimations"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
