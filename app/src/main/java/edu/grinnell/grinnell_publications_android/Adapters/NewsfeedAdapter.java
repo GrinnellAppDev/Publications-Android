@@ -96,7 +96,6 @@ public class NewsfeedAdapter extends BaseAdapter{
                 // ensures onclicklistener works
                 Toast.makeText(mContext, title, Toast.LENGTH_LONG).show();
                 // launches article activity
-                // TODO: implement ArticleActivity.class
                 Intent intent = new Intent(view.getContext(), ArticleActivity.class);
                 intent.putExtra("storyTitle", title);
                 mContext.startActivity(intent);

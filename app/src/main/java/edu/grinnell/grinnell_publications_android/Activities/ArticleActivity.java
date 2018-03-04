@@ -15,15 +15,15 @@ public class ArticleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article);
 
         Intent intent = getIntent();
         String storyTitle = intent.getStringExtra("storyTitle");
-
     }
 
     public void initializeUI(View view) {
         // We are doing this so we always start the app in the News Feed
+        setContentView(R.layout.activity_article);
+
         ExpandedArticleFragment newsfeed = new ExpandedArticleFragment();
         replaceFrameWithFragment(newsfeed);
     }
