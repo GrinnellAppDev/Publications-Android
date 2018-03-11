@@ -5,6 +5,12 @@ import android.content.Context;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
+/**
+ * This class initializes Realm once for the whole application.
+ *
+ * @author Albert Ford
+ */
+
 public class PublicationsActivity extends Application {
 
     @SuppressWarnings("FieldCanBeLocal")
