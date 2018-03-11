@@ -4,6 +4,7 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * This class implements @code{Publication} using Realm persistence.
@@ -15,6 +16,7 @@ import io.realm.RealmObject;
  */
 public class RealmPublication extends RealmObject implements Publication {
     private String publicationName;
+    @PrimaryKey
     private String publicationId;
     private RealmList<RealmSeries> series;
     private RealmList<RealmStory> stories;

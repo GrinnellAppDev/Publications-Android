@@ -126,9 +126,7 @@ public class RealmLocalClient implements LocalClientAPI {
     return mResults;
   }
 
-  @Override public List<Story> getBookmarkedStories() {
-    return new ArrayList<>();
-  }
+  @Override public List<Story> getBookmarkedStories() { return new ArrayList<>(); }
 
   @Override public User getProfile() {
     return null;
