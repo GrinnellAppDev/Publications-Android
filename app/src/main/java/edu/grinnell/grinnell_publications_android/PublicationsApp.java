@@ -11,7 +11,7 @@ import io.realm.RealmConfiguration;
  * @author Albert Ford
  */
 
-public class PublicationsActivity extends Application {
+public class PublicationsApp extends Application {
 
     @SuppressWarnings("FieldCanBeLocal")
     private static long SCHEMA_VERSION = 1;
