@@ -1,24 +1,14 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
+import java.util.Set;
+
 import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthorContact;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.Models.RemoteQueryResponse;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.RemoteClientAPI;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAllPublications;
-import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
-import edu.grinnell.grinnell_publications_android.Services.Templates.JsonPublication;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
-import io.realm.Realm;
-import io.realm.RealmList;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +29,6 @@ import retrofit2.http.Path;
  */
 public class PublicationsRemoteClient implements RemoteClientAPI {
 
-  private Realm mRealm;
   private Retrofit mRetrofit;
   private LocalClientAPI mLocalClient;
   private PublicationsAPI mPubAPI;
@@ -72,20 +61,11 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     });
   }
 
-  private void storeRealmPublication(List<JsonPublication> list) {
-    instantiateRealmObject();
-    List<Publication> publications = new ArrayList<Publication>();
-    for (JsonPublication item : list) {
-      publications.add(new RealmPublication(item.getName(), item.getId(), null, null, null));
-    }
-    mLocalClient.savePublications(publications);
-  }
-
   public void getStory(String publicationId, String articleId) {
     Call<JsonStory> call = mPubAPI.article(publicationId, articleId);
     call.enqueue(new Callback<JsonStory>() {
       @Override public void onResponse(Call<JsonStory> call, Response<JsonStory> response) {
-        storeRealmStory(convertToRealmStory(response.body()));
+        // TODO: Call to save the story
       }
       public void onFailure(Call<JsonStory> call, Throwable t) {
         throw new IllegalStateException("Unable to Retrieve Story from Server");
@@ -93,26 +73,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     });
   }
 
-  private RealmStory convertToRealmStory(JsonStory s) {
-    RealmList realmAuthorList = new RealmList<RealmAuthor>();
-    for (JsonAuthor author : s.getAuthors()) {
-      RealmAuthorContact contact = new RealmAuthorContact(author.getEmail(), null, null);
-      realmAuthorList.add(new RealmAuthor(author.getName(), contact, null, null));
-    }
-    return new RealmStory(s.getDatePublished(), s.getBrief(), s.getHeaderImage(), s.getPublication(),
-            s.getDateEdited(), s.getId(), s.getTitle(), s.getContent(), realmAuthorList);
-  }
-
-  private void storeRealmStory(RealmStory realmStory) {
-    if (realmStory == null) throw new NullPointerException();
-    instantiateRealmObject();
-    mRealm.copyToRealm(realmStory);
-    mRealm.commitTransaction();
-  }
-
-  private void instantiateRealmObject() {
-    mRealm = Realm.getDefaultInstance();
-    mRealm.beginTransaction();
+  public void getStoriesFromPublication(String publicationId) {
   }
 
   /* Not currently supported by AWS endpoints*/
