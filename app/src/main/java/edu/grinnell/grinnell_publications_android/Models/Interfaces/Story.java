@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
 import java.util.AbstractList;
 import java.util.List;
+import java.util.Date;
 
 /**
  * @author Albert Owusu-Asare
@@ -30,7 +31,7 @@ public interface Story {
      *
      * @return the date that the story was published.
      */
-    String getDatePublished();
+    Date getDatePublished();
 
     /**
      * Returns all the @code{author}s of the story.
@@ -72,6 +73,17 @@ public interface Story {
      * *
      * @return the data that the story was edited
      */
-    String getDateEdited();
+    Date getDateEdited();
+
+    /**
+     * Return if the current story is a full story
+     * @return
+     */
+    Boolean isFullStory();
+
+    /**
+     *
+     */
+    void setFullStory(boolean isFull);
 
 }

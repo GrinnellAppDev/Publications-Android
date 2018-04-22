@@ -43,11 +43,9 @@ public interface NetworkClientAPI {
      * Returns all the stories that make up a given page.
      *
      * <p> Note that a page represents a segment of the local database with a number of stories</p>
-     * @param page the page number to retrieve
-     * @param numStoriesPerPage the number of stories that make up a page.
      * @return all the stories for the given page.
      */
-    List<Story>getAllStories(int page,int numStoriesPerPage);
+    List<Story>getAllStories();
 
     /**
      * Fetches the most recent stories.
@@ -57,7 +55,7 @@ public interface NetworkClientAPI {
      * @param mostRecentStory
      * @return
      */
-    List<Story> getRecentStories(List<Integer> subscribedPublicationIds,Date mostRecentStory);
+    List<Story> getRecentStories(List<String> subscribedPublicationIds,Date mostRecentStory);
 
     /**
      * Fetches more details about a given story.For example the  full body text and the body image
@@ -66,7 +64,7 @@ public interface NetworkClientAPI {
      * @param storyId the identifier for the story
      * @return a full fledged story with all the details of the story.
      */
-    Story getFullStoryById(int storyId);
+    Story getFullStoryById(String storyId);
 
 
     /* Series*/
@@ -85,11 +83,10 @@ public interface NetworkClientAPI {
     /**
      * Fetches the most recent stories in a particular series.
      *
-     * @param seriesId the identifier for the series.
      * @param mostRecentStoryInSeries most recent story.
      * @return a list of all the most recent stories in the series.
      */
-    List<Story> getRecentStories(int seriesId,Date mostRecentStoryInSeries);
+    List<Story> getRecentStories(int seriesId, Date mostRecentStoryInSeries);
 
     /* Bookmarks */
 
