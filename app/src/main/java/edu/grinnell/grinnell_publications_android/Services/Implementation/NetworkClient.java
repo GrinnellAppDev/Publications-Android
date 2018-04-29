@@ -27,17 +27,18 @@ public class NetworkClient implements NetworkClientAPI {
     }
 
     @Override
-    public List<Story> getAllStories(int page, int numStoriesPerPage) {
+    public List<Story> getAllStories() {
+        return null;
+    }
+
+
+    @Override
+    public List<Story> getRecentStories(List<String> subscribedPublicationIds, Date mostRecentStory) {
         return null;
     }
 
     @Override
-    public List<Story> getRecentStories(List<Integer> subscribedPublicationIds, Date mostRecentStory) {
-        return null;
-    }
-
-    @Override
-    public Story getFullStoryById(int storyId) {
+    public Story getFullStoryById(String storyId) {
         return null;
     }
 
