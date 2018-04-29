@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
@@ -108,7 +110,8 @@ public class NewsfeedAdapter extends BaseAdapter{
 
     public ViewHolder populateSingleView (ViewHolder holder, Story story) {
 
-        holder.mDatePublished.setText(story.getDatePublished());
+        DateFormat dateFormat = SimpleDateFormat.getDateInstance();
+        holder.mDatePublished.setText(dateFormat.format(story.getDatePublished()));
 
         if (story.getHeaderImage() != null)
             Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);

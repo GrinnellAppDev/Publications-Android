@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.grinnell.grinnell_publications_android">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".PublicationsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -31,6 +32,9 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="45894d9e8a6bc3b8513651d6de36159e2c836e51"
+            />
     </application>
-
 </manifest>

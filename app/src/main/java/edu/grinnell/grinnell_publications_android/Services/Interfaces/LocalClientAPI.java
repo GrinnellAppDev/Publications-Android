@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Services.Interfaces;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 
 /**
  * Abstracts the core functionality needed in on device persistence.
@@ -53,4 +54,22 @@ public interface LocalClientAPI  extends NetworkClientAPI{
 
     void savePublication(Publication publication);
 
+
+    /**
+     * Saves all the publications to the local cache.
+     *
+     * @param stories  the collection of all the stories
+     */
+
+    void saveStories(List<Story> stories);
+
+    /**
+     * Saves a particular publication to the local cache.
+     */
+
+    void saveFullStory(Story fullStory);
+
+
+    //Why full
+    Story getFullStoryById(String storyId);
 }

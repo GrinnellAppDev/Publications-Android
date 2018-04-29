@@ -4,6 +4,7 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * This class implements @code{Publication} using Realm persistence.
@@ -15,7 +16,8 @@ import io.realm.RealmObject;
  */
 public class RealmPublication extends RealmObject implements Publication {
     private String publicationName;
-    private int publicationId;
+    @PrimaryKey
+    private String publicationId;
     private RealmList<RealmSeries> series;
     private RealmList<RealmStory> stories;
     private String publicationImageUrl;
@@ -24,7 +26,7 @@ public class RealmPublication extends RealmObject implements Publication {
     /* Default constructor required by Realm*/
     public RealmPublication(){}
 
-    public RealmPublication(String publicationName, int publicationId,
+    public RealmPublication(String publicationName, String publicationId,
                             RealmList<RealmSeries> series, RealmList<RealmStory> stories,
                             String publicationImageUrl) {
         this.publicationName = publicationName;
@@ -36,7 +38,7 @@ public class RealmPublication extends RealmObject implements Publication {
 
     /** Setters */
     public void setPublicationName(String publicationName){this.publicationName = publicationName;}
-    public void setPublicationId(int publicationId){this.publicationId = publicationId;}
+    public void setPublicationId(String publicationId){this.publicationId = publicationId;}
     public void setSeries(RealmList<RealmSeries> series){
         this.series =series;}
     public void setStories(RealmList<RealmStory> stories){
@@ -54,7 +56,7 @@ public class RealmPublication extends RealmObject implements Publication {
     public String getPublicationName() {return this.publicationName;}
 
     @Override
-    public int getPublication() {
+    public String getPublicationId() {
         return this.publicationId;
     }
 

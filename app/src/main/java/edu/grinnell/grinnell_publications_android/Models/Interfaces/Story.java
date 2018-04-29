@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Models.Interfaces;
 
 import java.util.AbstractList;
 import java.util.List;
+import java.util.Date;
 
 /**
  * @author Albert Owusu-Asare
@@ -13,17 +14,6 @@ import java.util.List;
  * @see Reactions
  */
 public interface Story {
-
-    /**
-     * Returns all the @code{publication}s the story belongs to.
-     *
-     * <p>If the story belongs to a single @code{publication} then the size of the list returned is
-     * 1.</p>
-     *
-     * @return the publication id the story belongs to.
-     */
-    String getPublicationId();
-
     /**
      * Returns all the @code{publication}s the story belongs to.
      *
@@ -34,7 +24,6 @@ public interface Story {
      */
     String getPublication();
 
-
     /**
      * Returns the date that the story was published.
      *
@@ -42,7 +31,7 @@ public interface Story {
      *
      * @return the date that the story was published.
      */
-    String getDatePublished();
+    Date getDatePublished();
 
     /**
      * Returns all the @code{author}s of the story.
@@ -75,17 +64,26 @@ public interface Story {
     String getArticleId();
 
     /**
-     * @return the story image (in the form of a url)
+     * @return the header image
      */
     String getHeaderImage();
-
-
 
     /**
      * Returns the date on which the story was last edited.
      * *
      * @return the data that the story was edited
      */
-    String getDateEdited();
+    Date getDateEdited();
+
+    /**
+     * Return if the current story is a full story
+     * @return
+     */
+    Boolean isFullStory();
+
+    /**
+     *
+     */
+    void setFullStory(boolean isFull);
 
 }

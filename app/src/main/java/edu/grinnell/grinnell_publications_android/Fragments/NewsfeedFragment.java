@@ -23,6 +23,7 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsRemoteClient;
 import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.RemoteClientAPI;
 import io.realm.RealmList;
 
 /**
@@ -69,9 +70,9 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
                 int size = pseudowords.length;
                 title = title + " " + pseudowords[pseudowords_count++ % size];
             }
-            String date = "" + months[i] + " " + (i+10);
+            String date = "1525032006";
             stories.add(new RealmStory(date, "Brief", "tnurl", "S&B", date, "AId",
-                    "Opeyemi Awe '15 Wins Watson", title,
+                     title,
                     "", new RealmList(new RealmAuthor("Mineta Suzuki", null, null, null))));
         }
         return stories;
@@ -89,6 +90,8 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
     }
     @Override
     public void initializeUI(View view) {
+        RemoteClientAPI remoteClient = new PublicationsRemoteClient();
+        remoteClient.getAllPublications();
     }
 
 
