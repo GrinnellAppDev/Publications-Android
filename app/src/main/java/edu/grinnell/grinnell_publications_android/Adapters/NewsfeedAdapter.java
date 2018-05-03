@@ -54,6 +54,11 @@ public class NewsfeedAdapter extends BaseAdapter{
         mStories = stories;
     }
 
+    public void updateStories(List<Story> stories) {
+        this.mStories = stories;
+        notifyDataSetChanged();
+    }
+
     public long getItemId (int i) { return i; }
     public int getCount() { return mStories.size(); }
     public Object getItem (int i) { return mStories.get(i); }
@@ -125,8 +130,10 @@ public class NewsfeedAdapter extends BaseAdapter{
         final ImageView imageView = (ImageView) findViewById(R.id.mPublicationIcon);
         imageView.setImageResource(sand.png);
         */
-
-        holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
+        if (story.getAuthors() != null && story.getAuthors().size() > 0)
+            holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
+        else
+            holder.mAuthor.setText("Unknown Author");
 
         // Handling long titles
         String title = story.getTitle();

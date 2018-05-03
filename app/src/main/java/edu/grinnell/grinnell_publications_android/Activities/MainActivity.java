@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
-import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
+import edu.grinnell.grinnell_publications_android.Fragments.NewsFeedFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         setSupportActionBar(mToolbar);
 
         // We are doing this so we always start the app in the News Feed
-        NewsfeedFragment newsfeed = new NewsfeedFragment();
+        NewsFeedFragment newsfeed = new NewsFeedFragment();
         replaceFrameWithFragment(newsfeed);
 
         buildNavDrawer();
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
             private void switchFragments(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.newsfeed:
-                        replaceFrameWithFragment(new NewsfeedFragment());
+                        replaceFrameWithFragment(new NewsFeedFragment());
                         break;
                     case R.id.publications:
                         replaceFrameWithFragment(new PublicationsFragment());

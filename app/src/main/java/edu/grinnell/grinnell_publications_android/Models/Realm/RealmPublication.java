@@ -2,6 +2,7 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
+import edu.grinnell.grinnell_publications_android.Services.Templates.JsonPublication;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -34,6 +35,13 @@ public class RealmPublication extends RealmObject implements Publication {
         this.series = series;
         this.stories = stories;
         this.publicationImageUrl = publicationImageUrl;
+    }
+
+    public static RealmPublication from(JsonPublication jsonPublication) {
+        return new RealmPublication(
+                jsonPublication.getName(),
+                jsonPublication.getId(),
+                null, null, null);
     }
 
     /** Setters */

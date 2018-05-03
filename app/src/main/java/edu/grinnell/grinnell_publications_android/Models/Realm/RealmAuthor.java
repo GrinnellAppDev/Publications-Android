@@ -3,6 +3,7 @@ package edu.grinnell.grinnell_publications_android.Models.Realm;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
+import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -15,54 +16,64 @@ import io.realm.RealmObject;
  * @see Author
  */
 public class RealmAuthor extends RealmObject implements Author {
-  private String fullName;
-  private RealmAuthorContact authorContactInfo;
-  private RealmList<RealmPublication> publications;
-  private RealmList<RealmStory> stories;
+    private String fullName;
+    private RealmAuthorContact authorContactInfo;
+    private RealmList<RealmPublication> publications;
+    private RealmList<RealmStory> stories;
 
-  /* Default constructor needed for Realm*/
-  public RealmAuthor() {
-  }
+    /* Default constructor needed for Realm*/
+    public RealmAuthor() {
+    }
 
-  public RealmAuthor(String fullName, RealmAuthorContact authorContactInfo,
-      RealmList<RealmPublication> publications, RealmList<RealmStory> stories) {
-    this.fullName = fullName;
-    this.authorContactInfo = authorContactInfo;
-    this.publications = publications;
-    this.stories = stories;
-  }
+    public RealmAuthor(String fullName, RealmAuthorContact authorContactInfo,
+                       RealmList<RealmPublication> publications, RealmList<RealmStory> stories) {
+        this.fullName = fullName;
+        this.authorContactInfo = authorContactInfo;
+        this.publications = publications;
+        this.stories = stories;
+    }
 
-  /** Setters */
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
+    public static RealmAuthor from(JsonAuthor jsonAuthor) {
+        return new RealmAuthor(jsonAuthor.getName(), null, null, null);
+    }
 
-  public void setAuthorContactInfo(RealmAuthorContact authorContact) {
-    this.authorContactInfo = authorContact;
-  }
+    /** Setters */
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-  public void setPublications(RealmList<RealmPublication> publications) {
-    this.publications = publications;
-  }
+    public void setAuthorContactInfo(RealmAuthorContact authorContact) {
+        this.authorContactInfo = authorContact;
+    }
 
-  public void setStories(RealmList<RealmStory> stories) {
-    this.stories = stories;
-  }
+    public void setPublications(RealmList<RealmPublication> publications) {
+        this.publications = publications;
+    }
 
-  /** Getters */
-  @Override public String getFullName() {
-    return this.fullName;
-  }
+    public void setStories(RealmList<RealmStory> stories) {
+        this.stories = stories;
+    }
 
-  @Override public RealmAuthorContact getAuthorContactInfo() {
-    return this.authorContactInfo;
-  }
+    /**
+     * Getters
+     */
+    @Override
+    public String getFullName() {
+        return this.fullName;
+    }
 
-  @Override public RealmList<RealmPublication> getPublications() {
-    return this.publications;
-  }
+    @Override
+    public RealmAuthorContact getAuthorContactInfo() {
+        return this.authorContactInfo;
+    }
 
-  @Override public RealmList<RealmStory> getStories() {
-    return this.stories;
-  }
+    @Override
+    public RealmList<RealmPublication> getPublications() {
+        return this.publications;
+    }
+
+    @Override
+    public RealmList<RealmStory> getStories() {
+        return this.stories;
+    }
 }

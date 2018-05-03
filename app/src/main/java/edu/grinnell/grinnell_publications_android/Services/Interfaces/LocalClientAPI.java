@@ -14,7 +14,7 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
  *@author Albert Owusu-Asare
  *@version Thu May  5 14:42:22 CDT 2016
  */
-public interface LocalClientAPI  extends NetworkClientAPI{
+public interface LocalClientAPI  extends LocalClientGetAPI {
     /**
      * Indicates whether the local cache is empty.
      *

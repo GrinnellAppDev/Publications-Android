@@ -16,7 +16,6 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
  * @author Albert Owusu-Asare
  * @version 1.1 Thu May  5 14:57:32 CDT 2016
  * @see LocalClientAPI
- * @see RemoteClientAPI
  */
 public interface NetworkClientAPI {
 
@@ -25,17 +24,17 @@ public interface NetworkClientAPI {
     /**
      * @return  all the publications the current user is subscribed to
      */
-    List<Publication> getSubscribedPublications(int userId);
+    void getSubscribedPublications(int userId);
 
     /**
      * @return all the existing publications.
      */
-    List<Publication> getAllPublications();
+    void getAllPublications();
 
     /**
      * @return a publication by its Id.
      */
-    Publication getPublicationById(String publicationId);
+    void getPublicationById(String publicationId);
 
     /* Stories */
 
@@ -45,7 +44,7 @@ public interface NetworkClientAPI {
      * <p> Note that a page represents a segment of the local database with a number of stories</p>
      * @return all the stories for the given page.
      */
-    List<Story>getAllStories();
+    void getAllStoriesInPublication(String publicationId);
 
     /**
      * Fetches the most recent stories.
@@ -55,16 +54,17 @@ public interface NetworkClientAPI {
      * @param mostRecentStory
      * @return
      */
-    List<Story> getRecentStories(List<String> subscribedPublicationIds,Date mostRecentStory);
+    void getRecentStories(List<String> subscribedPublicationIds,Date mostRecentStory);
 
     /**
      * Fetches more details about a given story.For example the  full body text and the body image
      * urls of story.
      *
+     * @param publicationId  the identifier for the publication
      * @param storyId the identifier for the story
      * @return a full fledged story with all the details of the story.
      */
-    Story getFullStoryById(String storyId);
+    void getFullStoryById(String publicationId, String storyId);
 
 
     /* Series*/
@@ -78,7 +78,7 @@ public interface NetworkClientAPI {
      * @param numStoriesPerPage the number of stories that make up a page.
      * @return all the stories in the series.
      */
-    List<Story> getAllStoriesInSeries(int publicationId,int seriesId,int page,int numStoriesPerPage);
+    void getAllStoriesInSeries(int publicationId,int seriesId,int page,int numStoriesPerPage);
 
     /**
      * Fetches the most recent stories in a particular series.
@@ -86,14 +86,14 @@ public interface NetworkClientAPI {
      * @param mostRecentStoryInSeries most recent story.
      * @return a list of all the most recent stories in the series.
      */
-    List<Story> getRecentStories(int seriesId, Date mostRecentStoryInSeries);
+    void getRecentStories(int seriesId, Date mostRecentStoryInSeries);
 
     /* Bookmarks */
 
     /**
      * @return a list of all the bookmarked stories
      */
-    List<Story> getBookmarkedStories();
+    void getBookmarkedStories();
 
     /* Profile */
     /**
@@ -101,7 +101,7 @@ public interface NetworkClientAPI {
      * @return  the profile information of the current User.
      */
 
-    User getProfile();
+    void getProfile();
 
     /* Search */
     //TODO add any methods that will be useful for searching. Eg. Autocomplete features?

@@ -1,6 +1,8 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
+import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
+import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -35,20 +37,36 @@ public class RealmStory extends RealmObject implements Story {
                     String mBrief,
                     String mHeaderImage,
                     String mPublication,
-                    String mDateEdited,
                     String mArticleId,
                     String mTitle,
-                    String mContent,
-                    RealmList mAuthors) {
+                    String mContent) {
     this.mDatePublished = new Date(Long.parseLong(mDatePublished));
     this.mBrief = mBrief;
     this.mHeaderImage = mHeaderImage;
     this.mPublication = mPublication;
-    this.mDateEdited = new Date(Long.parseLong(mDateEdited));
     this.mArticleId = mArticleId;
     this.mTitle = mTitle;
     this.mContent = mContent;
-    this.mAuthors = mAuthors;
+    this.mAuthors = new RealmList<>();
+  }
+
+  /**
+   * Creates a RealmStory from a JsonStory.
+   * @param jsonStory
+   * @return
+   */
+  public static RealmStory from(JsonStory jsonStory) {
+    RealmStory story = new RealmStory(jsonStory.getDatePublished(),
+            jsonStory.getBrief(),
+            jsonStory.getHeaderImage(),
+            jsonStory.getPublication(),
+            jsonStory.getId(),
+            jsonStory.getTitle(),
+            jsonStory.getContent());
+    for (JsonAuthor author : jsonStory.getAuthors()) {
+      story.addAuthor(RealmAuthor.from(author));
+    }
+    return story;
   }
 
   /** Setters */
@@ -90,6 +108,10 @@ public class RealmStory extends RealmObject implements Story {
       return;
     }
     this.mAuthors = authors;
+  }
+
+  public void addAuthor(RealmAuthor author) {
+    mAuthors.add(author);
   }
 
   /**
