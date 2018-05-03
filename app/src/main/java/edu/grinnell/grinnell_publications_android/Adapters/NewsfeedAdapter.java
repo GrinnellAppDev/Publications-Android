@@ -2,7 +2,7 @@ package edu.grinnell.grinnell_publications_android.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +13,18 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Activities.ExpandedArticleActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.R;
-import io.realm.Realm;
 
 /**
  * @author Dennis Chan on 4/16/2017.
  */
 
-public class NewsfeedAdapter extends BaseAdapter{
+public class NewsfeedAdapter extends BaseAdapter {
 
     private class Article {
         public int mThumbnail;
@@ -45,17 +44,27 @@ public class NewsfeedAdapter extends BaseAdapter{
     }
 
 
-    Context mContext;
-    List<Story> mStories;
+    private Context mContext;
+    private List<Story> mStories;
+    private DateFormat dateFormat;
 
-    public NewsfeedAdapter (Context c, List<Story> stories) {
+    public NewsfeedAdapter(Context c, List<Story> stories) {
         mContext = c;
         mStories = stories;
+        dateFormat = DateFormat.getDateInstance();
     }
 
-    public long getItemId (int i) { return i; }
-    public int getCount() { return mStories.size(); }
-    public Object getItem (int i) { return mStories.get(i); }
+    public long getItemId(int i) {
+        return i;
+    }
+
+    public int getCount() {
+        return mStories.size();
+    }
+
+    public Object getItem(int i) {
+        return mStories.get(i);
+    }
 
     class ViewHolder {
         ImageView mThumbnail;
@@ -63,7 +72,8 @@ public class NewsfeedAdapter extends BaseAdapter{
         TextView mTitle;
         TextView mAuthor;
         TextView mDatePublished;
-        public ViewHolder (View v) {
+
+        public ViewHolder(View v) {
             mThumbnail = (ImageView) v.findViewById(R.id.nf_articlethumbnail);
             mPublicationIcon = (ImageView) v.findViewById(R.id.nf_articlepub);
             mTitle = (TextView) v.findViewById(R.id.nf_articletitle);
@@ -72,7 +82,7 @@ public class NewsfeedAdapter extends BaseAdapter{
         }
     }
 
-    public View getView (int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
         View row = view;
         ViewHolder holder;
 
@@ -105,9 +115,9 @@ public class NewsfeedAdapter extends BaseAdapter{
         return row;
     }
 
-    public ViewHolder populateSingleView (ViewHolder holder, Story story) {
+    public ViewHolder populateSingleView(ViewHolder holder, Story story) {
 
-        holder.mDatePublished.setText(story.getDatePublished());
+        holder.mDatePublished.setText(dateFormat.format(story.getDatePublished()));
 
         if (story.getHeaderImage() != null)
             Glide.with(mContext).load(story.getHeaderImage()).into(holder.mThumbnail);
@@ -115,7 +125,7 @@ public class NewsfeedAdapter extends BaseAdapter{
 
         /*  Loads publication icon from URL */
         //if (story.getPublication().getPublicationImageUrl() != null)
-            Glide.with(mContext).load("https://i.imgur.com/P361xoU.jpg").into(holder.mPublicationIcon);
+        Glide.with(mContext).load("https://i.imgur.com/P361xoU.jpg").into(holder.mPublicationIcon);
 
         /*
         final ImageView imageView = (ImageView) findViewById(R.id.mPublicationIcon);
@@ -126,8 +136,9 @@ public class NewsfeedAdapter extends BaseAdapter{
 
         // Handling long titles
         String title = story.getTitle();
-        if (title.length() < 50)  holder.mTitle.setText(title);
-        else  holder.mTitle.setText(title.substring(0,50) + "...");
+        holder.mTitle.setLines(1);
+        holder.mTitle.setEllipsize(TextUtils.TruncateAt.END);   
+        holder.mTitle.setText(title);
 
         return holder;
     }
