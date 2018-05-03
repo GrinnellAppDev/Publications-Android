@@ -29,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Remote client that connects to remote end points through networking calls.
@@ -46,6 +47,7 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
     private LocalClientAPI localClient;
     private PublicationsAPI publicationsApi;
     private OnNetworkCallCompleteListener onNetworkCallCompleteListener;
+    private int pageSize;
 
     public PublicationsNetworkClient(OnNetworkCallCompleteListener listener) {
         this(new RealmLocalClient(), listener);
@@ -58,6 +60,7 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
         retrofit = new Retrofit.Builder().baseUrl(Constants.AWS_BASE_API)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         publicationsApi = retrofit.create(PublicationsAPI.class);
+        pageSize = 50;
     }
 
     @Override
@@ -92,7 +95,7 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
 
     @Override
     public void getAllStoriesInPublication(String publicationId) {
-        Call<JsonAllStories> call = publicationsApi.articles(publicationId);
+        Call<JsonAllStories> call = publicationsApi.articles(publicationId, pageSize);
         call.enqueue(new Callback<JsonAllStories>() {
             @Override
             public void onResponse(Call<JsonAllStories> call, Response<JsonAllStories> response) {
@@ -120,7 +123,7 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
 
     @Override
     public void getFullStoryById(String publicationId, String storyId) {
-        Call<JsonStory> call = publicationsApi.article(publicationId, storyId);
+        Call<JsonStory> call = publicationsApi.article(publicationId, storyId, pageSize);
         call.enqueue(new Callback<JsonStory>() {
             @Override
             public void onResponse(Call<JsonStory> call, Response<JsonStory> response) {
@@ -167,12 +170,15 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
         @Headers("Accept: application/json")
         @GET("publications/{publicationId}/articles/{articleId}")
         Call<JsonStory> article(
-                @Path("publicationId") String publicationId, @Path("articleId") String articleId);
+                @Path("publicationId") String publicationId,
+                @Path("articleId") String articleId,
+                @Query("pageSize") int pageSize);
 
         @Headers("Accept: application/json")
         @GET("publications/{publicationId}/articles")
         Call<JsonAllStories> articles(
-                @Path("publicationId") String publicationId);
+                @Path("publicationId") String publicationId,
+                @Query("pageSize") int pageSize);
 
         /* Publications by id */
         @Headers("Accept: application/json")
