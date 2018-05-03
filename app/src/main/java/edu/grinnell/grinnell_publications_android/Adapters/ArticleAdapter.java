@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.TextView;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
@@ -28,6 +29,7 @@ public class ArticleAdapter extends RecyclerView.Adapter {
         View view = LayoutInflater.from(parent.getContext())
                                   .inflate(R.layout.viewholder_article, parent, false);
         ArticleViewHolder viewHolder = new ArticleViewHolder(view);
+        viewHolder.mText.setText("asdf");
         return viewHolder;
     }
 
@@ -47,9 +49,11 @@ public class ArticleAdapter extends RecyclerView.Adapter {
      */
     public static class ArticleViewHolder extends RecyclerView.ViewHolder {
         public CardView mCard;
+        public TextView mText;
 
         public ArticleViewHolder(View view) {
             super(view);
+            mText = view.findViewById(R.id.article_text);
         }
     }
 }

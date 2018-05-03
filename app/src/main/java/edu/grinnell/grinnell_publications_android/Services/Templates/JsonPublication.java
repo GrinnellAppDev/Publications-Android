@@ -11,7 +11,6 @@ import com.google.gson.annotations.SerializedName;
  *  @since  February 26, 2017
  *  @see    JsonStory
  *  @see    JsonAuthor
- *  @see    PublicationRemoteClient
  */
 
 public class JsonPublication {
@@ -23,8 +22,8 @@ public class JsonPublication {
     @Expose
     private String mName;
 
-    public String getId() {
-        return mId;
+    public int getId() {
+        return Integer.parseInt(mId);
     }
 
     public void setId(String id) {

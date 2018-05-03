@@ -27,6 +27,10 @@
                 android:resource="@xml/searchable"/>
         </activity>
 
+        <activity android:name=".Activities.ExpandedArticleActivity">
+
+        </activity>
+
         <activity android:name=".Activities.MainSettingsActivity"
             android:label="Settings">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
