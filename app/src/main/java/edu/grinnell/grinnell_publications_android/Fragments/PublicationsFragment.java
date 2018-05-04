@@ -45,8 +45,8 @@ public class PublicationsFragment extends Fragment
         final View view = inflater.inflate(R.layout.fragment_publications, container, false);
         configureViews();
 
-        GridView gridview = (GridView) view.findViewById(R.id.publicationsGridView);
-        gridview.setAdapter(new PublicationAdapter(getActivity().getApplicationContext()));
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.publicationsGridView);
+        recyclerView.setAdapter(new PublicationAdapter(getActivity().getApplicationContext(), mPublications));
 
         return view;
     }
