@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
@@ -7,6 +8,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import java.util.Date;
+import java.util.List;
 
 /**
  * This class implements @code{Story} using Realm Persistence
@@ -66,6 +68,7 @@ public class RealmStory extends RealmObject implements Story {
     for (JsonAuthor author : jsonStory.getAuthors()) {
       story.addAuthor(RealmAuthor.from(author));
     }
+    story.isFullStory = false;
     return story;
   }
 
@@ -104,7 +107,7 @@ public class RealmStory extends RealmObject implements Story {
    * @param authors authors of the story
    */
   public void setAuthors(RealmList<RealmAuthor> authors) {
-    if (authors.isEmpty() || authors == null) {
+    if (authors == null || authors.isEmpty()) {
       return;
     }
     this.mAuthors = authors;
@@ -119,7 +122,7 @@ public class RealmStory extends RealmObject implements Story {
    * @param content the content of the story
    */
   public void setContent(String content) {
-    if (content.isEmpty() || content == null) {
+    if (content == null) {
       return;
     }
     this.mContent = content;
@@ -182,8 +185,9 @@ public class RealmStory extends RealmObject implements Story {
     return this.mDateEdited;
   }
 
-  @Override public RealmList<RealmAuthor> getAuthors() {
-    return this.mAuthors;
+  @Override public List<Author> getAuthors() {
+    // TODO: 5/2/18 IMPLEMENT
+    return null;
   }
 
   @Override public String getContent() {

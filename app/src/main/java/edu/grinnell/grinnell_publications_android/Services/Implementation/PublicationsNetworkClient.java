@@ -102,8 +102,9 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
                 Log.d("hii", "onResponse: npt: " + response.body().getNextPageToken());
                 Log.d("hi", "onResponse: " + response.body().toString());
                 List<Story> stories = new ArrayList<>();
-                for (JsonStory jsonStory : response.body().getPublications())
+                for (JsonStory jsonStory : response.body().getPublications()) {
                     stories.add(RealmStory.from(jsonStory));
+                }
                 localClient.saveStories(stories);
 
                 onNetworkCallCompleteListener.onNetworkCallSucceeded();
@@ -123,11 +124,10 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
 
     @Override
     public void getFullStoryById(String publicationId, String storyId) {
-        Call<JsonStory> call = publicationsApi.article(publicationId, storyId, pageSize);
+        Call<JsonStory> call = publicationsApi.article(publicationId, storyId);
         call.enqueue(new Callback<JsonStory>() {
             @Override
             public void onResponse(Call<JsonStory> call, Response<JsonStory> response) {
-
                 localClient.saveFullStory(RealmStory.from(response.body()));
                 onNetworkCallCompleteListener.onNetworkCallSucceeded();
 
@@ -171,8 +171,7 @@ public class PublicationsNetworkClient implements NetworkClientAPI {
         @GET("publications/{publicationId}/articles/{articleId}")
         Call<JsonStory> article(
                 @Path("publicationId") String publicationId,
-                @Path("articleId") String articleId,
-                @Query("pageSize") int pageSize);
+                @Path("articleId") String articleId);
 
         @Headers("Accept: application/json")
         @GET("publications/{publicationId}/articles")

@@ -40,7 +40,7 @@ public interface Story {
      *
      * @return  all the @code{author}s of the story.
      */
-    AbstractList<? extends Author> getAuthors();
+    List<Author> getAuthors();
 
     /**
      * @return the text body of the story

@@ -17,7 +17,9 @@ import java.text.DateFormat;
 import java.util.List;
 
 import edu.grinnell.grinnell_publications_android.Activities.ExpandedArticleActivity;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
 import edu.grinnell.grinnell_publications_android.R;
 
 /**
@@ -52,6 +54,11 @@ public class NewsfeedAdapter extends BaseAdapter {
         mContext = c;
         mStories = stories;
         dateFormat = DateFormat.getDateInstance();
+    }
+
+    public void updateStories(List<Story> stories) {
+        this.mStories = stories;
+        notifyDataSetChanged();
     }
 
     public long getItemId(int i) {
@@ -132,7 +139,10 @@ public class NewsfeedAdapter extends BaseAdapter {
         imageView.setImageResource(sand.png);
         */
 
-        holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
+        List<Author> authors = story.getAuthors();
+        if (authors != null && !authors.isEmpty())
+            holder.mAuthor.setText(story.getAuthors().get(0).getFullName());
+        else holder.mAuthor.setText("Unknown Author");
 
         // Handling long titles
         String title = story.getTitle();

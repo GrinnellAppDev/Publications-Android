@@ -1,15 +1,12 @@
 package edu.grinnell.grinnell_publications_android.Fragments;
 
 
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
-
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,17 +14,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
+import edu.grinnell.grinnell_publications_android.Services.Implementation.PublicationsNetworkClient;
+import edu.grinnell.grinnell_publications_android.Services.Implementation.RealmLocalClient;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.NetworkClientAPI;
+import edu.grinnell.grinnell_publications_android.Services.Interfaces.OnNetworkCallCompleteListener;
 
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 import static android.support.design.widget.Snackbar.make;
 import static android.support.v4.content.ContextCompat.getDrawable;
-import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 
 /**
  * Fragment displays an article and allows users to mark article as favorited.
+ *
  * @author Yazan Kittaneh
  */
 
@@ -39,20 +46,60 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     private TextView mArticleContent;
     private Toolbar mArticleToolbar;
 
+    private LocalClientAPI localClient;
+    private NetworkClientAPI networkClient;
+    private OnNetworkCallCompleteListener listener = new OnNetworkCallCompleteListener() {
+        @Override
+        public void onNetworkCallSucceeded() {
+            Toast.makeText(getContext(), "Full Story obtained.", Toast.LENGTH_SHORT).show();
+            updateStory();
+        }
+
+        @Override
+        public void onNetworkCallFailed(String message) {
+            Toast.makeText(getContext(), "Unable to load article.", Toast.LENGTH_SHORT).show();
+        }
+    };
+
     private boolean isFavorited = false;
     private int colorFilter;
     private String snackBarMessage;
+    private String storyId;
+    private Story story;
 
-    public ExpandedArticleFragment() {}
-
-    public static ExpandedArticleFragment newInstance() {
-        return new ExpandedArticleFragment();
+    public ExpandedArticleFragment() {
+        localClient = new RealmLocalClient();
+        networkClient = new PublicationsNetworkClient(localClient, listener);
     }
 
+    /**
+     * Looks for the full story in the realm database.
+     * If it doesn't exist, it downloads it from the network client.
+     *
+     * @param storyId
+     */
+    public void setStoryIdAndUpdate(String storyId) {
+        this.storyId = storyId;
+        Story story = localClient.getFullStoryById(storyId);
+        if (!story.isFullStory()) {
+            networkClient.getFullStoryById(story.getPublication(), storyId);
+        } else {
+            updateStory();
+        }
+    }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void updateStory() {
+        story = localClient.getFullStoryById(storyId);
+        setHeaderText(story.getTitle());
+        Picasso.with(getContext())
+                .load(story.getHeaderImage())
+                .placeholder(R.drawable.grinnell_gates)
+                .fit()
+                .into(mHeaderImage);
+        Log.d("updateStory", "updateStory: " + story.isFullStory());
+        if (story.isFullStory()) {
+            mArticleContent.setText(story.getContent());
+        }
     }
 
     @Override
@@ -65,8 +112,8 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
     }
 
     @Override
-    public void initializeUI(View view){
-        Log.d("Nav icon", String.valueOf(getDrawable(getContext(), R.drawable.ic_action_back)==null));
+    public void initializeUI(View view) {
+        Log.d("Nav icon", String.valueOf(getDrawable(getContext(), R.drawable.ic_action_back) == null));
         //mArticleToolbar.setNavigationIcon(getDrawable(getContext(), R.drawable.ic_action_back));
         bindView(view);
         loadPlaceHolderData();
@@ -107,30 +154,22 @@ public class ExpandedArticleFragment extends Fragment implements UserInterface {
         });
     }
 
-    /** Fills fragment with placeholder content */
-    private void loadPlaceHolderData(){
-        Drawable defaultImage = getDrawable(getContext(), R.drawable.grinnell_gates);
+    /**
+     * Fills fragment with placeholder content
+     */
+    private void loadPlaceHolderData() {
         setHeaderText(getText(R.string.article_sample_title).toString());
-        setContentText(getText(R.string.article_sample_content).toString());
-        setHeaderImage(defaultImage);
+        mArticleContent.setText(getText(R.string.article_sample_content).toString());
+        mHeaderImage.setImageResource(R.drawable.grinnell_gates);
     }
 
-    /** Gets image from Header**/
-     public Drawable getHeaderImage() { return this.mHeaderImage.getDrawable(); }
 
-    /** Gets text from content **/
-    public String getTextContent() { return this.mArticleContent.getText().toString();}
-
-    /** Sets the heading image **/
-    private void setHeaderImage(Drawable image) {
-        this.mHeaderImage.setImageDrawable(image);
+    /**
+     * Sets text into header field
+     **/
+    private void setHeaderText(String titleText) {
+        this.mCollapsingToolbar.setTitle(titleText);
     }
 
-    /** Sets text into header field **/
-    private void setHeaderText(String titleText) { this.mCollapsingToolbar.setTitle(titleText);}
 
-    /** Sets text into content field **/
-    private void setContentText(String content) { this.mArticleContent.setText(content);}
-
-    
 }

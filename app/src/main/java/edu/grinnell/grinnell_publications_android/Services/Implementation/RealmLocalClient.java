@@ -1,5 +1,7 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
+import android.util.Log;
+
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -82,11 +84,18 @@ public class RealmLocalClient implements LocalClientAPI {
   }
 
   @Override
-  public void saveFullStory(Story fullStory) {
-    realm.beginTransaction();
+  public void saveFullStory(final Story fullStory) {
     fullStory.setFullStory(true);
-    realm.copyToRealmOrUpdate((RealmModel) fullStory);
-    realm.commitTransaction();
+    realm.executeTransactionAsync(new Realm.Transaction() {
+      @Override
+      public void execute(Realm realm) {
+        RealmStory story = realm.where(RealmStory.class).equalTo("mArticleId", fullStory.getArticleId()).findFirst();
+        story.setContent(fullStory.getContent());
+        Log.d("INREALMSSS", "execute: " + fullStory.getContent());
+        story.setTitle("x" + story.getTitle());
+        story.setFullStory(Boolean.valueOf(true));
+      }
+    });
   }
 
   @Override public List<Publication> getSubscribedPublications(int id) {
