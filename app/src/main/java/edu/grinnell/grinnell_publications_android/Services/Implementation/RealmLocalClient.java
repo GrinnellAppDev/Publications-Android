@@ -1,5 +1,8 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
+import android.app.Activity;
+
+import edu.grinnell.grinnell_publications_android.Activities.MainActivity;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.User;
@@ -33,7 +36,9 @@ public class RealmLocalClient implements LocalClientAPI {
 
   Realm realm;
 
-  public RealmLocalClient (){
+  public RealmLocalClient (Activity activity){
+
+    Realm.init(activity.getApplicationContext());
     this.realm = Realm.getDefaultInstance();
   }
 

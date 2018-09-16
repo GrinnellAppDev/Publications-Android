@@ -1,5 +1,7 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
+import android.app.Activity;
+
 import java.util.Set;
 
 import edu.grinnell.grinnell_publications_android.Constants;
@@ -33,8 +35,8 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   private LocalClientAPI mLocalClient;
   private PublicationsAPI mPubAPI;
 
-  public PublicationsRemoteClient() {
-    this(new RealmLocalClient());
+  public PublicationsRemoteClient(Activity activity) {
+    this(new RealmLocalClient(activity));
   }
 
   public PublicationsRemoteClient(LocalClientAPI localClient) {

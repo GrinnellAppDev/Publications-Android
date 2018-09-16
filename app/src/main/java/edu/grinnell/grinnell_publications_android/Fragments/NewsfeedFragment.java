@@ -32,7 +32,7 @@ public class NewsfeedFragment extends Fragment implements UserInterface {
 
     @Override
     public void initializeUI(View view) {
-        RemoteClientAPI remoteClient = new PublicationsRemoteClient();
+        RemoteClientAPI remoteClient = new PublicationsRemoteClient(getActivity());
         remoteClient.getAllPublications();
     }
 
