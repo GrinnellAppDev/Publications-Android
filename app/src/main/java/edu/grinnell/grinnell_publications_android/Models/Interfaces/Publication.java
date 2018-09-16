@@ -39,5 +39,7 @@ public interface Publication {
      * @return the image url for the publication.
      */
     String getPublicationImageUrl();
+
+    byte[] getPublicationId();
 }
 

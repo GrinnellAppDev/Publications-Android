@@ -12,13 +12,14 @@ import static org.mockito.Mockito.when;
  * Created by Cx831 on 4/7/2017.
  */
 
-public class PublicationRemoteClientTest {
+public class
+
+PublicationRemoteClientTest {
 
 
     @Test
     public void testConvertJsonToRealmStory () {
         // Create Mock
-
 
         // Create mock realm author list
         RealmList<RealmAuthor> realmAuthorsTest = Mockito.mock(RealmList.class);
@@ -34,10 +35,6 @@ public class PublicationRemoteClientTest {
         when(jsonStoryTest.getTitle()).thenReturn("");
         when(jsonStoryTest.getContent()).thenReturn("");
         when(jsonStoryTest.getAuthors()).thenReturn(null);
-
-
-
-
 
     }
 

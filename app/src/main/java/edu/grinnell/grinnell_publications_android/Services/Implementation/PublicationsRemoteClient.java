@@ -1,23 +1,16 @@
 package edu.grinnell.grinnell_publications_android.Services.Implementation;
 
+import android.app.Activity;
+
+import java.util.Set;
+
 import edu.grinnell.grinnell_publications_android.Constants;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthorContact;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
-import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.Models.RemoteQueryResponse;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.RemoteClientAPI;
-import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
-import edu.grinnell.grinnell_publications_android.Services.Templates.JsonPublication;
+import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAllPublications;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonStory;
-import io.realm.Realm;
-import io.realm.RealmList;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,13 +31,12 @@ import retrofit2.http.Path;
  */
 public class PublicationsRemoteClient implements RemoteClientAPI {
 
-  private Realm mRealm;
   private Retrofit mRetrofit;
   private LocalClientAPI mLocalClient;
   private PublicationsAPI mPubAPI;
 
-  public PublicationsRemoteClient() {
-    this(new RealmLocalClient());
+  public PublicationsRemoteClient(Activity activity) {
+    this(new RealmLocalClient(activity));
   }
 
   public PublicationsRemoteClient(LocalClientAPI localClient) {
@@ -54,33 +46,28 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     mPubAPI = mRetrofit.create(PublicationsAPI.class);
   }
 
-  @Override public void getAllPublications() {
-    Call<List<JsonPublication>> call = mPubAPI.publications();
-    call.enqueue(new Callback<List<JsonPublication>>() {
-      @Override public void onResponse(Call<List<JsonPublication>> call,
-                                       Response<List<JsonPublication>> response) {
-        storeRealmPublication(response.body());
+  @Override
+  public void getAllPublications() {
+    Call<JsonAllPublications> call = mPubAPI.publications();
+    call.enqueue(new Callback<JsonAllPublications>() {
+      @Override
+      public void onResponse(Call<JsonAllPublications> call,
+                             Response<JsonAllPublications> response) {
+        /* TODO: Still need to store in realm database
+        storeRealmPublication(response.body().getPublications());
+        mLocalClient.savePublications(response.body().getPublications()); */
       }
-      public void onFailure(Call<List<JsonPublication>> call, Throwable t) {
+      public void onFailure(Call<JsonAllPublications> call, Throwable t) {
         throw new IllegalStateException("Unable to Retrieve Story from Server");
       }
     });
-  }
-
-  private void storeRealmPublication(List<JsonPublication> list) {
-    instantiateRealmObject();
-    List<Publication> publications = new ArrayList<Publication>();
-    for (JsonPublication item : list) {
-      publications.add(new RealmPublication(item.getName(), item.getId(), null, null, null));
-    }
-    mLocalClient.savePublications(publications);
   }
 
   public void getStory(String publicationId, String articleId) {
     Call<JsonStory> call = mPubAPI.article(publicationId, articleId);
     call.enqueue(new Callback<JsonStory>() {
       @Override public void onResponse(Call<JsonStory> call, Response<JsonStory> response) {
-        storeRealmStory(convertToRealmStory(response.body()));
+        // TODO: Call to save the story
       }
       public void onFailure(Call<JsonStory> call, Throwable t) {
         throw new IllegalStateException("Unable to Retrieve Story from Server");
@@ -116,7 +103,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
 
   private interface PublicationsAPI {
     /* Publications */
-    @GET("publications/") Call<List<JsonPublication>> publications();
+    @GET("publications/") Call<JsonAllPublications> publications();
 
     /* Articles */
     @GET("publications/{publicationId}/articles/{articleId}") Call<JsonStory> article(

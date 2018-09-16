@@ -1,9 +1,10 @@
 package edu.grinnell.grinnell_publications_android.Models.Realm;
 
-import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import java.util.Date;
 
 /**
  * This class implements @code{Story} using Realm Persistence
@@ -14,16 +15,17 @@ import io.realm.RealmObject;
  * @since 1.1 Fri May  6 10:01:38 CDT 2016
  */
 public class RealmStory extends RealmObject implements Story {
-  private String mDatePublished;
+  private Date mDatePublished;
   private String mBrief;
   private String mHeaderImage;
   private String mPublication;
-  private String mPublicationId;
-  private String mDateEdited;
+  private Date mDateEdited;
+  @PrimaryKey
   private String mArticleId;
   private String mTitle;
   private String mContent;
   private RealmList<RealmAuthor> mAuthors;
+  private  Boolean isFullStory;
 
   /* Default constructor for Realm */
   public RealmStory() {
@@ -33,18 +35,16 @@ public class RealmStory extends RealmObject implements Story {
                     String mBrief,
                     String mHeaderImage,
                     String mPublication,
-                    String mPublicationId,
                     String mDateEdited,
                     String mArticleId,
                     String mTitle,
                     String mContent,
                     RealmList mAuthors) {
-    this.mDatePublished = mDatePublished;
+    this.mDatePublished = new Date(Long.parseLong(mDatePublished));
     this.mBrief = mBrief;
     this.mHeaderImage = mHeaderImage;
     this.mPublication = mPublication;
-    this.mPublicationId = mPublicationId;
-    this.mDateEdited = mDateEdited;
+    this.mDateEdited = new Date(Long.parseLong(mDateEdited));
     this.mArticleId = mArticleId;
     this.mTitle = mTitle;
     this.mContent = mContent;
@@ -52,11 +52,11 @@ public class RealmStory extends RealmObject implements Story {
   }
 
   /** Setters */
-  public void setPublicationId(String publicationId) {
-    if (publicationId.isEmpty() || publicationId == null) {
+  public void setPublication(String publication) {
+    if (publication.isEmpty() || publication == null) {
       return;
     }
-    this.mPublicationId = publicationId;
+    this.mPublication = publication;
   }
 
   /**
@@ -67,7 +67,7 @@ public class RealmStory extends RealmObject implements Story {
     if (datePublished.isEmpty() || datePublished == null) {
       return;
     }
-    this.mDatePublished = datePublished;
+    this.mDatePublished = new Date(Long.parseLong(datePublished));
   }
 
   /**
@@ -78,7 +78,7 @@ public class RealmStory extends RealmObject implements Story {
     if (dateEdited.isEmpty() || dateEdited == null) {
       return;
     }
-    this.mDateEdited = dateEdited;
+    this.mDateEdited = new Date(Long.parseLong(dateEdited));
   }
 
   /**
@@ -152,15 +152,11 @@ public class RealmStory extends RealmObject implements Story {
     return this.mPublication;
   }
 
-  public String getPublicationId() {
-    return this.mPublicationId;
-  }
-
-  @Override public String getDatePublished() {
+  @Override public Date getDatePublished() {
     return this.mDatePublished;
   }
 
-  @Override public String getDateEdited() {
+  @Override public Date getDateEdited() {
     return this.mDateEdited;
   }
 
@@ -187,4 +183,13 @@ public class RealmStory extends RealmObject implements Story {
   @Override public String getHeaderImage() {
     return this.mHeaderImage;
   }
+
+  @Override public Boolean isFullStory() { return this.isFullStory; }
+
+  @Override
+  public void setFullStory(boolean isFull) {
+    this.isFullStory = isFullStory;
+  }
+
 }
+
