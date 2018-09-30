@@ -15,7 +15,6 @@ import android.view.View;
 import edu.grinnell.grinnell_publications_android.Fragments.BookmarksFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.NewsfeedFragment;
 import edu.grinnell.grinnell_publications_android.Fragments.ProfileFragment;
-import edu.grinnell.grinnell_publications_android.Fragments.PublicationsFragment;
 import edu.grinnell.grinnell_publications_android.Models.Interfaces.UserInterface;
 import edu.grinnell.grinnell_publications_android.R;
 
@@ -23,9 +22,6 @@ import static android.support.design.widget.NavigationView.OnNavigationItemSelec
 import static android.support.v4.view.GravityCompat.START;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
-
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Represents the {@link AppCompatActivity} that hosts all the various Fragments and the Navigation
@@ -42,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fabric.with(this, new Crashlytics());
+
         initializeUI(findViewById(android.R.id.content));
+
     }
 
     @Override
@@ -60,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     private void bindView() {
-        mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
-        mToolbar = (Toolbar)findViewById(R.id.main_toolbar);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.navigation_view);
+        mToolbar = findViewById(R.id.main_toolbar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
     }
 
     private void buildNavDrawer() {
@@ -88,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
                     case R.id.newsfeed:
                         replaceFrameWithFragment(new NewsfeedFragment());
                         break;
-                    case R.id.publications:
+                    /*case R.id.publications:
                         replaceFrameWithFragment(new PublicationsFragment());
-                        break;
+                        break;*/
                     case R.id.profile:
                         replaceFrameWithFragment(new ProfileFragment());
                         break;

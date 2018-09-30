@@ -11,7 +11,6 @@ import com.google.gson.annotations.SerializedName;
  *  @since  February 26, 2017
  *  @see    JsonStory
  *  @see    JsonAuthor
- *  @see    PublicationRemoteClient
  */
 
 public class JsonPublication {

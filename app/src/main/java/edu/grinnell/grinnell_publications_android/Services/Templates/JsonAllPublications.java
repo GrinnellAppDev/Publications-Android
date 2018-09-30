@@ -12,17 +12,17 @@ import java.util.List;
 public class JsonAllPublications {
 
 
-    @SerializedName("nextPageToken")
-    @Expose
-    private String mNextPageToken;
+//    @SerializedName("nextPageToken")
+//    @Expose
+//    private String mNextPageToken;
 
     @SerializedName("items")
     @Expose
     private List<JsonPublication> mPublications;
 
-    public String getNextPageToken() { return mNextPageToken; }
+//    public String getNextPageToken() { return mNextPageToken; }
 
-    public void setNextPageToken(String mNextPageToken) { this.mNextPageToken = mNextPageToken; }
+//    public void setNextPageToken(String mNextPageToken) { this.mNextPageToken = mNextPageToken; }
 
     public List<JsonPublication> getPublications() { return mPublications; }
 
