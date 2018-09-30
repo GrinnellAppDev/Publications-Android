@@ -21,7 +21,9 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true">
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/nf_articlethumbnail"
+                android:layout_margin="8dp">
 
                 <ImageView
                     android:id="@+id/nf_articlepub"
@@ -30,21 +32,19 @@
                     android:layout_alignLeft="@+id/nf_articletitle"
                     android:layout_alignStart="@+id/nf_articletitle"
                     android:layout_alignTop="@+id/nf_author"
-                    android:layout_marginTop="3dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="4dp"
                     app:srcCompat="@drawable/sandb" />
 
                 <TextView
                     android:id="@+id/nf_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/nf_articletitle"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/nf_articlepub"
                     android:layout_toRightOf="@+id/nf_articlepub"
-                    android:text="TextView"
                     android:textColor="@color/black"
-                    android:textSize="13.5dp" />
+                    android:layout_alignParentBottom="true"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/nf_date"
@@ -53,11 +53,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="17dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:alpha=".40"
-                    android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="11sp" />
 
@@ -68,10 +64,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="78dp"
-                    android:layout_marginTop="16dp"
                     android:gravity="center_vertical"
-                    android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -84,11 +77,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:paddingBottom="0dp"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp"
+                android:layout_margin="4dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/bands" />
 

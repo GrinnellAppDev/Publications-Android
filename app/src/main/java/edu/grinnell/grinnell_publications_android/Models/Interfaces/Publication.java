@@ -40,6 +40,6 @@ public interface Publication {
      */
     String getPublicationImageUrl();
 
-    byte[] getPublicationId();
+    String getPublicationId(); //change
 }
 

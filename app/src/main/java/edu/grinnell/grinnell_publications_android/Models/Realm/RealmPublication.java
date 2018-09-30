@@ -56,6 +56,11 @@ public class RealmPublication extends RealmObject implements Publication {
     public String getPublicationName() {return this.publicationName;}
 
     @Override
+    public int getPublication() {
+        return this.getPublication();
+    }
+
+    @Override
     public String getPublicationId() {
         return this.publicationId;
     }

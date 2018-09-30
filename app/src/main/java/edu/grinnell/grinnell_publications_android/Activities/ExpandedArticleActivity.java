@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -24,7 +25,12 @@ public class ExpandedArticleActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+    Intent intent = getIntent();
+    String articleID = intent.getStringExtra("articleID");
+    Bundle bundle = new Bundle();
+    bundle.putString("articleID", articleID);
     ExpandedArticleFragment fragment = new ExpandedArticleFragment();
+    fragment.setArguments(bundle);
     fragmentTransaction.add(R.id.expanded_article_frame, fragment);
     fragmentTransaction.commit();
 

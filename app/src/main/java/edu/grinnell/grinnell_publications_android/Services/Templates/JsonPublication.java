@@ -22,8 +22,8 @@ public class JsonPublication {
     @Expose
     private String mName;
 
-    public int getId() {
-        return Integer.parseInt(mId);
+    public String getId() {
+        return mId;
     }
 
     public void setId(String id) {

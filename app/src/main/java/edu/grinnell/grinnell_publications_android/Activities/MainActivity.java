@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     }
 
     private void bindView() {
-        mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
-        mToolbar = (Toolbar)findViewById(R.id.main_toolbar);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.navigation_view);
+        mToolbar = findViewById(R.id.main_toolbar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
     }
 
     private void buildNavDrawer() {
