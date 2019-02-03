@@ -1,5 +1,6 @@
 package edu.grinnell.grinnell_publications_android.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +50,9 @@ public class MainActivity extends AppCompatActivity implements UserInterface {
         bindView();
 
         setSupportActionBar(mToolbar);
-
         // We are doing this so we always start the app in the News Feed
-        NewsfeedFragment newsfeed = new NewsfeedFragment();
+        final NewsfeedFragment newsfeed = new NewsfeedFragment();
         replaceFrameWithFragment(newsfeed);
-
         buildNavDrawer();
     }
 

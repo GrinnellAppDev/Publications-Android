@@ -3,7 +3,12 @@ package edu.grinnell.grinnell_publications_android.Services.Templates;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmArticle;
+import edu.grinnell.grinnell_publications_android.Models.Realm.RealmAuthor;
+import io.realm.RealmList;
 
 public class JsonArticle {
 
@@ -21,6 +26,16 @@ public class JsonArticle {
         this.authors = authors;
         this.readTimeMinutes = readTimeMinutes;
         this.headerImage = headerImage;
+    }
+
+    public JsonArticle(RealmArticle realmArticle) {
+        this.id = realmArticle.getArticleID();
+        this.publication = realmArticle.getPublication();
+        this.title = realmArticle.getArticleTitle();
+        this.datePublished = realmArticle.getDatePublished();
+        this.authors = getJsonAuthors(realmArticle.getRealmAuthors());
+        this.readTimeMinutes = realmArticle.getReadTimeMinutes();
+        this.headerImage = realmArticle.getHeaderImage();
     }
 
     @SerializedName("id")
@@ -100,5 +115,15 @@ public class JsonArticle {
     public void setHeaderImage(String headerImage) {
         this.headerImage = headerImage;
     }
+
+    private List<JsonAuthor> getJsonAuthors(RealmList<RealmAuthor> authors) {
+        List<JsonAuthor> jsonAuthors = new ArrayList<>();
+        for (RealmAuthor realmAuthor : authors) {
+            JsonAuthor jsonAuthor = new JsonAuthor(realmAuthor.getFullName(), realmAuthor.getAuthorContactInfo().getEmail());
+            jsonAuthors.add(jsonAuthor);
+        }
+        return jsonAuthors;
+    }
+
 
 }

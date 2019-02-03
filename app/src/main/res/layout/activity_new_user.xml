@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.NewUserActivity"
+    android:background="#C3423F">
+
+    <ImageView
+        android:id="@+id/sparc_logo_iv"
+        android:layout_width="96dp"
+        android:layout_height="144dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:layout_marginTop="154dp"
+        android:src="@drawable/sparc_logo" />
+
+    <ImageView
+        android:id="@+id/sparc_name_iv"
+        android:layout_width="130dp"
+        android:layout_height="43dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sparc_logo_iv"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/sparc_words" />
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@drawable/rounded_corner_button_sign_up"
+        android:layout_above="@id/facebook_login_btn"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/sign_up_btn_text"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:id="@+id/facebook_login_btn"
+        android:background="@drawable/rounded_corner_button_facebook_login"
+        android:text="@string/facebook_login_btn_text"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+
+
+</RelativeLayout>

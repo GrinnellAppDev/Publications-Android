@@ -39,7 +39,7 @@ public class RealmLocalClient implements LocalClientAPI {
 
   public RealmLocalClient (Activity activity){
     Realm.init(activity.getApplicationContext());
-    final RealmConfiguration configuration = new RealmConfiguration.Builder().name("sample.realm").schemaVersion(1).build();
+    final RealmConfiguration configuration = new RealmConfiguration.Builder().name("sample.realm").schemaVersion(1).deleteRealmIfMigrationNeeded().build();
     Realm.setDefaultConfiguration(configuration);
     this.realm = Realm.getDefaultInstance();
   }

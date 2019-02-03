@@ -7,9 +7,11 @@ import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
 import edu.grinnell.grinnell_publications_android.Services.Templates.JsonAuthor;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class RealmArticle extends RealmObject implements Article {
 
+    @PrimaryKey
     private String articleID;
     private String publication;
     private String articleTitle;
@@ -17,6 +19,7 @@ public class RealmArticle extends RealmObject implements Article {
     private RealmList<RealmAuthor> authors;
     private Integer readTimeMinutes;
     private String headerImage;
+    private boolean isBookmarked;
 
     public RealmArticle() {
 
@@ -36,6 +39,7 @@ public class RealmArticle extends RealmObject implements Article {
         this.authors = authors;
         this.readTimeMinutes = readTimeMinutes;
         this.headerImage = headerImage;
+        isBookmarked = false;
     }
 
     @Override
@@ -75,6 +79,15 @@ public class RealmArticle extends RealmObject implements Article {
         return null;
     }
 
+    public String getAuthorsAsString() {
+        StringBuilder ret = new StringBuilder();
+        for (RealmAuthor realmAuthor : authors) {
+            ret.append(realmAuthor.getFullName());
+            ret.append("\n");
+        }
+        return ret.substring(0, ret.length() - 1);
+    }
+
     public void setDatePublished(Long datePublished) {
         this.datePublished = datePublished;
     }
@@ -103,5 +116,13 @@ public class RealmArticle extends RealmObject implements Article {
 
     public void setHeaderImage(String headerImage) {
         this.headerImage = headerImage;
+    }
+
+    public boolean isBookmarked() {
+        return isBookmarked;
+    }
+
+    public void setBookmarked(boolean bookmarked) {
+        isBookmarked = bookmarked;
     }
 }

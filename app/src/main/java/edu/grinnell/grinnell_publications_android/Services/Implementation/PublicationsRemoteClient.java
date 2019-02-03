@@ -127,6 +127,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
     }
 
   private void storeRealmArticles(List<JsonArticle> articles) {
+//    mRealm.
     for (JsonArticle jsonArticle : articles) {
       String articleID = jsonArticle.getId();
       String publication = jsonArticle.getPublication();
@@ -182,7 +183,7 @@ public class PublicationsRemoteClient implements RemoteClientAPI {
   private void storeRealmArticle(RealmArticle realmArticle) {
     if (realmArticle == null) throw new NullPointerException();
     instantiateRealmObject();
-    mRealm.copyToRealm(realmArticle);
+    mRealm.copyToRealmOrUpdate(realmArticle);
     mRealm.commitTransaction();
   }
 
