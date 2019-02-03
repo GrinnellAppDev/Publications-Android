@@ -23,7 +23,7 @@ public interface Publication {
     /**
      * @return the id of the publication
      */
-    String getPublicationId();
+    int getPublication();
 
     /**
      * @return a list of all the series featured on this publication
@@ -39,4 +39,7 @@ public interface Publication {
      * @return the image url for the publication.
      */
     String getPublicationImageUrl();
+
+    String getPublicationId(); //change
 }
+

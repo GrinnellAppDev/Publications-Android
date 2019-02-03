@@ -3,6 +3,13 @@ package edu.grinnell.grinnell_publications_android.Services.Templates;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Author;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.AuthorContact;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Publication;
+import edu.grinnell.grinnell_publications_android.Models.Interfaces.Story;
+
 /**
  *  This class is a json template that the Call block populates when an author item is retrieved
  *      from AWS endpoint
@@ -14,29 +21,53 @@ import com.google.gson.annotations.SerializedName;
  *  @see    PublicationRemoteClient
  */
 
-public class JsonAuthor {
+public class JsonAuthor implements Author{
 
-    @SerializedName("mName")
+    @SerializedName("name")
     @Expose
-    private String mName;
-    @SerializedName("mEmail")
+    private String name;
+    @SerializedName("email")
     @Expose
-    private String mEmail;
+    private String email;
 
-    public String getName() {
-        return mName;
+    public JsonAuthor(String fullName, String email) {
+        this.name = fullName;
+        this.email = email;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
-        return mEmail;
+        return email;
     }
 
-    public void setEmail(String mEmail) {
-        this.mEmail = mEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    @Override
+    public String getFullName() {
+        return name;
+    }
+
+    @Override
+    public AuthorContact getAuthorContactInfo() {
+        return null;
+    }
+
+    @Override
+    public List<? extends Publication> getPublications() {
+        return null;
+    }
+
+    @Override
+    public List<? extends Story> getStories() {
+        return null;
+    }
 }

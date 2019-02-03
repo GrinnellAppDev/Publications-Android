@@ -10,6 +10,7 @@ import edu.grinnell.grinnell_publications_android.Models.Realm.RealmPublication;
 import edu.grinnell.grinnell_publications_android.Models.Realm.RealmStory;
 import edu.grinnell.grinnell_publications_android.Services.Interfaces.LocalClientAPI;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmModel;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -37,8 +38,9 @@ public class RealmLocalClient implements LocalClientAPI {
   Realm realm;
 
   public RealmLocalClient (Activity activity){
-
     Realm.init(activity.getApplicationContext());
+    final RealmConfiguration configuration = new RealmConfiguration.Builder().name("sample.realm").schemaVersion(1).deleteRealmIfMigrationNeeded().build();
+    Realm.setDefaultConfiguration(configuration);
     this.realm = Realm.getDefaultInstance();
   }
 
@@ -51,8 +53,7 @@ public class RealmLocalClient implements LocalClientAPI {
   }
 
   @Override public void addToSubscribedPublications(int publicationId) {
-
-
+    
   }
 
   @Override public void savePublications(List<Publication> publications) {
@@ -165,3 +166,4 @@ public class RealmLocalClient implements LocalClientAPI {
     return realm.where(RealmPublication.class).equalTo(PUBLICATION_ID, publicationId).findFirst();
   }
 }
+
